@@ -4,6 +4,7 @@ import { FaBlog, FaExternalLinkAlt, FaCalendar, FaEye, FaHeart } from 'react-ico
 import { articles, blogStats } from '../data/articles'
 
 const Articles = () => {
+  const articlesData = [
     {
       title: 'MSA 환경에서의 분산 트랜잭션 패턴: Saga Pattern 적용기',
       summary: 'PAIGE 프로젝트에서 복잡한 비즈니스 로직을 처리하기 위해 Saga Pattern을 도입한 경험과 학습 내용을 공유합니다.',
@@ -113,15 +114,15 @@ const Articles = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
           <div className="bg-white rounded-lg p-6">
-            <div className="text-3xl font-bold text-blue-600 mb-2">{blogStats.totalArticles}</div>
+            <div className="text-3xl font-bold text-blue-600 mb-2">25</div>
             <p className="text-gray-600">작성한 아티클</p>
           </div>
           <div className="bg-white rounded-lg p-6">
-            <div className="text-3xl font-bold text-green-600 mb-2">{blogStats.totalViews}</div>
+            <div className="text-3xl font-bold text-green-600 mb-2">18K</div>
             <p className="text-gray-600">총 조회수</p>
           </div>
           <div className="bg-white rounded-lg p-6">
-            <div className="text-3xl font-bold text-purple-600 mb-2">{blogStats.totalLikes}</div>
+            <div className="text-3xl font-bold text-purple-600 mb-2">792</div>
             <p className="text-gray-600">받은 좋아요</p>
           </div>
         </div>
@@ -133,7 +134,7 @@ const Articles = () => {
         animate="visible"
         className="space-y-6"
       >
-        {articles.map((article, index) => (
+        {articlesData.map((article, index) => (
           <motion.article
             key={index}
             variants={itemVariants}

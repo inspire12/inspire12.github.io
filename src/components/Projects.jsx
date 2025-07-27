@@ -4,6 +4,7 @@ import { FaGithub, FaExternalLinkAlt, FaUsers, FaChartLine } from 'react-icons/f
 import { projects } from '../data/projects'
 
 const Projects = () => {
+  const projectsData = [
     {
       title: 'NCSOFT 통합 계정 플랫폼',
       period: '2024',
@@ -97,7 +98,7 @@ const Projects = () => {
         animate="visible"
         className="space-y-8"
       >
-        {projects.map((project, index) => (
+        {projectsData.map((project, index) => (
           <motion.div
             key={index}
             variants={itemVariants}

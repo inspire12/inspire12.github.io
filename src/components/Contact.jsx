@@ -1,46 +1,47 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaEnvelope } from 'react-icons/fa'
-import { contactInfo, collaborationAreas } from '../data/contact'
+import { FaEnvelope, FaPhone, FaLinkedin, FaGithub, FaBlog, FaMapMarkerAlt } from 'react-icons/fa'
+import { collaborationAreas } from '../data/contact'
 
 const Contact = () => {
+  const contactInfo = [
     {
-      icon: <FaEnvelope className="text-2xl" />,
+      icon: FaEnvelope,
       label: 'Email',
       value: 'seoyh@ncsoft.com',
       link: 'mailto:seoyh@ncsoft.com',
       color: 'bg-red-500'
     },
     {
-      icon: <FaPhone className="text-2xl" />,
+      icon: FaPhone,
       label: 'Phone',
       value: '+82-10-XXXX-XXXX',
       link: 'tel:+82-10-XXXX-XXXX',
       color: 'bg-green-500'
     },
     {
-      icon: <FaLinkedin className="text-2xl" />,
+      icon: FaLinkedin,
       label: 'LinkedIn',
       value: 'linkedin.com/in/younghak-seo',
       link: 'https://linkedin.com/in/younghak-seo',
       color: 'bg-blue-600'
     },
     {
-      icon: <FaGithub className="text-2xl" />,
+      icon: FaGithub,
       label: 'GitHub',
       value: 'github.com/younghak-seo',
       link: 'https://github.com/younghak-seo',
       color: 'bg-gray-800'
     },
     {
-      icon: <FaBlog className="text-2xl" />,
+      icon: FaBlog,
       label: 'Tech Blog',
       value: 'younghak-dev.blog',
       link: 'https://younghak-dev.blog',
       color: 'bg-purple-600'
     },
     {
-      icon: <FaMapMarkerAlt className="text-2xl" />,
+      icon: FaMapMarkerAlt,
       label: 'Location',
       value: '대한민국, 서울',
       link: null,
@@ -131,7 +132,11 @@ const Contact = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {collaborationAreas.map((area, index) => (
+          {[
+          { icon: '🚀', title: '백엔드 개발', description: 'Spring Boot, Node.js\n대규모 시스템 아키텍처' },
+          { icon: '🤖', title: 'AI/ML 서비스', description: '모델 서빙 플랫폼\nMLOps 시스템 구축' },
+          { icon: '⚡', title: '성능 최적화', description: '시스템 성능 튜닝\n대용량 트래픽 처리' }
+        ].map((area, index) => (
             <div key={index} className="text-center">
               <div className="text-3xl mb-2">{area.icon}</div>
               <h4 className="font-semibold text-gray-900 mb-2">{area.title}</h4>
