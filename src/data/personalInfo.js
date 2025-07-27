@@ -34,13 +34,13 @@ export const personalData = {
   socialLinks: [
     {
       name: "GitHub",
-      url: "https://github.com",
+      url: "https://github.com/inspire12",
       icon: FaGithub,
       color: "bg-gray-900 hover:bg-gray-800"
     },
     {
       name: "LinkedIn", 
-      url: "https://linkedin.com",
+      url: "https://linkedin.com/in/inspire12",
       icon: FaLinkedin,
       color: "bg-blue-600 hover:bg-blue-700"
     },
