@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaCode, FaServer, FaRocket } from 're
 export const personalData = {
   name: "서영학",
   title: "백엔드 서버 개발자",
-  email: "seoyh@ncsoft.com",
+  email: "ox4443@naver.com",
   
   keyPoints: [
     "다양한 문제를 가리지않고 해결하며, 탐구심으로 노력하는 백엔드 서버 개발자입니다.",

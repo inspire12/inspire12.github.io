@@ -22,28 +22,28 @@ const Contact = () => {
     {
       icon: FaLinkedin,
       label: 'LinkedIn',
-      value: 'linkedin.com/in/younghak-seo',
-      link: 'https://linkedin.com/in/younghak-seo',
+      value: 'https://www.linkedin.com/in/inspire12/',
+      link: 'https://www.linkedin.com/in/inspire12/',
       color: 'bg-blue-600'
     },
     {
       icon: FaGithub,
       label: 'GitHub',
-      value: 'github.com/younghak-seo',
-      link: 'https://github.com/younghak-seo',
+      value: 'github.com/inspire12',
+      link: 'https://github.com/inspire12',
       color: 'bg-gray-800'
     },
     {
       icon: FaBlog,
       label: 'Tech Blog',
       value: 'younghak-dev.blog',
-      link: 'https://younghak-dev.blog',
+      link: 'tistory.com/inspire12',
       color: 'bg-purple-600'
     },
     {
       icon: FaMapMarkerAlt,
       label: 'Location',
-      value: '대한민국, 서울',
+      value: '대한민국, 성남',
       link: null,
       color: 'bg-orange-500'
     }

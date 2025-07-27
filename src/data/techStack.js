@@ -29,9 +29,9 @@ export const techCategories = [
     icon: FaServer,
     color: 'bg-blue-500',
     skills: [
-      { name: 'Java', icon: FaJava, level: 95, color: 'bg-orange-500' },
-      { name: 'Kotlin', icon: SiKotlin, level: 85, color: 'bg-purple-500' },
-      { name: 'Python', icon: FaPython, level: 90, color: 'bg-green-500' },
+      { name: 'Java', icon: FaJava, color: 'bg-orange-500' },
+      { name: 'Kotlin', icon: SiKotlin, color: 'bg-purple-500' },
+      { name: 'Python', icon: FaPython, color: 'bg-green-500' },
     ]
   },
   {
@@ -39,9 +39,9 @@ export const techCategories = [
     icon: FaCogs,
     color: 'bg-green-500',
     skills: [
-      { name: 'Spring Boot', icon: SiSpring, level: 95, color: 'bg-green-600' },
-      { name: 'FastAPI', icon: SiFastapi, level: 85, color: 'bg-teal-500' },
-      { name: 'MSA', icon: FaServer, level: 90, color: 'bg-blue-600' },
+      { name: 'Spring Boot', icon: SiSpring, color: 'bg-green-600' },
+      { name: 'FastAPI', icon: SiFastapi, color: 'bg-teal-500' },
+      { name: 'MSA', icon: FaServer, color: 'bg-blue-600' },
     ]
   },
   {
@@ -49,10 +49,10 @@ export const techCategories = [
     icon: FaDatabase,
     color: 'bg-purple-500',
     skills: [
-      { name: 'MySQL', icon: SiMysql, level: 90, color: 'bg-blue-500' },
-      { name: 'PostgreSQL', icon: SiPostgresql, level: 85, color: 'bg-blue-700' },
-      { name: 'Elasticsearch', icon: SiElasticsearch, level: 80, color: 'bg-yellow-500' },
-      { name: 'Redis', icon: SiRedis, level: 85, color: 'bg-red-500' },
+      { name: 'MySQL', icon: SiMysql, color: 'bg-blue-500' },
+      { name: 'PostgreSQL', icon: SiPostgresql, color: 'bg-blue-700' },
+      { name: 'Elasticsearch', icon: SiElasticsearch, color: 'bg-yellow-500' },
+      { name: 'Redis', icon: SiRedis, color: 'bg-red-500' },
     ]
   },
   {
@@ -60,11 +60,11 @@ export const techCategories = [
     icon: FaCloud,
     color: 'bg-orange-500',
     skills: [
-      { name: 'Docker', icon: FaDocker, level: 90, color: 'bg-blue-400' },
-      { name: 'Kubernetes', icon: SiKubernetes, level: 85, color: 'bg-blue-600' },
-      { name: 'Kafka', icon: SiApachekafka, level: 80, color: 'bg-gray-700' },
-      { name: 'RabbitMQ', icon: SiRabbitmq, level: 75, color: 'bg-orange-600' },
-      { name: 'Airflow', icon: SiApacheairflow, level: 75, color: 'bg-blue-300' },
+      { name: 'Docker', icon: FaDocker, color: 'bg-blue-400' },
+      { name: 'Kubernetes', icon: SiKubernetes, color: 'bg-blue-600' },
+      { name: 'Kafka', icon: SiApachekafka, color: 'bg-gray-700' },
+      { name: 'RabbitMQ', icon: SiRabbitmq, color: 'bg-orange-600' },
+      { name: 'Airflow', icon: SiApacheairflow, color: 'bg-blue-300' },
     ]
   },
   {
@@ -72,8 +72,8 @@ export const techCategories = [
     icon: FaReact,
     color: 'bg-cyan-500',
     skills: [
-      { name: 'React', icon: FaReact, level: 75, color: 'bg-cyan-500' },
-      { name: 'Vue.js', icon: FaVuejs, level: 70, color: 'bg-green-400' },
+      { name: 'React', icon: FaReact, color: 'bg-cyan-500' },
+      { name: 'Vue.js', icon: FaVuejs, color: 'bg-green-400' },
     ]
   }
 ]

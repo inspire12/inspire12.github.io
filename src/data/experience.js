@@ -11,17 +11,12 @@ export const timelineData = [
     description: 'NCSOFT 통합 계정 플랫폼의 백엔드 시스템을 담당했습니다.',
     details: [
       '통합 인증/인가 시스템 설계 및 개발',
-      'OAuth 2.0 / JWT 기반 보안 시스템 구현',
-      'Multi-tenancy 아키텍처 설계',
-      'ElasticSearch를 활용한 사용자 검색 시스템',
+      '대용량 사용자 데이터 처리 최적화',
       '대용량 사용자 데이터 처리 최적화',
       'Spring Security 커스터마이징',
-      'MySQL 샤딩 전략 수립 및 구현'
     ],
     achievements: [
       '동시 접속 사용자 100만명 지원',
-      '인증 처리 시간 200ms 이하',
-      '보안 취약점 0건 달성'
     ]
   },
   {

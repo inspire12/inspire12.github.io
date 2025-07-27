@@ -60,23 +60,11 @@ const TechStack = () => {
                       transition={{ delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
                       className="space-y-2"
                     >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-3">
-                          <span className="text-xl text-gray-600">
-                            <SkillIconComponent />
-                          </span>
-                          <span className="font-medium text-gray-900">{skill.name}</span>
+                      <div className="flex items-center space-x-3">
+                        <div className={`${skill.color} p-2 rounded-lg text-white`}>
+                          <SkillIconComponent className="text-lg" />
                         </div>
-                        <span className="text-sm text-gray-500">{skill.level}%</span>
-                      </div>
-                      
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <motion.div
-                          className={`h-2 rounded-full ${skill.color}`}
-                          initial={{ width: 0 }}
-                          animate={{ width: `${skill.level}%` }}
-                          transition={{ duration: 1, delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
-                        />
+                        <span className="font-medium text-gray-900">{skill.name}</span>
                       </div>
                     </motion.div>
                   )
