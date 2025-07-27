@@ -8,10 +8,11 @@ export const timelineData = [
     company: 'NCSOFT',
     icon: FaUsers,
     color: 'bg-orange-500',
-    description: 'NCSOFT 글로벌 통합 계정 플랫폼의 백엔드 시스템을 담당했습니다.',
+    description: 'NCSOFT 글로벌 통합 계정 플랫폼의 백엔드 시스템.',
     details: [
       'NC 보안 서비스 대시보드 지표 설계 및 ETL 시스템 구축',
       '배틀크러쉬 런칭 지원 및 트위치 드랍스 연동',
+      '계정 운영을 위한 어드민 기능 개발',
     ],
     achievements: [
       '30분 당 100만 건 이상의 요청 처리',
