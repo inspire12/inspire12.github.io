@@ -172,36 +172,6 @@ const SystemDesign = () => {
         </div>
       </motion.div>
 
-      {/* Diagram Guide */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8 }}
-        className="bg-blue-50 rounded-xl p-6 border border-blue-200"
-      >
-        <h3 className="text-lg font-bold text-blue-900 mb-4">
-          📊 다이어그램 사용법
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-blue-800">
-          <div>
-            <h4 className="font-semibold mb-2">Mermaid 문법 예시:</h4>
-            <pre className="bg-white p-3 rounded text-xs overflow-x-auto">
-{`graph TD
-  A[Client] --> B[Server]
-  B --> C[(Database)]`}
-            </pre>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">지원하는 다이어그램:</h4>
-            <ul className="space-y-1">
-              <li>• 플로우차트 (graph TD/LR)</li>
-              <li>• 시퀀스 다이어그램</li>
-              <li>• 클래스 다이어그램</li>
-              <li>• ER 다이어그램</li>
-            </ul>
-          </div>
-        </div>
-      </motion.div>
     </div>
   )
 }

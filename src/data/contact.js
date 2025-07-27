@@ -4,8 +4,8 @@ export const contactInfo = [
   {
     icon: FaEnvelope,
     label: 'Email',
-    value: 'seoyh@ncsoft.com',
-    link: 'mailto:seoyh@ncsoft.com',
+    value: 'ox4443@naver.com',
+    link: 'mailto:ox4443@naver.com',
     color: 'bg-red-500'
   },
   {
@@ -18,22 +18,22 @@ export const contactInfo = [
   {
     icon: FaLinkedin,
     label: 'LinkedIn',
-    value: 'linkedin.com/in/younghak-seo',
-    link: 'https://linkedin.com/in/younghak-seo',
+    value: 'linkedin.com/in/inspire12',
+    link: 'https://linkedin.com/in/inspire12',
     color: 'bg-blue-600'
   },
   {
     icon: FaGithub,
     label: 'GitHub',
-    value: 'github.com/younghak-seo',
-    link: 'https://github.com/younghak-seo',
+    value: 'github.com/inspire12',
+    link: 'https://github.com/inspire12',
     color: 'bg-gray-800'
   },
   {
     icon: FaBlog,
     label: 'Tech Blog',
-    value: 'younghak-dev.blog',
-    link: 'https://younghak-dev.blog',
+    value: 'inspire12.tistory.com',
+    link: 'https://inspire12.tistory.com',
     color: 'bg-purple-600'
   },
   {

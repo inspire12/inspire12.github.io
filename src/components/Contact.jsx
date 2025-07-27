@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaEnvelope, FaPhone, FaLinkedin, FaGithub, FaBlog, FaMapMarkerAlt } from 'react-icons/fa'
+import { FaEnvelope, FaLinkedin, FaGithub, FaBlog, FaMapMarkerAlt } from 'react-icons/fa'
 import { collaborationAreas } from '../data/contact'
 
 const Contact = () => {
@@ -8,16 +8,9 @@ const Contact = () => {
     {
       icon: FaEnvelope,
       label: 'Email',
-      value: 'seoyh@ncsoft.com',
-      link: 'mailto:seoyh@ncsoft.com',
+      value: 'ox4443@naver.com',
+      link: 'mailto:ox4443@naver.com',
       color: 'bg-red-500'
-    },
-    {
-      icon: FaPhone,
-      label: 'Phone',
-      value: '+82-10-XXXX-XXXX',
-      link: 'tel:+82-10-XXXX-XXXX',
-      color: 'bg-green-500'
     },
     {
       icon: FaLinkedin,
@@ -149,7 +142,7 @@ const Contact = () => {
 
         <div className="text-center">
           <motion.a
-            href="mailto:seoyh@ncsoft.com"
+            href="mailto:ox4443@naver.com"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center space-x-2 bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors text-lg font-semibold"

@@ -46,18 +46,7 @@ const Articles = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-          <div className="bg-white rounded-lg p-6">
-            <div className="text-3xl font-bold text-blue-600 mb-2">25</div>
-            <p className="text-gray-600">작성한 아티클</p>
-          </div>
-          <div className="bg-white rounded-lg p-6">
-            <div className="text-3xl font-bold text-green-600 mb-2">18K</div>
-            <p className="text-gray-600">총 조회수</p>
-          </div>
-          <div className="bg-white rounded-lg p-6">
-            <div className="text-3xl font-bold text-purple-600 mb-2">792</div>
-            <p className="text-gray-600">받은 좋아요</p>
-          </div>
+
         </div>
       </motion.div>
 
@@ -156,7 +145,7 @@ const Articles = () => {
         </p>
         <div className="flex justify-center space-x-4">
           <motion.a
-            href="https://your-tech-blog.com"
+            href="https://inspire12.tistory.com"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
@@ -166,13 +155,6 @@ const Articles = () => {
             <FaBlog />
             <span>기술 블로그 방문</span>
           </motion.a>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center space-x-2 border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:border-gray-400 transition-colors"
-          >
-            <span>RSS 구독</span>
-          </motion.button>
         </div>
       </motion.div>
     </div>

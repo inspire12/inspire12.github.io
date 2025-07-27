@@ -46,7 +46,7 @@ export const personalData = {
     },
     {
       name: "Email",
-      url: "mailto:seoyh@ncsoft.com",
+      url: "mailto:ox4443@naver.com",
       icon: FaEnvelope,
       color: "bg-green-600 hover:bg-green-700"
     }
