@@ -17,12 +17,12 @@ export const personalData = {
     {
       icon: FaCode,
       text: "7년간 NCSOFT에서 백엔드 개발",
-      description: "대규모 서비스 개발 및 운영 경험"
+      description: "다양한 도메인과 서비스 개발 및 운영 경험"
     },
     {
       icon: FaServer,
       text: "MSA, Kafka, K8s 전문가",
-      description: "실시간 대용량 처리 시스템 구축"
+      description: "MSA 시스템 구축 경험"
     },
     {
       icon: FaRocket,
