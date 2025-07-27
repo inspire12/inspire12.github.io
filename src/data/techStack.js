@@ -85,28 +85,29 @@ export const coreExperiences = [
     icon: '🤖'
   },
   {
-    title: '대용량 트래픽 처리',
-    description: '일 평균 100만 요청을 처리하는 시스템 설계 및 운영',
+    title: 'MSA 아키텍처',
+    description: '프로야구 시스템에 마이크로서비스 설계부터 운영까지 전체 사이클 경험',
+    icon: '🏗️'
+  },
+  {
+    title: '지식 공유 및 기술 전파',
+    description: '기술 블로그 작성과 새로운 기술 습득을 통한 팀 성장 및 지식 공유',
     icon: '⚡'
   },
   {
     title: '실시간 데이터 처리',
-    description: 'Kafka 기반 실시간 스트리밍 및 중계 데이터 처리',
+    description: '유저 보안 데이터 Kafka Airflow 기반 ETL 수집 및 대시보드 구축',
     icon: '📊'
   },
-  {
-    title: 'MSA 아키텍처',
-    description: '마이크로서비스 설계부터 운영까지 전체 사이클 경험',
-    icon: '🏗️'
-  },
+
   {
     title: '성능 최적화',
-    description: 'CQRS, 캐싱 전략을 통한 시스템 성능 개선',
+    description: 'AI 연동을 위한 CQRS, 캐싱 전략을 통한 시스템 성능 개선',
     icon: '🚀'
   },
   {
     title: '금융 시스템',
-    description: '고빈도 거래 및 실시간 알림 시스템 개발',
+    description: 'Prop Trading과 실시간 알림 시스템 개발',
     icon: '💰'
   }
 ]

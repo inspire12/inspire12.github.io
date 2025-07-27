@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaGithub, FaExternalLinkAlt, FaUsers, FaChartLine } from 'react-icons/fa'
+import { FaGithub, FaExternalLinkAlt, FaUsers } from 'react-icons/fa'
 import { projects } from '../data/projects'
 
 const Projects = () => {
@@ -22,7 +22,7 @@ const Projects = () => {
     },
     {
       title: '금융 투자 AI 플랫폼',
-      period: '2023 - 2024',
+      period: '2022 - 2023',
       description: '금융 데이터 분석 및 투자 의사결정을 지원하는 AI 기반 플랫폼과 프랍 트레이딩 시스템',
       image: '📈',
       technologies: ['Python', 'FastAPI', 'PostgreSQL', 'WebSocket', 'RabbitMQ', 'Airflow'],
@@ -37,10 +37,10 @@ const Projects = () => {
     },
     {
       title: 'PAIGE - 프로야구 종합 플랫폼',
-      period: '2019 - 2023',
+      period: '2018 - 2022',
       description: 'AI를 접목한 프로야구 종합 플랫폼으로 실시간 중계, 분석, 예측 서비스를 제공하는 대규모 서비스',
       image: '🏟️',
-      technologies: ['Java', 'Spring Boot', 'Kubernetes', 'Kafka', 'Redis', 'MySQL', 'ElasticSearch'],
+      technologies: ['Java', 'Kotlin', 'Spring Boot', 'Kubernetes', 'Kafka', 'Redis', 'MySQL', 'ElasticSearch'],
       achievements: [
         '일 평균 100만 요청 처리',
         'MSA 아키텍처로 서비스 분리',
@@ -49,21 +49,6 @@ const Projects = () => {
       ],
       role: '백엔드 서버 개발 및 시스템 아키텍처 설계',
       teamSize: 15
-    },
-    {
-      title: 'AI 모델 서빙 플랫폼',
-      period: '2018 - 2019',
-      description: 'NLP 센터의 AI 모델을 서비스화하기 위한 플랫폼으로 모델 배포, 버전 관리, 모니터링 기능 제공',
-      image: '🤖',
-      technologies: ['Python', 'Docker', 'Kubernetes', 'FastAPI', 'Redis', 'PostgreSQL'],
-      achievements: [
-        'AI 모델 배포 자동화',
-        '플랫폼 안정성 99.9% 달성',
-        'A/B 테스트 지원 시스템',
-        'GPU 리소스 최적화'
-      ],
-      role: '플랫폼 아키텍처 설계 및 개발',
-      teamSize: 6
     }
   ]
 
@@ -128,17 +113,6 @@ const Projects = () => {
                 <p className="text-gray-600">{project.role}</p>
               </div>
 
-              <div className="mb-6">
-                <h4 className="font-semibold text-gray-900 mb-3">주요 성과</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                  {project.achievements.map((achievement, idx) => (
-                    <div key={idx} className="flex items-center space-x-2">
-                      <FaChartLine className="text-green-500 text-sm" />
-                      <span className="text-sm text-gray-600">{achievement}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
 
               <div className="mb-6">
                 <h4 className="font-semibold text-gray-900 mb-3">기술 스택</h4>

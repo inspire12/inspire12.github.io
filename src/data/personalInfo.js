@@ -54,8 +54,8 @@ export const personalData = {
 
   stats: [
     { number: "7년", label: "경력", color: "blue" },
-    { number: "100만+", label: "일 요청 처리", color: "green" },
-    { number: "99.95%", label: "시스템 가용성", color: "purple" },
+    { number: "다양한 도메인", label: "금융, 계정, 프로야구, AI 등", color: "green" },
+    { number: "정보 공유", label: "기술 블로그 등 꾸준한 공부와 공유", color: "purple" },
     { number: "4개", label: "주요 프로젝트", color: "orange" }
   ]
 }

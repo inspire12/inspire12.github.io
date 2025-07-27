@@ -50,10 +50,8 @@ export const architectures = [
       { name: 'Container', tech: 'Kubernetes', icon: FaCloud }
     ],
     features: [
-      '일 평균 100만 요청 처리',
       '실시간 데이터 스트리밍',
       'Auto Scaling 지원',
-      '99.95% 가용성 달성'
     ]
   },
   {
