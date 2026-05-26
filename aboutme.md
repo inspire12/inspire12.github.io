@@ -1,16 +1,35 @@
 ---
 layout: page
-title: About me
-subtitle: Why you'd want to go on a date with me
+title: About
+subtitle: 제품을 이해하고 운영 가능한 시스템으로 만드는 개발자
+css:
+  - "/assets/css/profile.css"
+share-title: About inspire12
+share-description: inspire12의 일하는 방식, 관심사, 다루는 문제.
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+<div class="profile-content" markdown="1">
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+## 안녕하세요. inspire12입니다.
 
-What else do you need?
+저는 제품의 문제를 코드로만 보지 않고, 사용자가 만나는 흐름과 운영자가 확인해야 하는 상태까지 함께 보는 개발자입니다. 기능을 빠르게 만드는 것도 중요하지만, 그 기능이 배포된 뒤에도 이해 가능하고 고칠 수 있는 구조로 남는지를 중요하게 생각합니다.
 
-### My story
+## 일할 때 중요하게 보는 것
 
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](https://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+- **실제 경로 확인**: 추측보다 코드, 로그, 데이터, 빌드 결과를 먼저 봅니다.
+- **작은 단위의 개선**: 큰 문제를 작게 나누고, 각 단계가 검증 가능한 상태로 남게 합니다.
+- **운영 가능한 설계**: 관리자 화면, 배포, 장애 대응, 되돌리기 같은 현실적인 흐름을 함께 고려합니다.
+- **문서화된 판단**: 결정과 맥락을 저장소에 남겨 다음 작업자가 같은 문제를 다시 풀지 않게 합니다.
+
+## 관심 있는 영역
+
+- 백엔드 아키텍처와 데이터 흐름
+- 제품 운영을 돕는 관리자 도구
+- 개발과 배포를 안정화하는 자동화
+- 학습을 실제 실행으로 연결하는 지식 시스템
+
+## 연락과 링크
+
+- GitHub: [github.com/inspire12](https://github.com/inspire12)
+
+</div>
