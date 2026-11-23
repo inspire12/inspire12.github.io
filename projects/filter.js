@@ -27,6 +27,7 @@ function refresh() {
   featured.checked = query.get('featured') === '1';
   const selectedTeam = org.value.startsWith('team:') ? org.value.slice(5) : '';
   let total = 0;
+  let courses = 0;
   for (const group of groups) {
     let visible = 0;
     for (const item of group.querySelectorAll('.item')) {
@@ -37,9 +38,13 @@ function refresh() {
       if (!item.hidden) visible++;
     }
     group.hidden = visible === 0;
-    total += visible;
+    if (group.dataset.team === 'teaching') courses += visible;
+    else total += visible;
   }
-  document.querySelector('#count').textContent = total ? total + '개 프로젝트' : '선택한 조건에 맞는 프로젝트가 없습니다.';
+  const counts = [];
+  if (total) counts.push(total + '개 프로젝트');
+  if (courses) counts.push(courses + '개 강의');
+  document.querySelector('#count').textContent = counts.join(' · ') || '선택한 조건에 맞는 항목이 없습니다.';
 }
 
 form.addEventListener('change', () => {
