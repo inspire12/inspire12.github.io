@@ -4,17 +4,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>계정 보안 로그 분석 대시보드 · 서영학</title>
-  <meta name="description" content="계정 보안 로그를 분석하는 대시보드를 설계했습니다.">
+  <meta name="description" content="계정 보안 레벨을 조정할 판단 근거를 마련하기 위해, 보안 로그 지표를 30분 단위로 집계해 Grafana와 사내 어드민에 연동했습니다.">
   <link rel="canonical" href="https://inspire12.github.io/projects/account-security-dashboard/">
   <link rel="stylesheet" href="../../portfolio.css?v=ec9ea2077c">
 </head>
 <body><header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
 <main class="inner case-layout">
   <a href="/projects/?team=account-platform">← NCSOFT Account Platform 프로젝트 목록</a>
-  <div class="case-cover"><p class="eyebrow">NCSOFT Account Platform</p>
-  <h1>계정 보안 로그 분석 대시보드</h1>
-  <p class="lead">계정 보안 로그를 분석하는 대시보드를 설계했습니다.</p>
-  <div class="tags"><a href="/projects/?tag=%EA%B3%84%EC%A0%95+%EB%B3%B4%EC%95%88">#계정 보안</a><a href="/projects/?tag=%EB%B3%B4%EC%95%88+%EB%A1%9C%EA%B7%B8+%EB%B6%84%EC%84%9D">#보안 로그 분석</a><a href="/projects/?tag=%EA%B4%80%EC%B8%A1%EC%84%B1">#관측성</a></div></div>
+  <div class="case-cover">
+    <p class="eyebrow">NCSOFT Account Platform</p>
+    <h1>계정 보안 로그 분석 대시보드</h1>
+    <p class="lead">보안 레벨을 조정할 판단 근거를 마련하기 위해 사용자 활동과 보안 지표를 30분 단위로 볼 수 있는 대시보드를 설계했습니다.</p>
+    <div class="tags"><a href="/projects/?tag=%EA%B3%84%EC%A0%95+%EB%B3%B4%EC%95%88">#계정 보안</a><a href="/projects/?tag=%EB%B3%B4%EC%95%88+%EB%A1%9C%EA%B7%B8+%EB%B6%84%EC%84%9D">#보안 로그 분석</a><a href="/projects/?tag=%EA%B4%80%EC%B8%A1%EC%84%B1">#관측성</a></div>
+  </div>
+  <section class="detail" aria-labelledby="problem">
+    <h2 id="problem">문제 인식</h2>
+    <p>공격 상황에 대응해 계정 보안 레벨을 조절할 수 있는 기능이 추가됐습니다. 당시에는 계정 활동과 보안 로그를 충분히 모니터링할 수 없어, 어떤 상황에서 보안 레벨을 조정할지 기준을 세우기 어려웠습니다.</p>
+  </section>
+  <section class="detail" aria-labelledby="work-and-result">
+    <h2 id="work-and-result">작업 및 결과</h2>
+    <p>대시보드를 설계하면서 사용자 활동을 비롯해 운영 중 확인할 지표를 정의했습니다. Kafka로 들어온 보안 로그는 Airflow에서 1차 저장하고, 30분 단위 통계로 집계해 InfluxDB에 저장했습니다. 집계한 지표는 Grafana 대시보드와 사내 어드민 페이지에서 확인할 수 있도록 연동했습니다.</p>
+    <p>과거 구간의 데이터도 필요할 때 다시 처리할 수 있도록 Airflow 백필을 지원했습니다.</p>
+    <figure class="case-figure" id="account-security-architecture">
+      <img src="/media/account-security-dashboard-architecture.png" width="1440" height="1058" loading="lazy" alt="Kafka로 들어온 계정 보안 로그는 Airflow에서 1차 저장 및 백필을 처리합니다. 30분 단위 집계 통계는 InfluxDB에 저장하고 Grafana 대시보드와 사내 어드민 페이지에 연결합니다.">
+      <figcaption>계정 보안 로그 수집부터 통계 조회까지의 흐름</figcaption>
+    </figure>
+  </section>
 </main>
 </body>
 </html>

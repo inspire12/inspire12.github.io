@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>썸원타임 질문 알림 문구 다양화 · 서영학</title>
+  <meta name="description" content="썸원타임 질문 알림에 사용자별 문구를 적용했습니다. Hackle로 문구 파일을 선택하고 Amazon S3에서 읽은 파일은 캐싱했습니다.">
+  <link rel="canonical" href="https://inspire12.github.io/projects/sumone-time-notifications/">
+  <link rel="stylesheet" href="../../portfolio.css?v=ec9ea2077c">
+</head>
+<body><header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
+<main class="inner case-layout">
+  <a href="/projects/?team=monymony">← monymony 프로젝트 목록</a>
+  <div class="case-cover">
+    <p class="eyebrow">monymony</p>
+    <h1>썸원타임 질문 알림 문구 다양화</h1>
+    <p class="lead">사용자별로 문구 파일을 선택해 썸원타임 알림에 서로 다른 문구를 보여줄 수 있도록 했습니다.</p>
+    <div class="tags"><a href="/projects/?tag=%EC%95%8C%EB%A6%BC+%EB%AC%B8%EA%B5%AC">#알림 문구</a><a href="/projects/?tag=%EB%AC%B8%EA%B5%AC+%EC%BA%90%EC%8B%B1">#문구 캐싱</a></div>
+  </div>
+  <section class="detail" aria-labelledby="problem">
+    <h2 id="problem">문제 인식</h2>
+    <p>썸원타임은 썸원에서 질문이 도착했음을 알려주는 알림입니다. 이 알림의 문구를 다양화하려면 어떤 사용자에게 어느 문구 파일을 적용할지 정하고, 발송할 때 해당 파일을 읽을 수 있어야 했습니다.</p>
+  </section>
+  <section class="detail" aria-labelledby="work-and-result">
+    <h2 id="work-and-result">작업 및 결과</h2>
+    <p>알림 문구 파일을 Amazon S3에 미리 저장하고, 사용자마다 어느 파일을 사용할지 Hackle로 정했습니다.</p>
+    <p>알림을 보낼 때는 선택한 파일이 캐시에 있는지 먼저 확인했습니다. 캐시에 파일이 있으면 그대로 사용하고, 없으면 S3에서 읽어 캐시에 저장한 뒤 알림에 적용했습니다.</p>
+    <figure class="case-figure" id="sumone-time-architecture">
+      <img src="/media/sumone-time-architecture.png" width="1440" height="1092" loading="lazy" alt="Hackle로 사용자별 문구 파일을 선택한 뒤 캐시를 확인합니다. 캐시에 파일이 있으면 재사용하고, 없으면 S3에서 읽어 캐시에 저장합니다. 선택한 파일의 문구로 질문 알림을 보냅니다.">
+      <figcaption>사용자별 문구 파일 선택과 캐시 조회 흐름</figcaption>
+    </figure>
+  </section>
+</main>
+</body>
+</html>
