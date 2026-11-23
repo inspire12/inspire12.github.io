@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PAIGE · 프로야구 서비스 개발 · 서영학</title>
-  <meta name="description" content="프로야구 경기 생중계와 경기·뉴스 데이터 처리, 응원 커뮤니티를 다뤘습니다. 추천 데이터 파이프라인을 구축하고 서비스 모니터링에도 참여했습니다.">
+  <meta name="description" content="KBO 프로야구 앱 PAIGE에서 경기 중계와 영상, 추천 피드, 팀 응원 커뮤니티와 푸시 알림의 백엔드를 개발했습니다.">
   <link rel="canonical" href="https://inspire12.github.io/projects/paige/">
-  <link rel="stylesheet" href="../../portfolio.css?v=ec9ea2077c">
+  <link rel="stylesheet" href="../../portfolio.css?v=f93a2bab0d">
 </head>
 <body>
 <header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
@@ -15,7 +15,7 @@
   <div class="case-cover">
     <p class="eyebrow">NCSOFT · NLP 서비스 개발팀</p>
     <h1>PAIGE</h1>
-    <p class="lead">프로야구 경기 생중계와 경기·뉴스 데이터 처리, 응원 커뮤니티를 다뤘습니다. 추천 데이터 파이프라인을 구축하고 서비스 모니터링에도 참여했습니다.</p>
+    <p class="lead">KBO 경기 중계와 하이라이트, 팀별 팬 커뮤니티를 제공하는 PAIGE의 백엔드를 개발했습니다.</p>
     <div class="tags"><a href="/projects/?tag=%EC%8B%A4%EC%8B%9C%EA%B0%84+%EA%B2%BD%EA%B8%B0+%EC%A4%91%EA%B3%84">#실시간 경기 중계</a><a href="/projects/?tag=%EC%8A%A4%ED%8F%AC%EC%B8%A0+%EB%8D%B0%EC%9D%B4%ED%84%B0+%EC%9B%8C%ED%81%AC%ED%94%8C%EB%A1%9C">#스포츠 데이터 워크플로</a><a href="/projects/?tag=%EC%B6%94%EC%B2%9C+%EB%8D%B0%EC%9D%B4%ED%84%B0+%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8">#추천 데이터 파이프라인</a><a href="/projects/?tag=%EC%84%9C%EB%B9%84%EC%8A%A4+%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81">#서비스 모니터링</a><a href="/projects/?tag=Mock+%EC%84%9C%EB%B2%84">#Mock 서버</a></div>
   </div>
   <figure class="case-figure">
@@ -24,17 +24,29 @@
   </figure>
   <section class="detail" aria-labelledby="paige-capabilities">
     <h2 id="paige-capabilities">기술 역량</h2>
-    <ul class="case-list">
-      <li>실시간 스포츠 경기 스트리밍 및 중계</li>
-      <li>경기·뉴스 등 스포츠 데이터 워크플로 개발</li>
-      <li><a href="/projects/team-community/">팀 응원 커뮤니티와 추천 피드</a></li>
-      <li>서비스 모니터링</li>
-      <li>추천 데이터 파이프라인 구축</li>
-    </ul>
-  </section>
-  <section class="detail" aria-labelledby="paige-mock-server">
-    <h2 id="paige-mock-server">Mock 서버를 활용한 시스템 안정화와 모니터링</h2>
-    <p>Mock 서버를 활용해 시스템 동작을 점검하고, 서비스 상태를 모니터링하는 작업에 참여했습니다.</p>
+    <div class="case-work">
+      <section aria-labelledby="paige-mock-server">
+        <h3 id="paige-mock-server">실시간 경기 중계와 영상</h3>
+        <p>실시간 경기 중계와 스트리밍, 경기·뉴스 데이터 처리 흐름을 다뤘습니다. 기록원이 입력한 경기 데이터가 이닝이 끝난 뒤 수정되면 중계에 오류가 전파될 수 있었습니다. 수집 중에 데이터 변경을 감지하고 기록해 수정 사항을 반영할 수 있게 했습니다.</p>
+        <p>Mock 서버로 오류 상황을 재현할 수 있는 테스트 환경을 만들었습니다. 영상 재생성 로직을 개선하고, 어드민에서 상황을 모니터링할 수 있게 했습니다.</p>
+      </section>
+      <section aria-labelledby="paige-recommendation">
+        <h3 id="paige-recommendation">추천 데이터 파이프라인과 홈 피드</h3>
+        <p>서비스에서 나온 데이터를 AI 팀의 Curation Platform에 넘기고, 추천 결과를 받아 홈 피드를 구성했습니다. 추천 API 지연이 홈 피드에 영향을 주는 문제를 <a href="/projects/group-feed-cache/">그룹별 캐시와 배치 갱신</a>으로 개선했습니다.</p>
+      </section>
+      <section aria-labelledby="paige-community">
+        <h3 id="paige-community">팀 응원 커뮤니티</h3>
+        <p>KBO 팀별 팬 커뮤니티의 게시글, 댓글, 투표, 이모티콘과 사용자 제재 기능을 개발했습니다. 댓글과 이미지를 공통 도메인과 API로 정리해 여러 곳에서 재사용할 수 있게 했고, <a href="/projects/team-community/">무한 스크롤과 미디어 자동 변환</a>을 구현했습니다.</p>
+      </section>
+      <section aria-labelledby="paige-push">
+        <h3 id="paige-push">경기 일정에 맞춘 푸시</h3>
+        <p>경기 일정에 맞춰 푸시를 예약하고, 운영자가 대상 그룹별로 문구를 편집하거나 발송을 취소할 수 있는 어드민을 개발했습니다. <a href="/projects/push-workers/">워커가 푸시 발송을 처리</a>했고, 사용자 응답 데이터를 AI Lab 추천 모델의 피드백으로 연결했습니다.</p>
+      </section>
+    </div>
+    <figure class="case-figure" id="paige-broadcast-architecture">
+      <img src="/media/paige-broadcast-architecture.png" width="1560" height="1238" loading="lazy" alt="기록원이 입력한 경기 데이터의 변경을 감지하고 기록한 뒤 중계와 영상 처리에 반영합니다. PAIGE에는 중계를 제공하고 운영 어드민에서는 상태를 확인합니다. 별도 테스트 환경에서는 Mock 서버를 통해 오류 상황을 재현합니다.">
+      <figcaption>경기 데이터 수정에 대응하는 운영 흐름과 Mock 서버를 활용한 테스트 환경</figcaption>
+    </figure>
   </section>
 </main>
 </body>

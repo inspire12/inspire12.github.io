@@ -184,10 +184,27 @@ input { accent-color: var(--accent); }
 .case-figure { margin: 1.8rem 0 0; }
 .case-figure img { display: block; width: 100%; height: auto; }
 .case-figure figcaption { margin-top: .5rem; color: var(--muted); font-size: .85rem; }
+.case-figure figcaption a { text-decoration: underline; text-underline-offset: .22em; }
 .case-list { padding-inline-start: 1.25em; }
 .case-list a, .teaching-links a { text-decoration: underline; text-underline-offset: .22em; }
 .teaching-links { margin: 0; padding-inline-start: 1.25em; }
 .teaching-links li + li { margin-top: .5rem; }
+
+.finance-case .detail p, .case-work p {
+  margin: .65rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  word-break: keep-all;
+}
+.case-work { display: grid; gap: .75rem; margin-top: 1rem; }
+.case-work > section {
+  padding: clamp(1rem, 3vw, 1.4rem) clamp(1rem, 4vw, 1.6rem);
+  border: 1px solid var(--line);
+  border-radius: .45rem;
+  background: var(--card);
+}
+.case-work h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); line-height: 1.35; }
+.case-work a { text-decoration: underline; text-underline-offset: .22em; }
 
 .career { border-top: 1px solid var(--line); }
 .career-list { margin: 1.8rem 0 0; }

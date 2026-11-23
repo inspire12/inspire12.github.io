@@ -6,11 +6,11 @@
   <title>금융 AI 서비스 · 서영학</title>
   <meta name="description" content="증권시장 일정에 맞춰 주식 데이터 배치를 실행하는 워크플로를 설계하고, Java 리플렉션을 적용해 배치 데이터를 일괄 저장했습니다.">
   <link rel="canonical" href="https://inspire12.github.io/projects/finance/">
-  <link rel="stylesheet" href="../../portfolio.css?v=ec9ea2077c">
+  <link rel="stylesheet" href="../../portfolio.css?v=f93a2bab0d">
 
 </head>
 <body><header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
-<main class="inner case-layout">
+<main class="inner case-layout finance-case">
   <a href="/projects/?team=finance-ai">← NCSOFT · 금융AI서비스 개발팀 프로젝트 목록</a>
   <div class="case-cover">
     <p class="eyebrow">NCSOFT · 금융AI서비스 개발팀</p>
@@ -20,15 +20,24 @@
   </div>
   <section class="detail" aria-labelledby="problem">
     <h2 id="problem">문제 인식</h2>
-    <p>주식 데이터를 다루는 배치는 증권시장 일정에 맞춰 실행해야 했습니다. 시장 일정에 따라 어느 배치를 실행할지 정하는 과정이 필요했습니다.</p>
+    <p>주식 데이터 배치는 증권시장 일정에 맞춰 실행해야 했습니다. 장이 끝난 뒤에는 실제 시장 이벤트로 매매 흐름을 확인하기도 어려웠습니다.</p>
   </section>
   <section class="detail" aria-labelledby="work-and-result">
     <h2 id="work-and-result">작업 및 결과</h2>
-    <h3>시장 일정에 맞춘 배치 실행</h3>
-    <p>증권시장 일정을 확인하고, 해당 일정에 필요한 작업을 골라 실행하는 상위 배치 워크플로를 설계했습니다.</p>
-    <p>저장 단계에서는 Java 리플렉션을 적용해 배치마다 다루는 데이터 유형에 맞춰 여러 건을 일괄 저장할 수 있도록 했습니다.</p>
-    <h3 id="after-hours-testing">장 마감 후 매매 테스트</h3>
-    <p>장이 끝나면 실제 시장에서 발생하는 이벤트로 매매 흐름을 확인하기 어려웠습니다. 장 운영 시간과 관계없이 매매 시나리오를 재현할 수 있는 Mock 서버를 만들어, 팀원이 장 마감 후에도 개발과 테스트를 이어갈 수 있도록 했습니다.</p>
+    <div class="case-work">
+      <section aria-labelledby="market-schedule">
+        <h3 id="market-schedule">시장 일정에 맞춘 배치 실행</h3>
+        <p>증권시장 일정을 확인해 필요한 작업만 골라 실행하는 상위 배치를 설계했습니다.</p>
+      </section>
+      <section aria-labelledby="batch-storage">
+        <h3 id="batch-storage">배치 데이터 일괄 저장</h3>
+        <p>배치마다 다루는 데이터 유형에 맞춰 여러 건을 한 번에 저장할 수 있도록 Java 리플렉션을 적용했습니다.</p>
+      </section>
+      <section aria-labelledby="after-hours-testing">
+        <h3 id="after-hours-testing">장 마감 후 매매 테스트</h3>
+        <p>매매 시나리오를 재현하는 Mock 서버를 만들었습니다. 팀원은 장 운영 시간과 관계없이 개발과 테스트를 이어갈 수 있었습니다.</p>
+      </section>
+    </div>
   </section>
 </main>
 </body>

@@ -6,7 +6,7 @@
   <title>자기자본 투자: 주식 매매 체결 알림 · 서영학</title>
   <meta name="description" content="한국투자증권 WebSocket으로 실시간 체결 정보를 받아 STOMP로 브라우저에 알리고, 미접속 시에는 알림함에 저장했습니다.">
   <link rel="canonical" href="https://inspire12.github.io/projects/trade-notifications/">
-  <link rel="stylesheet" href="../../portfolio.css?v=ec9ea2077c">
+  <link rel="stylesheet" href="../../portfolio.css?v=f93a2bab0d">
 </head>
 <body><header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
 <main class="inner case-layout">
@@ -26,8 +26,8 @@
     <p>한국투자증권 WebSocket에 연결해 실시간으로 체결 정보를 받았습니다. Ping/Pong을 처리해 세션을 유지하고, 연결이 끊기면 다시 접속하도록 구현했습니다.</p>
     <p>체결 정보가 들어오면 접속 중인 브라우저에는 STOMP로 알림을 보냈습니다. 접속 중인 브라우저가 없으면 알림함에 저장해 나중에 확인할 수 있도록 했습니다.</p>
     <figure class="case-figure" id="trade-notifications-architecture">
-      <img src="/media/trade-notifications-architecture.png" width="1440" height="1068" loading="lazy" alt="한국투자증권 WebSocket에서 받은 체결 정보가 알림 서버로 들어옵니다. 접속 중인 여러 브라우저에 STOMP로 알림을 보내고, 미접속 시에는 알림함에 저장합니다.">
-      <figcaption>외부 WebSocket에서 체결 정보를 받고 STOMP로 연결된 브라우저에 전달하는 흐름</figcaption>
+      <img src="/media/trade-notifications-architecture.png?v=7fab9e8f" width="1560" height="1484" loading="lazy" alt="한국투자증권 WebSocket이 체결 정보를 알림 서버에 보냅니다. 접속 중이면 brokerChannel에서 메시지 브로커를 거쳐 clientOutboundChannel로, 이어서 알림을 구독한 브라우저들로 STOMP 메시지가 전달됩니다. 미접속이면 알림함에 저장합니다.">
+      <figcaption>한국투자증권의 체결 정보를 받아 메시지 브로커를 통해 구독 중인 브라우저에 전달하는 흐름입니다. 채널 이름은 <a href="https://docs.spring.io/spring-framework/reference/web/websocket/stomp/message-flow.html">Spring STOMP 문서</a>의 표기를 따랐습니다. <a href="/media/trade-notifications-architecture.png?v=7fab9e8f">원본 이미지 보기</a></figcaption>
     </figure>
   </section>
 </main>
