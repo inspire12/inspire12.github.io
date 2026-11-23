@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>강의 자료실 · 서영학</title>
-  <meta name="description" content="개발 수업에서 함께 돌려볼 시각화, 실습 도구와 추천 강의를 모았습니다. 각 자료에서 무엇을 시도하고 관찰할지 확인할 수 있습니다.">
+  <meta name="description" content="시스템 디자인, DNS와 네트워크, 데이터베이스 등 개발 수업에서 함께 볼 시각화, 실습 도구와 추천 강의를 모았습니다. 각 자료에서 무엇을 시도하고 관찰할지 확인할 수 있습니다.">
   <link rel="canonical" href="https://inspire12.github.io/lecture/resources/">
   <link rel="stylesheet" href="/portfolio.css?v=ec9ea2077c">
   <link rel="stylesheet" href="./resources.css">
@@ -23,7 +23,7 @@
       <div class="index-panel">
         <div id="search-box" role="search" hidden>
           <label for="resource-search">자료 검색</label>
-          <input id="resource-search" type="search" placeholder="캐시, Git, SQL…" autocomplete="off" aria-controls="catalog">
+          <input id="resource-search" type="search" placeholder="DNS, 트랜잭션, Git…" autocomplete="off" aria-controls="catalog">
           <p id="result-count" role="status"></p>
         </div>
         <nav class="contents" aria-label="자료실 목차">
@@ -31,6 +31,8 @@
             <li><a href="#visuals">개발 시각화 자료</a>
               <ul>
                 <li><a href="#systems">시스템 디자인 · 면접</a></li>
+                <li><a href="#network">네트워크 · DNS</a></li>
+                <li><a href="#databases">데이터베이스(DB)</a></li>
                 <li><a href="#algorithms">알고리즘 · 자료구조</a></li>
                 <li><a href="#recommendation">AI · 추천 시스템</a></li>
                 <li><a href="#agents">AI Agent · 활용</a></li>
@@ -61,7 +63,123 @@
               <h4><a href="https://raft.github.io/">The Raft Consensus Algorithm</a></h4>
               <p>리더를 멈추기 전에 다음에 일어날 일을 예상해 봅니다. 다섯 노드의 투표와 로그를 보며 새 리더가 선출되는 순간을 찾습니다.</p>
             </li>
+            <li>
+              <p class="source">Sam Rose <span>· 시뮬레이션</span></p>
+              <h4><a href="https://samwho.dev/load-balancing/">Load Balancing</a></h4>
+              <p>서버 한 대만 응답이 느려지면 라운드 로빈은 어떻게 동작할까요? 요청이 쌓이는 모습을 보고 최소 연결 방식과 지연 분포를 비교합니다.</p>
+            </li>
+            <li>
+              <p class="source">Hello Interview <span>· 해시 링 도식</span></p>
+              <h4><a href="https://www.hellointerview.com/learn/system-design/core-concepts/consistent-hashing/quick-reference">Consistent Hashing</a></h4>
+              <p>캐시 서버를 3대에서 4대로 늘린다고 가정합니다. 나머지 연산과 해시 링에서 각각 이동할 키를 직접 표시해 봅니다.</p>
+            </li>
+            <li>
+              <p class="source">Amazon Builders’ Library <span>· 운영 사례</span></p>
+              <h4><a href="https://aws.amazon.com/builders-library/caching-challenges-and-strategies/">Caching challenges and strategies</a></h4>
+              <p>인기 상품 캐시가 한꺼번에 만료되면 원본 DB에 어떤 부하가 갈까요? 만료 시점 분산과 같은 키에 대한 동시 조회 합치기가 각각 어떤 상황에 맞는지 토론합니다.</p>
+            </li>
+            <li>
+              <p class="source">AWS Architecture Blog <span>· 시뮬레이션 결과</span></p>
+              <h4><a href="https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/">Exponential Backoff and Jitter</a></h4>
+              <p>같은 순간에 실패한 클라이언트들의 재시도 시점을 그래프에서 찾아봅니다. 지수 백오프에 무작위 지연을 더하면 요청이 어떻게 퍼지는지 비교합니다.</p>
+            </li>
+            <li>
+              <p class="source">Hello Interview <span>· 설계 면접</span></p>
+              <h4><a href="https://www.hellointerview.com/learn/system-design/problem-breakdowns/fb-news-feed">Design Facebook’s News Feed</a></h4>
+              <p>게시할 때 피드를 미리 만드는 방식과 조회할 때 합치는 방식의 읽기·쓰기 비용을 비교합니다. 팔로워가 많은 계정에도 같은 방식을 쓸지 면접 질문으로 이어갑니다.</p>
+            </li>
           </ul>
+        </section>
+        <section id="network" class="topic" aria-labelledby="network-title">
+          <h3 id="network-title">네트워크</h3>
+          <section id="dns" class="subgroup" aria-labelledby="dns-title">
+            <h4 id="dns-title">DNS 조회와 캐시</h4>
+            <ul class="resource-list">
+              <li>
+                <p class="source">Cloudflare Learning Center <span>· 조회 흐름도 · 한국어</span></p>
+                <h5><a href="https://www.cloudflare.com/ko-kr/learning/dns/what-is-dns/">DNS란 무엇인가요?</a></h5>
+                <p>캐시가 비었을 때 재귀 리졸버가 루트, TLD, 권한 있는 네임서버에 묻는 순서를 그립니다. 같은 이름을 다시 조회하면 어느 단계까지 생략되는지 짚어봅니다.</p>
+              </li>
+              <li>
+                <p class="source">Google Admin Toolbox <span>· DNS 조회 실습</span></p>
+                <h5><a href="https://toolbox.googleapps.com/apps/dig/">Dig (DNS lookup)</a></h5>
+                <p>같은 도메인의 A, MX, NS를 차례로 조회합니다. 웹 서버 주소, 메일을 받을 서버, 해당 도메인을 담당하는 네임서버가 응답에서 어떻게 구별되는지 읽어봅니다.</p>
+              </li>
+              <li>
+                <p class="source">Julia Evans · Marie Claire LeBlanc Flanagan <span>· DNS 실험실</span></p>
+                <h5><a href="https://messwithdns.net/">Mess With DNS</a></h5>
+                <p>발급된 실습용 서브도메인에 레코드를 만들고 조회합니다. 값을 바꾼 뒤 응답과 권한 서버의 요청 로그를 대조하며 TTL 동안 캐시가 미치는 영향을 관찰합니다.</p>
+              </li>
+            </ul>
+          </section>
+          <section id="connections" class="subgroup" aria-labelledby="connections-title">
+            <h4 id="connections-title">TCP · TLS · 인터넷 라우팅</h4>
+            <ul class="resource-list">
+              <li>
+                <p class="source">Ilya Grigorik · High Performance Browser Networking <span>· 패킷 흐름도</span></p>
+                <h5><a href="https://hpbn.co/building-blocks-of-tcp/">Building Blocks of TCP</a></h5>
+                <p>SYN, SYN-ACK, ACK를 시간축에 표시합니다. 왕복 지연이 100ms인 경우 새 TCP 연결로 첫 요청을 보내기까지 얼마나 걸릴지 계산합니다.</p>
+              </li>
+              <li>
+                <p class="source">Cloudflare Learning Center <span>· 프로토콜 해설 · 한국어</span></p>
+                <h5><a href="https://www.cloudflare.com/ko-kr/learning/ssl/what-happens-in-a-tls-handshake/">TLS 핸드셰이크란?</a></h5>
+                <p>TLS 1.3의 첫 연결에서 ClientHello와 서버 응답을 따라갑니다. 서버 인증서를 확인하는 단계와 애플리케이션 데이터를 주고받기 위한 키를 만드는 단계를 구분합니다.</p>
+              </li>
+              <li>
+                <p class="source">Cloudflare Radar <span>· BGP 대시보드</span></p>
+                <h5><a href="https://radar.cloudflare.com/routing">Routing Information Worldwide</a></h5>
+                <p>날짜 범위를 정하고 IPv4와 IPv6의 공지 주소 공간 그래프를 전환합니다. AS 순위가 고객망 규모를 기준으로 할 때와 주소 공간을 기준으로 할 때 어떻게 달라지는지 봅니다.</p>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section id="databases" class="topic" aria-labelledby="databases-title">
+          <h3 id="databases-title">데이터베이스(DB)</h3>
+          <section id="transactions" class="subgroup" aria-labelledby="transactions-title">
+            <h4 id="transactions-title">트랜잭션과 격리 수준</h4>
+            <ul class="resource-list">
+              <li>
+                <p class="source">boringSQL <span>· 두 세션 시뮬레이터</span></p>
+                <h5><a href="https://boringsql.com/visualizers/mvcc/">PostgreSQL MVCC Visualized</a></h5>
+                <p>세션 A가 한 행을 읽고 세션 B가 값을 바꿔 커밋합니다. A의 두 번째 SELECT 결과를 먼저 예상한 뒤 Read Committed와 Repeatable Read 시나리오를 실행합니다.</p>
+              </li>
+              <li>
+                <p class="source">PostgreSQL <span>· 격리 수준 비교표</span></p>
+                <h5><a href="https://www.postgresql.org/docs/current/transaction-iso.html">Transaction Isolation</a></h5>
+                <p>두 트랜잭션이 같은 조건으로 읽고 서로 다른 행을 갱신하는 예제를 따라갑니다. Repeatable Read와 Serializable에서 어느 트랜잭션이 커밋할 수 있는지 비교합니다.</p>
+              </li>
+            </ul>
+          </section>
+          <section id="indexes" class="subgroup" aria-labelledby="indexes-title">
+            <h4 id="indexes-title">인덱스 성능과 실행 계획</h4>
+            <ul class="resource-list">
+              <li>
+                <p class="source">Markus Winand · Use The Index, Luke <span>· 인덱스 설계 예제</span></p>
+                <h5><a href="https://use-the-index-luke.com/sql/where-clause/searching-for-ranges/index-merge-performance">Index Merge</a></h5>
+                <p>성은 동등 조건, 생년월일은 범위 조건인 조회를 놓고 단일 인덱스 두 개와 복합 인덱스를 비교합니다. 복합 인덱스의 열 순서를 바꾸면 어디까지 읽을지 그려봅니다.</p>
+              </li>
+              <li>
+                <p class="source">Dalibo <span>· 실행 계획 시각화</span></p>
+                <h5><a href="https://explain.dalibo.com/">PostgreSQL execution plan visualizer</a></h5>
+                <p>샘플 실행 계획을 열고 추정 행 수와 실제 행 수가 크게 다른 노드를 찾습니다. 반복 횟수와 버퍼 통계를 함께 읽으며 인덱스 추가를 검토할 근거를 모읍니다.</p>
+              </li>
+            </ul>
+          </section>
+          <section id="nosql" class="subgroup" aria-labelledby="nosql-title">
+            <h4 id="nosql-title">NoSQL 데이터 모델링</h4>
+            <ul class="resource-list">
+              <li>
+                <p class="source">AWS · Amazon DynamoDB <span>· 키 설계 도식 · 한국어</span></p>
+                <h5><a href="https://docs.aws.amazon.com/ko_kr/amazondynamodb/latest/developerguide/data-modeling-blocks.html">DynamoDB의 데이터 모델링 빌딩 블록</a></h5>
+                <p>대화방의 최근 메시지를 읽는 조회부터 정하고 파티션 키와 정렬 키를 고릅니다. 한 방에 쓰기가 몰려 키를 나누면 읽기 경로가 어떻게 달라지는지도 그려봅니다.</p>
+              </li>
+              <li>
+                <p class="source">MongoDB <span>· 문서 모델링 예제</span></p>
+                <h5><a href="https://www.mongodb.com/docs/manual/data-modeling/schema-design-process/map-relationships/">Map Schema Relationships</a></h5>
+                <p>상품과 리뷰를 한 문서에 담은 경우와 별도 컬렉션에서 참조한 경우를 그립니다. 리뷰 개수와 수정 빈도를 바꾸며 조회 횟수와 문서 크기를 비교합니다.</p>
+              </li>
+            </ul>
+          </section>
         </section>
         <section id="algorithms" class="topic" aria-labelledby="algorithms-title">
           <h3 id="algorithms-title">알고리즘 · 자료구조</h3>
@@ -166,23 +284,71 @@
       </section>
       <section id="courses" class="category" aria-labelledby="courses-title">
         <h2 id="courses-title">추천 강의</h2>
-        <ul class="resource-list">
-          <li>
-            <p class="source">생활코딩 <span>· 입문 · 한국어</span></p>
-            <h3><a href="https://opentutorials.org/course/3385">WEB2 - HTTP</a></h3>
-            <p>첫 API 실습 전에 요청과 응답 편을 함께 봅니다. 브라우저 개발자 도구를 열고 방금 배운 헤더를 실제 요청에서 찾아봅니다.</p>
-          </li>
-          <li>
-            <p class="source">Harvard · CS50 <span>· 입문 · 영어</span></p>
-            <h3><a href="https://cs50.harvard.edu/sql/">CS50’s Introduction to Databases with SQL</a></h3>
-            <p>JOIN을 배우는 주에는 Relating의 문제를, 인덱스를 다루는 주에는 Optimizing의 예제를 골라 수업 뒤 연습으로 이어갑니다.</p>
-          </li>
-          <li>
-            <p class="source">MIT <span>· 심화 · 영어</span></p>
-            <h3><a href="https://pdos.csail.mit.edu/6.5840/">6.5840: Distributed Systems</a></h3>
-            <p>Raft 시각화로 리더 선출을 익힌 뒤 읽기 자료와 실습을 연결합니다. 노드가 멈춘 상황에서 어떤 보장을 지켜야 하는지 토론하기 좋습니다.</p>
-          </li>
-        </ul>
+        <section id="backend-courses" class="subgroup" aria-labelledby="backend-courses-title">
+          <h3 id="backend-courses-title">웹 백엔드 · 개발 도구</h3>
+          <ul class="resource-list">
+            <li>
+              <p class="source">생활코딩 <span>· 입문 · 한국어</span></p>
+              <h4><a href="https://opentutorials.org/course/3385">WEB2 - HTTP</a></h4>
+              <p>첫 API 실습 전에 요청과 응답 편을 함께 봅니다. 브라우저 개발자 도구를 열고 방금 배운 헤더를 실제 요청에서 찾아봅니다.</p>
+            </li>
+            <li>
+              <p class="source">김영한 · 인프런 <span>· 입문 · 한국어</span></p>
+              <h4><a href="https://www.inflearn.com/course/스프링-입문-스프링부트">스프링 입문 - 코드로 배우는 스프링 부트, 웹 MVC, DB 접근 기술</a></h4>
+              <p>회원 등록 요청을 예로 들어 컨트롤러에서 저장소까지 호출을 따라갑니다. 메모리 저장소를 DB로 바꿀 때 어떤 테스트를 다시 돌릴지 정해봅니다.</p>
+            </li>
+            <li>
+              <p class="source">생활코딩 <span>· 입문 · 한국어</span></p>
+              <h4><a href="https://opentutorials.org/course/3842">GIT CLI - 협업</a></h4>
+              <p>두 사람이 같은 저장소에서 작업하는 상황을 재현합니다. 한 사람이 먼저 push한 뒤 다른 사람이 pull할 때 커밋 이력이 어떻게 합쳐지는지 확인합니다.</p>
+            </li>
+            <li>
+              <p class="source">MIT Missing Semester <span>· 실습 · 영어</span></p>
+              <h4><a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a></h4>
+              <p>팀 프로젝트 전에는 셸과 버전 관리 강의를, 느린 프로그램을 다루는 주에는 Debugging and Profiling 강의를 골라 실습합니다.</p>
+            </li>
+          </ul>
+        </section>
+        <section id="systems-courses" class="subgroup" aria-labelledby="systems-courses-title">
+          <h3 id="systems-courses-title">DB · 네트워크 · 분산 시스템</h3>
+          <ul class="resource-list">
+            <li>
+              <p class="source">Harvard · CS50 <span>· 입문 · 영어</span></p>
+              <h4><a href="https://cs50.harvard.edu/sql/">CS50’s Introduction to Databases with SQL</a></h4>
+              <p>JOIN을 배우는 주에는 Relating의 문제를, 인덱스를 다루는 주에는 Optimizing의 예제를 골라 수업 뒤 연습으로 이어갑니다.</p>
+            </li>
+            <li>
+              <p class="source">MIT <span>· 심화 · 영어</span></p>
+              <h4><a href="https://pdos.csail.mit.edu/6.5840/">6.5840: Distributed Systems</a></h4>
+              <p>Raft 시각화로 리더 선출을 익힌 뒤 읽기 자료와 실습을 연결합니다. 노드가 멈춘 상황에서 어떤 보장을 지켜야 하는지 토론하기 좋습니다.</p>
+            </li>
+            <li>
+              <p class="source">Stanford <span>· 심화 · 영어</span></p>
+              <h4><a href="https://cs144.github.io/">CS 144: Introduction to Computer Networking</a></h4>
+              <p>순서가 뒤바뀐 데이터 조각을 원래 바이트 스트림으로 재조립하는 과제부터 봅니다. 패킷 도착 순서와 애플리케이션에서 읽는 순서의 차이를 설명하기 좋습니다.</p>
+            </li>
+            <li>
+              <p class="source">Carnegie Mellon University <span>· 심화 · 영어</span></p>
+              <h4><a href="https://15445.courses.cs.cmu.edu/">15-445/645: Intro to Database Systems</a></h4>
+              <p>인덱스 수업은 트리 인덱스 강의와, 트랜잭션 실습은 동시성 제어 강의와 짝지어 봅니다. SQL의 실행 결과를 저장 엔진이 보장하는 동작과 연결합니다.</p>
+            </li>
+          </ul>
+        </section>
+        <section id="ai-courses" class="subgroup" aria-labelledby="ai-courses-title">
+          <h3 id="ai-courses-title">AI · 추천 시스템</h3>
+          <ul class="resource-list">
+            <li>
+              <p class="source">Google for Developers <span>· 중급 · 한국어</span></p>
+              <h4><a href="https://developers.google.com/machine-learning/recommendation?hl=ko">추천 시스템</a></h4>
+              <p>후보 생성, 점수 계산, 재정렬을 나누어 봅니다. 추천 목록에 비슷한 영화만 남았을 때 어느 단계에서 다양성을 높일지 토론합니다.</p>
+            </li>
+            <li>
+              <p class="source">Hugging Face <span>· 실습 · 한국어</span></p>
+              <h4><a href="https://huggingface.co/learn/agents-course/ko/unit0/introduction">Agents Course</a></h4>
+              <p>첫 에이전트 실습을 도구 호출 수업과 연결합니다. 도구 설명, 호출 인자, 반환값을 기록해 두고 최종 답변에 어떤 정보가 쓰였는지 확인합니다.</p>
+            </li>
+          </ul>
+        </section>
       </section>
       <div id="empty" hidden>
         <h2>검색 결과가 없습니다</h2>

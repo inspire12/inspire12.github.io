@@ -1,6 +1,5 @@
 const search = document.querySelector('#resource-search');
-const topics = [...document.querySelectorAll('.topic')];
-const categories = [...document.querySelectorAll('.category')];
+const sections = [...document.querySelectorAll('#catalog section')];
 const contents = [...document.querySelectorAll('.contents a')];
 const count = document.querySelector('#result-count');
 
@@ -9,9 +8,9 @@ function normalize(value) {
 }
 
 const resources = [...document.querySelectorAll('.resource-list > li')].map(item => {
-  const category = item.closest('.category').querySelector('h2').textContent;
-  const topic = item.closest('.topic')?.querySelector('h3').textContent ?? '';
-  return { item, text: normalize([category, topic, item.textContent].join(' ')) };
+  const headings = sections.filter(section => section.contains(item))
+    .map(section => document.getElementById(section.getAttribute('aria-labelledby')).textContent);
+  return { item, text: normalize([...headings, item.textContent].join(' ')) };
 });
 
 function filterResources() {
@@ -21,7 +20,7 @@ function filterResources() {
     item.hidden = !words.every(word => text.includes(word));
     if (!item.hidden) visible++;
   }
-  for (const section of [...topics, ...categories]) {
+  for (const section of sections) {
     section.hidden = !section.querySelector('.resource-list > li:not([hidden])');
   }
   for (const link of contents) {
