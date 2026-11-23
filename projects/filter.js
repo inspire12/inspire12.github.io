@@ -10,8 +10,7 @@ const legacyTags = new Set(items.flatMap(item => item.dataset.legacyTags.split('
 function refresh() {
   const query = new URLSearchParams(location.search);
   const legacyOrg = query.get('org') || '';
-  const legacyTeams = new Map([['monymony', 'monymony'], ['개인', 'personal']]);
-  const team = query.get('team') || legacyTeams.get(legacyOrg);
+  const team = query.get('team') || (legacyOrg === 'monymony' ? legacyOrg : '');
   org.value = team ? 'team:' + team : legacyOrg;
   if (org.selectedIndex < 0) org.value = '';
 
