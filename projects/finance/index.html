@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>금융 AI 서비스 · 서영학</title>
-  <meta name="description" content="금융 정보를 다루고 모델의 결과를 서비스에 연결하는 백엔드를 개발했습니다.">
+  <meta name="description" content="증권시장 일정에 맞춰 주식 데이터 배치를 실행하는 워크플로를 설계하고, Java 리플렉션을 적용해 배치 데이터를 일괄 저장했습니다.">
   <link rel="canonical" href="https://inspire12.github.io/projects/finance/">
   <link rel="stylesheet" href="../../portfolio.css?v=ec9ea2077c">
 
@@ -12,8 +12,21 @@
 <body><header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
 <main class="inner case-layout">
   <a href="/projects/?team=finance-ai">← NCSOFT · 금융AI서비스 개발팀 프로젝트 목록</a>
-  <div class="case-cover"><p class="eyebrow">NCSOFT · 금융AI서비스 개발팀</p><h1>금융 AI 서비스</h1><p class="lead">금융 정보를 다루고 모델의 결과를 서비스에 연결하는 백엔드를 개발했습니다.</p><div class="tags"><a href="/projects/?tag=%EB%AA%A8%EB%8D%B8+%EC%84%9C%EB%B9%99">#모델 서빙</a><a href="/projects/?tag=%EA%B8%88%EC%9C%B5+%EB%8D%B0%EC%9D%B4%ED%84%B0">#금융 데이터</a></div></div>
-<section class="detail"><h2>작업 내용</h2><p>금융 정보 시스템과 모델 서빙을 다루며 프랍트레이딩 업무를 지원했습니다.</p></section>
+  <div class="case-cover">
+    <p class="eyebrow">NCSOFT · 금융AI서비스 개발팀</p>
+    <h1>금융 AI 서비스</h1>
+    <p class="lead">주식 데이터 처리와 모델 서빙을 다루며 자기자본 투자 업무를 지원했습니다.</p>
+    <div class="tags"><a href="/projects/?tag=%EB%AA%A8%EB%8D%B8+%EC%84%9C%EB%B9%99">#모델 서빙</a><a href="/projects/?tag=%EA%B8%88%EC%9C%B5+%EB%8D%B0%EC%9D%B4%ED%84%B0">#금융 데이터</a></div>
+  </div>
+  <section class="detail" aria-labelledby="problem">
+    <h2 id="problem">문제 인식</h2>
+    <p>주식 데이터를 다루는 배치는 증권시장 일정에 맞춰 실행해야 했습니다. 시장 일정에 따라 어느 배치를 실행할지 정하는 과정이 필요했습니다.</p>
+  </section>
+  <section class="detail" aria-labelledby="work-and-result">
+    <h2 id="work-and-result">작업 및 결과</h2>
+    <p>증권시장 일정을 확인하고, 해당 일정에 필요한 작업을 골라 실행하는 상위 배치 워크플로를 설계했습니다.</p>
+    <p>저장 단계에서는 Java 리플렉션을 적용해 배치마다 다루는 데이터 유형에 맞춰 여러 건을 일괄 저장할 수 있도록 했습니다.</p>
+  </section>
 </main>
 </body>
 </html>
