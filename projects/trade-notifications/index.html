@@ -3,18 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>주식 매매 체결 알림 · 서영학</title>
-  <meta name="description" content="주식 매매가 체결됐을 때 체결 사실을 알리는 시스템을 다뤘습니다.">
+  <title>자기자본 투자: 주식 매매 체결 알림 · 서영학</title>
+  <meta name="description" content="한국투자증권 WebSocket으로 실시간 체결 정보를 받아 STOMP로 브라우저에 알리고, 미접속 시에는 알림함에 저장했습니다.">
   <link rel="canonical" href="https://inspire12.github.io/projects/trade-notifications/">
   <link rel="stylesheet" href="../../portfolio.css?v=ec9ea2077c">
 </head>
 <body><header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
 <main class="inner case-layout">
   <a href="/projects/?team=finance-ai">← NCSOFT · 금융AI서비스 개발팀 프로젝트 목록</a>
-  <div class="case-cover"><p class="eyebrow">NCSOFT · 금융AI서비스 개발팀</p>
-  <h1>주식 매매 체결 알림</h1>
-  <p class="lead">주식 매매가 체결됐을 때 체결 사실을 알리는 시스템을 다뤘습니다.</p>
-  <div class="tags"><a href="/projects/?tag=%EC%B2%B4%EA%B2%B0+%EC%9D%B4%EB%B2%A4%ED%8A%B8">#체결 이벤트</a><a href="/projects/?tag=%EC%95%8C%EB%A6%BC+%EC%A0%84%EB%8B%AC">#알림 전달</a></div></div>
+  <div class="case-cover">
+    <p class="eyebrow">NCSOFT · 금융AI서비스 개발팀</p>
+    <h1>자기자본 투자: 주식 매매 체결 알림</h1>
+    <p class="lead">한국투자증권에서 실시간으로 받은 체결 정보를 브라우저 알림으로 전달했습니다.</p>
+    <div class="tags"><a href="/projects/?tag=%EC%B2%B4%EA%B2%B0+%EC%9D%B4%EB%B2%A4%ED%8A%B8">#체결 이벤트</a><a href="/projects/?tag=%EC%95%8C%EB%A6%BC+%EC%A0%84%EB%8B%AC">#알림 전달</a></div>
+  </div>
+  <section class="detail" aria-labelledby="problem">
+    <h2 id="problem">문제 인식</h2>
+    <p>회사의 자기자본을 운용하면서 주식 주문이 체결되면 바로 확인할 수 있어야 했습니다. 업무 화면에 접속하지 않은 동안 발생한 체결도 나중에 볼 수 있어야 했습니다.</p>
+  </section>
+  <section class="detail" aria-labelledby="work-and-result">
+    <h2 id="work-and-result">작업 및 결과</h2>
+    <p>한국투자증권 WebSocket에 연결해 실시간으로 체결 정보를 받았습니다. Ping/Pong을 처리해 세션을 유지하고, 연결이 끊기면 다시 접속하도록 구현했습니다.</p>
+    <p>체결 정보가 들어오면 접속 중인 브라우저에는 STOMP로 알림을 보냈습니다. 접속 중인 브라우저가 없으면 알림함에 저장해 나중에 확인할 수 있도록 했습니다.</p>
+  </section>
 </main>
 </body>
 </html>
