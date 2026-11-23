@@ -16,7 +16,7 @@
     <p class="eyebrow">NCSOFT · 금융AI서비스 개발팀</p>
     <h1>금융 AI 서비스</h1>
     <p class="lead">주식 데이터 처리와 모델 서빙을 다루며 자기자본 투자 업무를 지원했습니다.</p>
-    <div class="tags"><a href="/projects/?tag=%EB%AA%A8%EB%8D%B8+%EC%84%9C%EB%B9%99">#모델 서빙</a><a href="/projects/?tag=%EA%B8%88%EC%9C%B5+%EB%8D%B0%EC%9D%B4%ED%84%B0">#금융 데이터</a></div>
+    <div class="tags"><a href="/projects/?tag=%EB%AA%A8%EB%8D%B8+%EC%84%9C%EB%B9%99">#모델 서빙</a><a href="/projects/?tag=%EA%B8%88%EC%9C%B5+%EB%8D%B0%EC%9D%B4%ED%84%B0">#금융 데이터</a><a href="/projects/?tag=Mock+%EC%84%9C%EB%B2%84">#Mock 서버</a></div>
   </div>
   <section class="detail" aria-labelledby="problem">
     <h2 id="problem">문제 인식</h2>
@@ -24,8 +24,11 @@
   </section>
   <section class="detail" aria-labelledby="work-and-result">
     <h2 id="work-and-result">작업 및 결과</h2>
+    <h3>시장 일정에 맞춘 배치 실행</h3>
     <p>증권시장 일정을 확인하고, 해당 일정에 필요한 작업을 골라 실행하는 상위 배치 워크플로를 설계했습니다.</p>
     <p>저장 단계에서는 Java 리플렉션을 적용해 배치마다 다루는 데이터 유형에 맞춰 여러 건을 일괄 저장할 수 있도록 했습니다.</p>
+    <h3 id="after-hours-testing">장 마감 후 매매 테스트</h3>
+    <p>장이 끝나면 실제 시장에서 발생하는 이벤트로 매매 흐름을 확인하기 어려웠습니다. 장 운영 시간과 관계없이 매매 시나리오를 재현할 수 있는 Mock 서버를 만들어, 팀원이 장 마감 후에도 개발과 테스트를 이어갈 수 있도록 했습니다.</p>
   </section>
 </main>
 </body>

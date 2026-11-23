@@ -25,6 +25,10 @@
     <h2 id="work-and-result">작업 및 결과</h2>
     <p>한국투자증권 WebSocket에 연결해 실시간으로 체결 정보를 받았습니다. Ping/Pong을 처리해 세션을 유지하고, 연결이 끊기면 다시 접속하도록 구현했습니다.</p>
     <p>체결 정보가 들어오면 접속 중인 브라우저에는 STOMP로 알림을 보냈습니다. 접속 중인 브라우저가 없으면 알림함에 저장해 나중에 확인할 수 있도록 했습니다.</p>
+    <figure class="case-figure" id="trade-notifications-architecture">
+      <img src="/media/trade-notifications-architecture.png" width="1440" height="1068" loading="lazy" alt="한국투자증권 WebSocket에서 받은 체결 정보가 알림 서버로 들어옵니다. 접속 중인 여러 브라우저에 STOMP로 알림을 보내고, 미접속 시에는 알림함에 저장합니다.">
+      <figcaption>외부 WebSocket에서 체결 정보를 받고 STOMP로 연결된 브라우저에 전달하는 흐름</figcaption>
+    </figure>
   </section>
 </main>
 </body>
