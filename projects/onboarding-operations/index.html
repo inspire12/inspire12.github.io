@@ -21,9 +21,13 @@
     <p>팀과 함께 AWS 모니터링을 보니 저녁 여섯 시쯤 사용자가 늘면서 스케일 아웃이 일어났고, 그 시점에 문제가 시작됐습니다.</p>
   </section>
   <section class="detail" aria-labelledby="work-and-result">
-    <h2 id="work-and-result">작업 및 결과</h2>
+    <h2 id="work-and-result">장애 대응</h2>
     <p>일부 사용자에게만 문제가 생겨서, Elastic Beanstalk에서 새로 늘어난 인스턴스와 기존 인스턴스의 빌드 버전을 비교했습니다. 서로 다른 버전이 실행 중이었습니다.</p>
     <p>팀은 이전 버전을 다시 빌드해 배포했고, 인스턴스의 빌드 버전을 맞췄습니다.</p>
+  </section>
+  <section class="detail" aria-labelledby="prevention">
+    <h2 id="prevention">재발 방지</h2>
+    <p>복구 후에는 GitHub Actions에서 <code>latest</code> 태그로 빌드하던 방식을 바꿔, 빌드할 때 버전을 명시하도록 수정했습니다. 스케일 아웃으로 인스턴스가 늘어날 때도 배포한 버전이 실행되도록 했습니다.</p>
   </section>
 </main>
 </body>
