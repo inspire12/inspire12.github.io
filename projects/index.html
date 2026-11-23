@@ -6,55 +6,149 @@
   <title>프로젝트 · 서영학</title>
   <meta name="description" content="프로젝트를 주제별로 살펴보고 주요 프로젝트를 모아 볼 수 있습니다.">
   <link rel="canonical" href="https://inspire12.github.io/projects/">
-  <link rel="stylesheet" href="../portfolio.css">
-  <script defer src="./filter.js"></script>
+  <link rel="stylesheet" href="../portfolio.css?v=bec4aaa764">
+  <script defer src="./filter.js?v=f60aca69bd"></script>
 </head>
 <body><header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/apps/">Apps</a><a href="/#career">Career</a><a href="/#contact">Contact</a></nav></header>
-<main class="inner archive"><p class="eyebrow">CONTENTS</p><h1>프로젝트 목차<span>.</span></h1>
-<form hidden id="filters"><label>소속 <select name="org"><option value="">전체 소속</option><option>monymony</option><option>NCSOFT</option><option>개인</option></select></label>
-<label>태그 <select name="tag"><option value="">전체 태그</option><option>NLP</option><option>RAG</option><option>macOS</option><option>개인 도구</option><option>결제</option><option>계정</option><option>관측성</option><option>금융</option><option>백엔드</option><option>서비스 개발</option><option>알림</option><option>운영</option><option>질문</option><option>추천</option><option>캐싱</option><option>피드</option></select></label>
-<label><input name="featured" type="checkbox"> 주요 프로젝트만 보기</label></form>
-<p role="status" id="count"></p><div class="project-grid">
-<article class="item" data-org="monymony" data-tags="결제|백엔드" data-featured="false">
-  <small>monymony</small><h2><a href="/projects/store-payments/">상점 결제와 환불 ↗</a></h2>
-  <p>상점에서 오브제 등을 구매하는 스토어 결제와 환불 시스템을 다뤘습니다.</p><div class="tags"><a href="/projects/?tag=%EA%B2%B0%EC%A0%9C">#결제</a><a href="/projects/?tag=%EB%B0%B1%EC%97%94%EB%93%9C">#백엔드</a></div>
-</article>
-<article class="item" data-org="monymony" data-tags="RAG|질문" data-featured="false">
-  <small>monymony</small><h2><a href="/projects/question-rag/">RAG를 활용한 질문 품질 개선 ↗</a></h2>
-  <p>질문 품질을 개선하는 작업에 검색 증강 생성(RAG)을 적용했습니다.</p><div class="tags"><a href="/projects/?tag=RAG">#RAG</a><a href="/projects/?tag=%EC%A7%88%EB%AC%B8">#질문</a></div>
-</article>
-<article class="item" data-org="monymony" data-tags="추천|질문" data-featured="false">
-  <small>monymony</small><h2><a href="/projects/question-categories/">질문 추천 카테고리 ↗</a></h2>
-  <p>질문 카테고리를 추가하고 질문 추천에 적용했습니다.</p><div class="tags"><a href="/projects/?tag=%EC%B6%94%EC%B2%9C">#추천</a><a href="/projects/?tag=%EC%A7%88%EB%AC%B8">#질문</a></div>
-</article>
-<article class="item" data-org="monymony" data-tags="운영|백엔드" data-featured="true">
-  <small>monymony</small><h2><a href="/projects/onboarding-operations/">온보딩·배포·모니터링 개선 ↗</a></h2>
-  <p>온보딩과 배포, 모니터링 개선에 참여했습니다. 입사 초기에는 일부 인스턴스에서만 나타난 문제를 팀과 함께 추적했습니다.</p><div class="tags"><a href="/projects/?tag=%EC%9A%B4%EC%98%81">#운영</a><a href="/projects/?tag=%EB%B0%B1%EC%97%94%EB%93%9C">#백엔드</a></div>
-</article>
-<article class="item" data-org="NCSOFT" data-tags="계정|관측성" data-featured="false">
-  <small>NCSOFT</small><h2><a href="/projects/account-security-dashboard/">계정 보안 로그 분석 대시보드 ↗</a></h2>
-  <p>계정 보안 로그를 분석하는 대시보드를 설계했습니다.</p><div class="tags"><a href="/projects/?tag=%EA%B3%84%EC%A0%95">#계정</a><a href="/projects/?tag=%EA%B4%80%EC%B8%A1%EC%84%B1">#관측성</a></div>
-</article>
-<article class="item" data-org="NCSOFT" data-tags="금융|알림" data-featured="false">
-  <small>NCSOFT</small><h2><a href="/projects/trade-notifications/">주식 매매 체결 알림 ↗</a></h2>
-  <p>주식 매매가 체결됐을 때 체결 사실을 알리는 시스템을 다뤘습니다.</p><div class="tags"><a href="/projects/?tag=%EA%B8%88%EC%9C%B5">#금융</a><a href="/projects/?tag=%EC%95%8C%EB%A6%BC">#알림</a></div>
-</article>
-<article class="item" data-org="NCSOFT" data-tags="추천|피드" data-featured="false">
-  <small>NCSOFT</small><h2><a href="/projects/team-community/">팀 응원 커뮤니티 피드 ↗</a></h2>
-  <p>응원 커뮤니티의 추천 피드를 무한 스크롤 형태로 제공하고 이미지 크기를 자동 조정하는 기능을 다뤘습니다.</p><div class="tags"><a href="/projects/?tag=%EC%B6%94%EC%B2%9C">#추천</a><a href="/projects/?tag=%ED%94%BC%EB%93%9C">#피드</a></div>
-</article>
-<article class="item" data-org="NCSOFT" data-tags="알림|백엔드" data-featured="false">
-  <small>NCSOFT</small><h2><a href="/projects/push-workers/">워커 기반 푸시 알림 ↗</a></h2>
-  <p>푸시 발송을 워커가 처리하는 알림 시스템을 다뤘습니다.</p><div class="tags"><a href="/projects/?tag=%EC%95%8C%EB%A6%BC">#알림</a><a href="/projects/?tag=%EB%B0%B1%EC%97%94%EB%93%9C">#백엔드</a></div>
-</article>
-<article class="item" data-org="NCSOFT" data-tags="추천|캐싱" data-featured="false">
-  <small>NCSOFT</small><h2><a href="/projects/group-feed-cache/">추천 피드의 그룹별 캐싱 ↗</a></h2>
-  <p>추천 피드를 그룹 단위로 캐싱하는 작업을 진행했습니다.</p><div class="tags"><a href="/projects/?tag=%EC%B6%94%EC%B2%9C">#추천</a><a href="/projects/?tag=%EC%BA%90%EC%8B%B1">#캐싱</a></div>
-</article>
-<article class="item" data-org="NCSOFT" data-tags="NLP|서비스 개발" data-featured="true"><small>NCSOFT · NLP 서비스 개발</small><h2><a href="/projects/paige/">PAIGE ↗</a></h2><p>프로야구 서비스 PAIGE에서 NLP 서비스 개발을 경험했습니다.</p><div class="tags"><a href="/projects/?tag=NLP">#NLP</a><a href="/projects/?tag=%EC%84%9C%EB%B9%84%EC%8A%A4%20%EA%B0%9C%EB%B0%9C">#서비스 개발</a></div></article>
-<article class="item" data-org="NCSOFT" data-tags="NLP|백엔드" data-featured="true"><small>NCSOFT · NLP 금융</small><h2><a href="/projects/finance/">금융 AI 서비스 ↗</a></h2><p>금융 정보를 다루고 모델의 결과를 서비스에 연결하는 백엔드를 개발했습니다.</p><div class="tags"><a href="/projects/?tag=NLP">#NLP</a><a href="/projects/?tag=%EB%B0%B1%EC%97%94%EB%93%9C">#백엔드</a></div></article>
-<article class="item" data-org="개인" data-tags="macOS|개인 도구" data-featured="false"><small>개인 프로젝트 · macOS</small><h2><a href="/projects/mac-apps/">FocusShade &amp; MenuFold ↗</a></h2><p>읽고 있는 창에 집중하고 복잡한 메뉴 막대를 정리할 수 있도록 만든 두 가지 Mac 앱입니다.</p><div class="tags"><a href="/projects/?tag=macOS">#macOS</a><a href="/projects/?tag=%EA%B0%9C%EC%9D%B8%20%EB%8F%84%EA%B5%AC">#개인 도구</a></div></article>
-</div>
+<main class="inner archive">
+  <h1>프로젝트 목차</h1>
+  <form hidden id="filters">
+    <label>소속
+      <select name="org">
+        <option value="">전체 소속</option>
+        <option value="team:monymony">monymony</option><option value="team:account-platform">NCSOFT Account Platform</option><option value="team:finance-ai">NCSOFT · 금융AI서비스 개발팀</option><option value="team:nlp-service">NCSOFT · NLP 서비스 개발팀</option><option value="team:ncsoft-other">NCSOFT · 기타 프로젝트</option><option value="team:personal">개인 프로젝트</option>
+        <option value="NCSOFT">NCSOFT 전체</option>
+      </select>
+    </label>
+    <label>태그
+      <select name="tag">
+        <option value="">전체 태그</option>
+        <option>macOS</option><option>검색 증강 생성</option><option>계정 보안</option><option>관측성</option><option>그룹 단위 캐싱</option><option>금융 데이터</option><option>메뉴 막대 제어</option><option>모델 서빙</option><option>무한 스크롤</option><option>배포 복구</option><option>보안 로그 분석</option><option>스케일 아웃</option><option>알림 전달</option><option>워커 구조</option><option>이미지 리사이징</option><option>인스턴스 버전 검증</option><option>인앱 결제</option><option>자연어 처리</option><option>질문 분류</option><option>질문 품질</option><option>창 위치 추적</option><option>체결 이벤트</option><option>추천 카테고리</option><option>추천 피드</option><option>푸시 발송</option><option>프로야구 서비스</option><option>환불 처리</option>
+      </select>
+    </label>
+    <label class="check"><input name="featured" type="checkbox"> 주요 프로젝트만 보기</label>
+  </form>
+  <p role="status" id="count"></p>
+    <section class="project-group" data-team="monymony" aria-labelledby="monymony">
+      <div class="group-heading">
+        <h2 id="monymony">monymony</h2>
+      </div>
+      <div>        <article class="item" data-org="monymony" data-tags="스케일 아웃|배포 복구|인스턴스 버전 검증" data-legacy-tags="운영|백엔드" data-featured="true">
+          <div>
+            <h3><a href="/projects/onboarding-operations/">온보딩·배포·모니터링 개선 <span aria-hidden="true">↗</span></a></h3>
+            <p>온보딩과 배포, 모니터링 개선에 참여했습니다. 입사 초기에는 일부 인스턴스에서만 나타난 문제를 팀과 함께 추적했습니다.</p>
+          </div>
+          <div class="tags"><a href="/projects/?tag=%EC%8A%A4%EC%BC%80%EC%9D%BC+%EC%95%84%EC%9B%83">#스케일 아웃</a><a href="/projects/?tag=%EB%B0%B0%ED%8F%AC+%EB%B3%B5%EA%B5%AC">#배포 복구</a><a href="/projects/?tag=%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4+%EB%B2%84%EC%A0%84+%EA%B2%80%EC%A6%9D">#인스턴스 버전 검증</a></div>
+        </article>
+        <article class="item" data-org="monymony" data-tags="인앱 결제|환불 처리" data-legacy-tags="결제|백엔드" data-featured="false">
+          <div>
+            <h3><a href="/projects/store-payments/">상점 결제와 환불 <span aria-hidden="true">↗</span></a></h3>
+            <p>상점에서 오브제 등을 구매하는 스토어 결제와 환불 시스템을 다뤘습니다.</p>
+          </div>
+          <div class="tags"><a href="/projects/?tag=%EC%9D%B8%EC%95%B1+%EA%B2%B0%EC%A0%9C">#인앱 결제</a><a href="/projects/?tag=%ED%99%98%EB%B6%88+%EC%B2%98%EB%A6%AC">#환불 처리</a></div>
+        </article>
+        <article class="item" data-org="monymony" data-tags="검색 증강 생성|질문 품질" data-legacy-tags="RAG|질문" data-featured="false">
+          <div>
+            <h3><a href="/projects/question-rag/">RAG를 활용한 질문 품질 개선 <span aria-hidden="true">↗</span></a></h3>
+            <p>질문 품질을 개선하는 작업에 검색 증강 생성(RAG)을 적용했습니다.</p>
+          </div>
+          <div class="tags"><a href="/projects/?tag=%EA%B2%80%EC%83%89+%EC%A6%9D%EA%B0%95+%EC%83%9D%EC%84%B1">#검색 증강 생성</a><a href="/projects/?tag=%EC%A7%88%EB%AC%B8+%ED%92%88%EC%A7%88">#질문 품질</a></div>
+        </article>
+        <article class="item" data-org="monymony" data-tags="추천 카테고리|질문 분류" data-legacy-tags="추천|질문" data-featured="false">
+          <div>
+            <h3><a href="/projects/question-categories/">질문 추천 카테고리 <span aria-hidden="true">↗</span></a></h3>
+            <p>질문 카테고리를 추가하고 질문 추천에 적용했습니다.</p>
+          </div>
+          <div class="tags"><a href="/projects/?tag=%EC%B6%94%EC%B2%9C+%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC">#추천 카테고리</a><a href="/projects/?tag=%EC%A7%88%EB%AC%B8+%EB%B6%84%EB%A5%98">#질문 분류</a></div>
+        </article>
+      </div>
+    </section>
+    <section class="project-group" data-team="account-platform" aria-labelledby="account-platform">
+      <div class="group-heading">
+        <h2 id="account-platform">NCSOFT Account Platform</h2>
+      </div>
+      <div>        <article class="item" data-org="NCSOFT" data-tags="계정 보안|보안 로그 분석|관측성" data-legacy-tags="계정|관측성" data-featured="false">
+          <div>
+            <h3><a href="/projects/account-security-dashboard/">계정 보안 로그 분석 대시보드 <span aria-hidden="true">↗</span></a></h3>
+            <p>계정 보안 로그를 분석하는 대시보드를 설계했습니다.</p>
+          </div>
+          <div class="tags"><a href="/projects/?tag=%EA%B3%84%EC%A0%95+%EB%B3%B4%EC%95%88">#계정 보안</a><a href="/projects/?tag=%EB%B3%B4%EC%95%88+%EB%A1%9C%EA%B7%B8+%EB%B6%84%EC%84%9D">#보안 로그 분석</a><a href="/projects/?tag=%EA%B4%80%EC%B8%A1%EC%84%B1">#관측성</a></div>
+        </article>
+      </div>
+    </section>
+    <section class="project-group" data-team="finance-ai" aria-labelledby="finance-ai">
+      <div class="group-heading">
+        <h2 id="finance-ai">NCSOFT · 금융AI서비스 개발팀</h2>
+      </div>
+      <div>        <article class="item" data-org="NCSOFT" data-tags="모델 서빙|금융 데이터" data-legacy-tags="NLP|백엔드" data-featured="true">
+          <div>
+            <h3><a href="/projects/finance/">금융 AI 서비스 <span aria-hidden="true">↗</span></a></h3>
+            <p>금융 정보를 다루고 모델의 결과를 서비스에 연결하는 백엔드를 개발했습니다.</p>
+          </div>
+          <div class="tags"><a href="/projects/?tag=%EB%AA%A8%EB%8D%B8+%EC%84%9C%EB%B9%99">#모델 서빙</a><a href="/projects/?tag=%EA%B8%88%EC%9C%B5+%EB%8D%B0%EC%9D%B4%ED%84%B0">#금융 데이터</a></div>
+        </article>
+        <article class="item" data-org="NCSOFT" data-tags="체결 이벤트|알림 전달" data-legacy-tags="금융|알림" data-featured="false">
+          <div>
+            <h3><a href="/projects/trade-notifications/">주식 매매 체결 알림 <span aria-hidden="true">↗</span></a></h3>
+            <p>주식 매매가 체결됐을 때 체결 사실을 알리는 시스템을 다뤘습니다.</p>
+          </div>
+          <div class="tags"><a href="/projects/?tag=%EC%B2%B4%EA%B2%B0+%EC%9D%B4%EB%B2%A4%ED%8A%B8">#체결 이벤트</a><a href="/projects/?tag=%EC%95%8C%EB%A6%BC+%EC%A0%84%EB%8B%AC">#알림 전달</a></div>
+        </article>
+      </div>
+    </section>
+    <section class="project-group" data-team="nlp-service" aria-labelledby="nlp-service">
+      <div class="group-heading">
+        <h2 id="nlp-service">NCSOFT · NLP 서비스 개발팀</h2>
+      </div>
+      <div>        <article class="item" data-org="NCSOFT" data-tags="자연어 처리|프로야구 서비스" data-legacy-tags="NLP|서비스 개발" data-featured="true">
+          <div>
+            <h3><a href="/projects/paige/">PAIGE <span aria-hidden="true">↗</span></a></h3>
+            <p>프로야구 서비스 PAIGE에서 NLP 서비스 개발을 경험했습니다.</p>
+          </div>
+          <div class="tags"><a href="/projects/?tag=%EC%9E%90%EC%97%B0%EC%96%B4+%EC%B2%98%EB%A6%AC">#자연어 처리</a><a href="/projects/?tag=%ED%94%84%EB%A1%9C%EC%95%BC%EA%B5%AC+%EC%84%9C%EB%B9%84%EC%8A%A4">#프로야구 서비스</a></div>
+        </article>
+        <article class="item" data-org="NCSOFT" data-tags="무한 스크롤|이미지 리사이징|추천 피드" data-legacy-tags="추천|피드" data-featured="false">
+          <div>
+            <h3><a href="/projects/team-community/">팀 응원 커뮤니티 피드 <span aria-hidden="true">↗</span></a></h3>
+            <p>응원 커뮤니티의 추천 피드를 무한 스크롤 형태로 제공하고 이미지 크기를 자동 조정하는 기능을 다뤘습니다.</p>
+          </div>
+          <div class="tags"><a href="/projects/?tag=%EB%AC%B4%ED%95%9C+%EC%8A%A4%ED%81%AC%EB%A1%A4">#무한 스크롤</a><a href="/projects/?tag=%EC%9D%B4%EB%AF%B8%EC%A7%80+%EB%A6%AC%EC%82%AC%EC%9D%B4%EC%A7%95">#이미지 리사이징</a><a href="/projects/?tag=%EC%B6%94%EC%B2%9C+%ED%94%BC%EB%93%9C">#추천 피드</a></div>
+        </article>
+        <article class="item" data-org="NCSOFT" data-tags="그룹 단위 캐싱|추천 피드" data-legacy-tags="추천|캐싱" data-featured="false">
+          <div>
+            <h3><a href="/projects/group-feed-cache/">추천 피드의 그룹별 캐싱 <span aria-hidden="true">↗</span></a></h3>
+            <p>추천 피드를 그룹 단위로 캐싱하는 작업을 진행했습니다.</p>
+          </div>
+          <div class="tags"><a href="/projects/?tag=%EA%B7%B8%EB%A3%B9+%EB%8B%A8%EC%9C%84+%EC%BA%90%EC%8B%B1">#그룹 단위 캐싱</a><a href="/projects/?tag=%EC%B6%94%EC%B2%9C+%ED%94%BC%EB%93%9C">#추천 피드</a></div>
+        </article>
+      </div>
+    </section>
+    <section class="project-group" data-team="ncsoft-other" aria-labelledby="ncsoft-other">
+      <div class="group-heading">
+        <h2 id="ncsoft-other">NCSOFT · 기타 프로젝트</h2>
+      </div>
+      <div>        <article class="item" data-org="NCSOFT" data-tags="워커 구조|푸시 발송" data-legacy-tags="알림|백엔드" data-featured="false">
+          <div>
+            <h3><a href="/projects/push-workers/">워커 기반 푸시 알림 <span aria-hidden="true">↗</span></a></h3>
+            <p>푸시 발송을 워커가 처리하는 알림 시스템을 다뤘습니다.</p>
+          </div>
+          <div class="tags"><a href="/projects/?tag=%EC%9B%8C%EC%BB%A4+%EA%B5%AC%EC%A1%B0">#워커 구조</a><a href="/projects/?tag=%ED%91%B8%EC%8B%9C+%EB%B0%9C%EC%86%A1">#푸시 발송</a></div>
+        </article>
+      </div>
+    </section>
+    <section class="project-group" data-team="personal" aria-labelledby="personal">
+      <div class="group-heading">
+        <h2 id="personal">개인 프로젝트</h2>
+      </div>
+      <div>        <article class="item" data-org="개인" data-tags="macOS|창 위치 추적|메뉴 막대 제어" data-legacy-tags="macOS|개인 도구" data-featured="false">
+          <div>
+            <h3><a href="/projects/mac-apps/">FocusShade &amp; MenuFold <span aria-hidden="true">↗</span></a></h3>
+            <p>읽고 있는 창에 집중하고 복잡한 메뉴 막대를 정리할 수 있도록 만든 두 가지 Mac 앱입니다.</p>
+          </div>
+          <div class="tags"><a href="/projects/?tag=macOS">#macOS</a><a href="/projects/?tag=%EC%B0%BD+%EC%9C%84%EC%B9%98+%EC%B6%94%EC%A0%81">#창 위치 추적</a><a href="/projects/?tag=%EB%A9%94%EB%89%B4+%EB%A7%89%EB%8C%80+%EC%A0%9C%EC%96%B4">#메뉴 막대 제어</a></div>
+        </article>
+      </div>
+    </section>
 </main>
 </body>
 </html>
