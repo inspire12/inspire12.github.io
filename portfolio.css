@@ -68,12 +68,15 @@ h3 { font-size: clamp(1.2rem, 2.1vw, 1.55rem); }
 
 .hero {
   display: grid;
-  align-content: center;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 16rem);
+  align-items: center;
+  gap: 2rem clamp(2rem, 8vw, 7rem);
   min-height: 60svh;
 }
 
 .hero h1 { font-size: clamp(4.5rem, 12vw, 9rem); }
 .hero .lead { max-width: 25em; }
+.hero-portrait { display: block; width: 100%; max-width: 258px; height: auto; border-radius: .25rem; }
 .action, .section-link { font-weight: 650; }
 .action { display: inline-block; border-bottom: 1px solid; padding-bottom: .2em; }
 
@@ -174,7 +177,8 @@ footer :focus-visible { outline-color: #b9dfd0; }
 
 @media (max-width: 700px) {
   header, nav { gap: .4rem 1rem; }
-  .hero { min-height: 52svh; }
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  .hero-portrait { max-width: 10rem; }
   .about, .project-group, .career-list > div { grid-template-columns: minmax(0, 1fr); }
   .project-group .section-link { margin-top: .5rem; }
 }
