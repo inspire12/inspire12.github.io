@@ -4,17 +4,29 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RAG를 활용한 질문 품질 개선 · 서영학</title>
-  <meta name="description" content="질문 품질을 개선하는 작업에 검색 증강 생성(RAG)을 적용했습니다.">
+  <meta name="description" content="썸원의 질문에서 의미가 비슷한 항목을 걸러내고, 질문을 의미와 의도별로 묶어 실제 사용자 응답률과 대조했습니다.">
   <link rel="canonical" href="https://inspire12.github.io/projects/question-rag/">
   <link rel="stylesheet" href="../../portfolio.css?v=ec9ea2077c">
 </head>
 <body><header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
 <main class="inner case-layout">
   <a href="/projects/?team=monymony">← monymony 프로젝트 목록</a>
-  <div class="case-cover"><p class="eyebrow">monymony</p>
-  <h1>RAG를 활용한 질문 품질 개선</h1>
-  <p class="lead">질문 품질을 개선하는 작업에 검색 증강 생성(RAG)을 적용했습니다.</p>
-  <div class="tags"><a href="/projects/?tag=%EA%B2%80%EC%83%89+%EC%A6%9D%EA%B0%95+%EC%83%9D%EC%84%B1">#검색 증강 생성</a><a href="/projects/?tag=%EC%A7%88%EB%AC%B8+%ED%92%88%EC%A7%88">#질문 품질</a></div></div>
+  <div class="case-cover">
+    <p class="eyebrow">monymony</p>
+    <h1>RAG를 활용한 질문 품질 개선</h1>
+    <p class="lead">썸원에서 비슷한 질문을 걸러내고, 어떤 질문에 사용자가 더 자주 답하는지 살폈습니다.</p>
+    <div class="tags"><a href="/projects/?tag=%EA%B2%80%EC%83%89+%EC%A6%9D%EA%B0%95+%EC%83%9D%EC%84%B1">#검색 증강 생성</a><a href="/projects/?tag=%EC%A7%88%EB%AC%B8+%ED%92%88%EC%A7%88">#질문 품질</a></div>
+  </div>
+  <section class="detail" aria-labelledby="problem">
+    <h2 id="problem">문제 인식</h2>
+    <p>썸원의 핵심 기능은 사용자에게 질문을 건네고 답을 나누게 하는 일입니다. 그런데 질문이 재미없다는 사용자 의견이 있었습니다. 당시에는 어떤 질문이 문제인지 살펴보고 품질을 계속 개선할 수 있는 체계가 없었습니다.</p>
+  </section>
+  <section class="detail" aria-labelledby="work-and-result">
+    <h2 id="work-and-result">작업 및 결과</h2>
+    <p>먼저 시맨틱 검색을 적용해 표현은 달라도 뜻이 비슷한 질문을 걸러냈습니다.</p>
+    <p>그다음 질문마다 어떤 의미를 담고 있는지, 어떤 대화를 이끌어내려는지 태그를 달았습니다. 관련 있는 질문끼리 그래프로 연결해 그룹으로 묶었습니다.</p>
+    <p>마지막으로 질문 그룹과 실제 사용자 응답률을 대조했습니다. 응답률을 단서로 삼아 사용자가 어떤 질문을 재미있어하고 어떤 질문을 불편해하는지 판단할 기준을 만들려고 했습니다.</p>
+  </section>
 </main>
 </body>
 </html>
