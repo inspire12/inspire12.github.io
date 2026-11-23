@@ -14,17 +14,17 @@
   <div class="case-cover">
     <p class="eyebrow">monymony</p>
     <h1>썸원타임 질문 알림 문구 다양화</h1>
-    <p class="lead">사용자별로 문구 파일을 선택해 썸원타임 알림에 서로 다른 문구를 보여줄 수 있도록 했습니다.</p>
+    <p class="lead">어떤 알림 문구에 사용자가 반응하는지 비교하려고, 썸원타임 푸시에 사용자별로 다른 문구를 적용했습니다.</p>
     <div class="tags"><a href="/projects/?tag=%EC%95%8C%EB%A6%BC+%EB%AC%B8%EA%B5%AC">#알림 문구</a><a href="/projects/?tag=%EB%AC%B8%EA%B5%AC+%EC%BA%90%EC%8B%B1">#문구 캐싱</a></div>
   </div>
   <section class="detail" aria-labelledby="problem">
-    <h2 id="problem">문제 인식</h2>
-    <p>썸원타임은 썸원에서 질문이 도착했음을 알려주는 알림입니다. 이 알림의 문구를 다양화하려면 어떤 사용자에게 어느 문구 파일을 적용할지 정하고, 발송할 때 해당 파일을 읽을 수 있어야 했습니다.</p>
+    <h2 id="problem">같은 질문 알림에 다른 문구를 보내려면</h2>
+    <p>썸원타임은 커플에게 오늘의 질문이 도착했음을 알리는 푸시입니다. 문구를 실험하려면 사용자에게 배정된 문구가 실제 발송까지 이어져야 했습니다. 같은 문구를 쓰는 알림마다 파일을 다시 가져올 필요도 없었습니다.</p>
   </section>
   <section class="detail" aria-labelledby="work-and-result">
-    <h2 id="work-and-result">작업 및 결과</h2>
+    <h2 id="work-and-result">Hackle에서 배정하고 발송 시 파일을 재사용</h2>
     <p>알림 문구 파일을 Amazon S3에 미리 저장하고, 사용자마다 어느 파일을 사용할지 Hackle로 정했습니다.</p>
-    <p>알림을 보낼 때는 선택한 파일이 캐시에 있는지 먼저 확인했습니다. 캐시에 파일이 있으면 그대로 사용하고, 없으면 S3에서 읽어 캐시에 저장한 뒤 알림에 적용했습니다.</p>
+    <p>발송할 때는 배정된 파일을 캐시에서 먼저 찾았습니다. 캐시에 없을 때만 S3에서 읽어 저장했습니다. 같은 파일을 배정받은 사용자에게는 캐시에 있는 문구를 곧바로 쓸 수 있었습니다.</p>
     <figure class="case-figure" id="sumone-time-architecture">
       <img src="/media/sumone-time-architecture.png" width="1440" height="1092" loading="lazy" alt="Hackle로 사용자별 문구 파일을 선택한 뒤 캐시를 확인합니다. 캐시에 파일이 있으면 재사용하고, 없으면 S3에서 읽어 캐시에 저장합니다. 선택한 파일의 문구로 질문 알림을 보냅니다.">
       <figcaption>사용자별 문구 파일 선택과 캐시 조회 흐름</figcaption>

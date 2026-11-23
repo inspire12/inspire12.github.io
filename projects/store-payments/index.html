@@ -18,17 +18,17 @@
     <div class="tags"><a href="/projects/?tag=%EC%9D%B8%EC%95%B1+%EA%B2%B0%EC%A0%9C">#인앱 결제</a><a href="/projects/?tag=%ED%99%98%EB%B6%88+%EC%B2%98%EB%A6%AC">#환불 처리</a></div>
   </div>
   <section class="detail" aria-labelledby="problem">
-    <h2 id="problem">문제 인식</h2>
+    <h2 id="problem">스토어 직접 결제로 달라진 환불 경로</h2>
     <p>기존에는 사용자가 앱 내 재화인 조약돌을 먼저 구매한 뒤, 조약돌로 상점에서 오브제 등을 샀습니다. 다른 회사와 콜라보를 진행하면서 콜라보 상품을 Apple App Store와 Google Play에서 바로 결제할 수 있도록 기능을 추가했습니다.</p>
-    <p>직접 결제를 추가하면서 스토어에서 환불한 거래도 앱 서버에 반영해야 했습니다. Apple App Store와 Google Play는 환불 알림을 보내는 방식과 알림에 담는 거래 정보가 달랐습니다.</p>
+    <p>사용자가 스토어에서 환불을 끝내도 썸원 서버는 그 사실을 별도로 전달받아야 했습니다. 두 스토어는 환불 알림을 보내는 경로와 거래를 식별하는 정보가 달랐습니다.</p>
     <ul class="case-list">
       <li><strong>Apple App Store</strong>는 등록한 서버 URL로 App Store Server Notifications V2를 보냅니다. 스토어가 거래를 환불하면 <code>REFUND</code> 알림이 오고, JWS로 서명된 <code>signedPayload</code>에 알림 유형과 거래 정보가 담깁니다.</li>
       <li><strong>Google Play</strong>는 Cloud Pub/Sub를 통해 실시간 개발자 알림(RTDN)을 보냅니다. <code>VoidedPurchaseNotification</code>에는 구매 토큰, 주문 ID, 상품 유형, 환불 유형이 담깁니다. 전체 거래 상태가 필요하면 Google Play Developer API로 조회합니다.</li>
     </ul>
   </section>
   <section class="detail" aria-labelledby="work-and-result">
-    <h2 id="work-and-result">작업 및 결과</h2>
-    <p>제가 맡은 부분은 환불 알림을 받아 서버에서 처리하는 일이었습니다. AWS API Gateway에 알림 구독용 경로를 지정하고, 그 경로로 들어온 환불 요청을 서버의 환불 처리로 연결했습니다.</p>
+    <h2 id="work-and-result">앱 서버의 환불 처리 연결</h2>
+    <p>제가 맡은 부분은 스토어에서 결정한 환불을 썸원에 반영하는 일이었습니다. AWS API Gateway에 환불 알림을 받을 경로를 지정하고, 이 경로로 들어온 거래 정보를 앱 서버의 환불 처리 로직에 연결했습니다.</p>
     <figure class="case-figure" id="refund-architecture">
       <img src="/media/store-refund-architecture.png" width="1440" height="1240" loading="lazy" alt="Apple App Store의 REFUND 알림과 Google Play의 Cloud Pub/Sub 알림이 AWS API Gateway의 구독 경로를 거쳐 앱 서버로 전달됩니다.">
       <figcaption>스토어별 환불 알림을 받아 앱 서버에서 처리하는 흐름</figcaption>

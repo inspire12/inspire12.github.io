@@ -23,8 +23,8 @@
   </section>
   <section class="detail" aria-labelledby="work-and-result">
     <h2 id="work-and-result">작업 및 결과</h2>
-    <p>대시보드를 설계하면서 사용자 활동을 비롯해 운영 중 확인할 지표를 정의했습니다. Kafka로 들어온 보안 로그는 Airflow에서 1차 저장하고, 30분 단위 통계로 집계해 InfluxDB에 저장했습니다. 집계한 지표는 Grafana 대시보드와 사내 어드민 페이지에서 확인할 수 있도록 연동했습니다.</p>
-    <p>Airflow 배치가 실행됐는지와 데이터가 적재됐는지를 모니터링할 수 있게 했습니다. 과거 구간의 데이터는 필요할 때 Airflow 백필로 다시 처리할 수 있도록 했습니다.</p>
+    <p>운영자가 인증 성공과 실패 추이를 함께 볼 수 있도록 지표를 정의했습니다. Kafka로 들어온 보안 로그는 Airflow에서 1차 저장하고, 30분 단위 통계로 집계해 InfluxDB에 저장했습니다. 집계한 지표는 Grafana 대시보드와 사내 어드민 페이지에서 확인할 수 있도록 연동했습니다.</p>
+    <p>운영할 때는 배치 실행 상태와 실제 데이터 적재 상태를 각각 확인할 수 있게 했습니다. 집계를 다시 만들어야 할 때는 대상 기간을 지정해 Airflow 백필로 재처리할 수 있었습니다.</p>
     <figure class="case-figure" id="account-security-architecture">
       <img src="/media/account-security-dashboard-architecture.png" width="1440" height="1058" loading="lazy" alt="Kafka로 들어온 계정 보안 로그는 Airflow에서 1차 저장 및 백필을 처리합니다. 30분 단위 집계 통계는 InfluxDB에 저장하고 Grafana 대시보드와 사내 어드민 페이지에 연결합니다.">
       <figcaption>계정 보안 로그 수집부터 통계 조회까지의 흐름</figcaption>

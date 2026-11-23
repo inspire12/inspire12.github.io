@@ -13,16 +13,15 @@
   <a href="/projects/paige/">← PAIGE 프로젝트 보기</a>
   <div class="case-cover"><p class="eyebrow">NCSOFT · NLP 서비스 개발팀 · PAIGE</p>
   <h1>워커 기반 푸시 알림</h1>
-  <p class="lead">경기 일정에 맞춰 푸시를 예약하고, 워커가 발송을 처리하는 PAIGE 알림 시스템을 개발했습니다.</p>
+  <p class="lead">경기 전에 어떤 팬에게 어떤 문구를 보낼지는 운영자가 정하고, 실제 발송은 워커가 맡도록 구현했습니다.</p>
   <div class="tags"><a href="/projects/?tag=%EC%9B%8C%EC%BB%A4+%EA%B5%AC%EC%A1%B0">#워커 구조</a><a href="/projects/?tag=%ED%91%B8%EC%8B%9C+%EB%B0%9C%EC%86%A1">#푸시 발송</a></div></div>
   <section class="detail" aria-labelledby="problem">
-    <h2 id="problem">문제 인식</h2>
-    <p>경기 일정에 맞춰 알림을 보내면서, 운영자가 대상 그룹별로 발송 일정과 문구를 관리할 수 있어야 했습니다.</p>
+    <h2 id="problem">경기 일정에 맞춘 발송 예약</h2>
+    <p>경기 일정을 기준으로 스케줄러가 알림을 예약했습니다. 운영자는 어드민에서 대상 그룹별 문구를 수정하거나 예약을 취소할 수 있었습니다.</p>
   </section>
   <section class="detail" aria-labelledby="work-and-result">
-    <h2 id="work-and-result">작업 및 결과</h2>
-    <p>스케줄러가 경기 일정에 맞춰 알림을 예약하면, 발송 워커가 FCM으로 대상 그룹에 푸시를 보냈습니다. 운영자가 어드민에서 문구를 수정하거나 발송을 예약·취소할 수 있게 했습니다.</p>
-    <p>푸시에 대한 사용자 응답 데이터를 수집해 AI Lab 추천 모델의 피드백으로 연동했습니다.</p>
+    <h2 id="work-and-result">워커 발송과 응답 수집</h2>
+    <p>발송 시점이 되면 워커가 FCM을 통해 대상 그룹에 푸시를 보냈습니다. 발송 이후에는 사용자 응답을 수집해 AI Lab의 추천 모델에 피드백 데이터로 전달했습니다.</p>
   </section>
 </main>
 </body>

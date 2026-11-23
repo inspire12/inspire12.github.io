@@ -22,31 +22,23 @@
     <img src="https://blogfiles.ncsoft.net/news/c657dbbc-45f4-4bfa-9773-4e31cc7cbbed.jpg" alt="보라색 배경의 PAIGE 앱 소개 이미지와 ‘AI가 알려주는 야구 정보’ 문구" width="960" height="640">
     <figcaption><a href="https://about.ncsoft.com/news/article/40186">NC 공식 블로그 · PAIGE 서비스 소개</a></figcaption>
   </figure>
-  <section class="detail" aria-labelledby="paige-capabilities">
-    <h2 id="paige-capabilities">기술 역량</h2>
-    <div class="case-work">
-      <section aria-labelledby="paige-mock-server">
-        <h3 id="paige-mock-server">실시간 경기 중계와 영상</h3>
-        <p>실시간 경기 중계와 스트리밍, 경기·뉴스 데이터 처리 흐름을 다뤘습니다. 기록원이 입력한 경기 데이터가 이닝이 끝난 뒤 수정되면 중계에 오류가 전파될 수 있었습니다. 수집 중에 데이터 변경을 감지하고 기록해 수정 사항을 반영할 수 있게 했습니다.</p>
-        <p>Mock 서버로 오류 상황을 재현할 수 있는 테스트 환경을 만들었습니다. 영상 재생성 로직을 개선하고, 어드민에서 상황을 모니터링할 수 있게 했습니다.</p>
-      </section>
-      <section aria-labelledby="paige-recommendation">
-        <h3 id="paige-recommendation">추천 데이터 파이프라인과 홈 피드</h3>
-        <p>서비스에서 나온 데이터를 AI 팀의 Curation Platform에 넘기고, 추천 결과를 받아 홈 피드를 구성했습니다. 추천 API 지연이 홈 피드에 영향을 주는 문제를 <a href="/projects/group-feed-cache/">그룹별 캐시와 배치 갱신</a>으로 개선했습니다.</p>
-      </section>
-      <section aria-labelledby="paige-community">
-        <h3 id="paige-community">팀 응원 커뮤니티</h3>
-        <p>KBO 팀별 팬 커뮤니티의 게시글, 댓글, 투표, 이모티콘과 사용자 제재 기능을 개발했습니다. 댓글과 이미지를 공통 도메인과 API로 정리해 여러 곳에서 재사용할 수 있게 했고, <a href="/projects/team-community/">무한 스크롤과 미디어 자동 변환</a>을 구현했습니다.</p>
-      </section>
-      <section aria-labelledby="paige-push">
-        <h3 id="paige-push">경기 일정에 맞춘 푸시</h3>
-        <p>경기 일정에 맞춰 푸시를 예약하고, 운영자가 대상 그룹별로 문구를 편집하거나 발송을 취소할 수 있는 어드민을 개발했습니다. <a href="/projects/push-workers/">워커가 푸시 발송을 처리</a>했고, 사용자 응답 데이터를 AI Lab 추천 모델의 피드백으로 연결했습니다.</p>
-      </section>
-    </div>
+  <section class="detail" id="paige-mock-server" aria-labelledby="paige-capabilities">
+    <h2 id="paige-capabilities">이닝이 끝난 뒤 기록이 바뀌면</h2>
+    <p>기록원이 이전 이닝의 판정을 정정하면 이미 만든 중계 문구와 영상에 옛 기록이 남았습니다. 당직 개발자가 매번 데이터를 다시 생성해야 해서 이 작업의 자동화를 제안했습니다.</p>
+    <p>마지막 이닝만 보면 이전 이닝의 정정을 놓칩니다. 한 경기의 데이터가 많아도 약 200~300건이어서, 수집할 때 당일 경기 API 응답 전체를 DB에 저장한 기록과 비교했습니다. 달라진 내용을 기록하고 정정 유형에 따라 관련 콘텐츠를 다시 생성하도록 했습니다.</p>
+    <p>실제 경기 데이터를 순서대로 재생하는 모의 서버에서 이닝 종료 이벤트 처리가 누락되는 상황을 재현했습니다. 선수 교체와 기록 적재가 잘못되는 오류를 수정하고, 운영 어드민에서도 처리 상태를 확인할 수 있게 했습니다.</p>
     <figure class="case-figure" id="paige-broadcast-architecture">
       <img src="/media/paige-broadcast-architecture.png" width="1560" height="1238" loading="lazy" alt="기록원이 입력한 경기 데이터의 변경을 감지하고 기록한 뒤 중계와 영상 처리에 반영합니다. PAIGE에는 중계를 제공하고 운영 어드민에서는 상태를 확인합니다. 별도 테스트 환경에서는 Mock 서버를 통해 오류 상황을 재현합니다.">
       <figcaption>경기 데이터 수정에 대응하는 운영 흐름과 Mock 서버를 활용한 테스트 환경</figcaption>
     </figure>
+  </section>
+  <section class="detail" aria-labelledby="related-cases">
+    <h2 id="related-cases">PAIGE의 다른 백엔드 작업</h2>
+    <ul class="case-list">
+      <li id="paige-recommendation"><a href="/projects/group-feed-cache/">홈 피드의 추천 지연을 응원 팀별 캐시로 줄인 과정</a></li>
+      <li id="paige-community"><a href="/projects/team-community/">팀 응원 커뮤니티의 이미지 피드와 비동기 변환</a></li>
+      <li id="paige-push"><a href="/projects/push-workers/">경기 일정에 맞춰 푸시를 예약하고 발송하는 구조</a></li>
+    </ul>
   </section>
 </main>
 </body>

@@ -18,13 +18,13 @@
     <div class="tags"><a href="/projects/?tag=%EB%AA%A8%EB%8D%B8+%EC%84%9C%EB%B9%99">#모델 서빙</a><a href="/projects/?tag=CI%2FCD">#CI/CD</a></div>
   </div>
   <section class="detail" aria-labelledby="problem">
-    <h2 id="problem">문제 인식</h2>
+    <h2 id="problem">모델 교체 때마다 필요했던 수동 배포</h2>
     <p>Vision 모델을 수동 배포하고 있어 버전마다 테스트하기 어렵고, 문제가 생기면 이전 버전으로 되돌리기도 쉽지 않았습니다.</p>
   </section>
   <section class="detail" aria-labelledby="work-and-result">
-    <h2 id="work-and-result">작업 및 결과</h2>
-    <p>서비스에서 모델을 호출할 수 있도록 FastAPI 서버를 만들고 컨테이너화했습니다. 모델의 버전을 관리하는 단계부터 GPU 기반 Kubernetes 배포까지 이어지는 CI/CD 파이프라인을 구축했습니다.</p>
-    <p>이 파이프라인을 통해 수동으로 제공하던 실시간 선수 분석 영상 서비스의 배포와 운영 과정을 자동화했습니다.</p>
+    <h2 id="work-and-result">모델 버전에서 GPU 배포까지</h2>
+    <p>Vision AI 팀이 개발한 모델을 서비스에 올리는 쪽을 맡았습니다. 추론을 호출할 FastAPI 서버를 만들고 컨테이너화했습니다. 모델 버전 관리와 GPU 기반 Kubernetes 배포를 하나의 CI/CD 흐름으로 연결해 새 버전도 같은 절차로 배포할 수 있게 했습니다.</p>
+    <p>실시간 선수 분석 영상 서비스는 이 API를 호출해 모델 결과를 받았습니다.</p>
     <figure class="case-figure" id="vision-ai-architecture">
       <img src="/media/vision-ai-deployment-architecture.png" width="1560" height="1206" loading="lazy" alt="Vision 모델의 버전을 관리하고 FastAPI 서버를 컨테이너화합니다. CI/CD 파이프라인에서 빌드해 GPU 기반 Kubernetes에 배포하면 선수 분석 영상 서비스가 모델 API를 호출할 수 있습니다.">
       <figcaption>Vision 모델 버전 관리부터 Kubernetes 배포 및 서비스 연동까지</figcaption>

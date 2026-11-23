@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 450" width="540" height="450" role="img" aria-labelledby="title desc" lang="ko">
+  <title id="title">팀 응원 커뮤니티의 미디어 처리</title>
+  <desc id="desc">이미지·영상 업로드 이후 비동기 처리 단계에서 이미지는 크기를 조정하고 영상은 변환한다. 이미지는 팀 게시글 피드와 이미지 모아보기에서 사용한다.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 8 4 0 8z" fill="#486581"/>
+    </marker>
+    <style>
+      text{font-family:system-ui,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;fill:#192e47;text-anchor:middle;font-size:24px;font-weight:650}
+      .group{font-size:21px;fill:#24538d}
+      .edge{fill:none;stroke:#486581;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+      .node{fill:white;stroke:#b4c6d9;stroke-width:1.5}
+    </style>
+  </defs>
+  <rect x="1" y="1" width="538" height="448" rx="16" fill="#fff" stroke="#cbd7e5"/>
+  <rect x="120" y="26" width="300" height="64" rx="9" class="node"/>
+  <text x="270" y="66">이미지·영상 업로드</text>
+  <rect x="18" y="135" width="504" height="151" rx="12" fill="#edf3fb" stroke="#adc2da" stroke-dasharray="6 5"/>
+  <text class="group" x="111" y="168">비동기 처리</text>
+  <path class="edge" d="M270 90v87m0 0H144v24m126-24h126v24" fill="none"/>
+  <g class="edge" marker-end="url(#arrow)">
+    <path d="M144 192v13"/><path d="M396 192v13"/>
+    <path d="M144 257v89"/><path d="M144 317h250v29"/>
+  </g>
+  <rect x="39" y="208" width="210" height="49" rx="8" class="node"/>
+  <rect x="291" y="208" width="210" height="49" rx="8" class="node"/>
+  <text x="144" y="240">이미지 크기 조정</text><text x="396" y="240">영상 변환</text>
+  <rect x="39" y="352" width="210" height="70" rx="8" fill="#e7efff" stroke="#acbfde"/>
+  <rect x="289" y="352" width="210" height="70" rx="8" fill="#e7efff" stroke="#acbfde"/>
+  <text x="144" y="395">팀 게시글 피드</text><text x="394" y="395">이미지 모아보기</text>
+</svg>

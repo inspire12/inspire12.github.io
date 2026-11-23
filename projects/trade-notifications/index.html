@@ -18,13 +18,13 @@
     <div class="tags"><a href="/projects/?tag=%EC%B2%B4%EA%B2%B0+%EC%9D%B4%EB%B2%A4%ED%8A%B8">#체결 이벤트</a><a href="/projects/?tag=%EC%95%8C%EB%A6%BC+%EC%A0%84%EB%8B%AC">#알림 전달</a></div>
   </div>
   <section class="detail" aria-labelledby="problem">
-    <h2 id="problem">문제 인식</h2>
+    <h2 id="problem">화면을 닫아 둔 동안에도 발생하는 체결</h2>
     <p>회사의 자기자본을 운용하면서 주식 주문이 체결되면 바로 확인할 수 있어야 했습니다. 업무 화면에 접속하지 않은 동안 발생한 체결도 나중에 볼 수 있어야 했습니다.</p>
   </section>
   <section class="detail" aria-labelledby="work-and-result">
-    <h2 id="work-and-result">작업 및 결과</h2>
-    <p>한국투자증권 WebSocket에 연결해 실시간으로 체결 정보를 받았습니다. Ping/Pong을 처리해 세션을 유지하고, 연결이 끊기면 다시 접속하도록 구현했습니다.</p>
-    <p>체결 정보가 들어오면 접속 중인 브라우저에는 STOMP로 알림을 보냈습니다. 접속 중인 브라우저가 없으면 알림함에 저장해 나중에 확인할 수 있도록 했습니다.</p>
+    <h2 id="work-and-result">증권사 연결과 브라우저 전달을 분리</h2>
+    <p>증권사와 알림 서버 사이에는 체결을 계속 수신할 연결이 필요했습니다. 한국투자증권 WebSocket의 Ping/Pong을 처리해 세션을 유지하고, 연결이 끊기면 서버가 재접속하도록 구현했습니다.</p>
+    <p>서버가 체결을 받은 다음에는 사용자의 접속 상태에 따라 전달 경로를 나눴습니다. 접속 중인 브라우저에는 STOMP 구독으로 바로 알렸고, 미접속 상태라면 알림함에 저장해 다음에 화면을 열었을 때 확인할 수 있게 했습니다.</p>
     <figure class="case-figure" id="trade-notifications-architecture">
       <img src="/media/trade-notifications-architecture.png?v=7fab9e8f" width="1560" height="1484" loading="lazy" alt="한국투자증권 WebSocket이 체결 정보를 알림 서버에 보냅니다. 접속 중이면 brokerChannel에서 메시지 브로커를 거쳐 clientOutboundChannel로, 이어서 알림을 구독한 브라우저들로 STOMP 메시지가 전달됩니다. 미접속이면 알림함에 저장합니다.">
       <figcaption>한국투자증권의 체결 정보를 받아 메시지 브로커를 통해 구독 중인 브라우저에 전달하는 흐름입니다. 채널 이름은 <a href="https://docs.spring.io/spring-framework/reference/web/websocket/stomp/message-flow.html">Spring STOMP 문서</a>의 표기를 따랐습니다. <a href="/media/trade-notifications-architecture.png?v=7fab9e8f">원본 이미지 보기</a></figcaption>
