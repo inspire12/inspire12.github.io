@@ -26,8 +26,9 @@
     <p>팀은 이전 버전을 다시 빌드해 배포했고, 인스턴스의 빌드 버전을 맞췄습니다.</p>
   </section>
   <section class="detail" aria-labelledby="prevention">
-    <h2 id="prevention">재발 방지</h2>
+    <h2 id="prevention">재발 방지와 모니터링 개선</h2>
     <p>복구 후에는 GitHub Actions에서 <code>latest</code> 태그로 빌드하던 방식을 바꿔, 빌드할 때 버전을 명시하도록 수정했습니다. 스케일 아웃으로 인스턴스가 늘어날 때도 배포한 버전이 실행되도록 했습니다.</p>
+    <p>사용자 문의를 받고 나서야 문제를 알게 된 만큼, 운영 중 이상을 더 쉽게 파악할 수 있도록 로그도 손봤습니다. CloudWatch Logs에서 필요한 필드를 검색하고 인덱싱할 수 있게 로그를 JSON 포맷으로 바꾸고, 심각도에 따라 로그 레벨을 구분했습니다.</p>
   </section>
 </main>
 </body>
