@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 593" role="img" aria-labelledby="diagram-title diagram-desc" xml:lang="ko">
+  <title id="diagram-title">PAIGE 경기 기록 정정과 오류 재현</title>
+  <desc id="diagram-desc">당일 경기 API 응답 전체와 DB 기록을 비교해 변경을 기록하고 정정 유형별 콘텐츠를 재생성합니다. PAIGE로 중계와 영상을 제공하며 운영 어드민에서 상태를 봅니다. 별도 테스트 환경에서는 모의 서버로 실제 경기를 재생해 이닝 종료 처리 누락을 재현합니다.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 0.8 7.2 4 1 7.2" fill="none" stroke="#54718b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <style>text{font-family:system-ui,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}.edge{fill:none;stroke:#54718b;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}</style>
+  </defs>
+  <rect x="1" y="1" width="478" height="591" rx="16" fill="#f8fafc" stroke="#d7e0ea" stroke-width="1.2" />
+  <text x="25" y="38" font-size="18" font-weight="700" fill="#245994" text-anchor="start">중계 운영</text>
+  <rect x="24" y="56" width="205" height="65" rx="10" fill="#ffffff" stroke="#c6d3e0" stroke-width="1.2" />
+  <text x="126.5" y="84" font-size="20" font-weight="650" fill="#162c46" text-anchor="middle">경기 데이터 API</text>
+  <text x="126.5" y="107" font-size="17" font-weight="450" fill="#435a70" text-anchor="middle">당일 경기 전체</text>
+  <rect x="251" y="56" width="205" height="65" rx="10" fill="#ffffff" stroke="#c6d3e0" stroke-width="1.2" />
+  <text x="353.5" y="84" font-size="20" font-weight="650" fill="#162c46" text-anchor="middle">DB 경기 기록</text>
+  <text x="353.5" y="107" font-size="17" font-weight="450" fill="#435a70" text-anchor="middle">기존 수집 데이터</text>
+  <path class="edge" d="M126.5 122v19H240"/>
+  <path class="edge" d="M353.5 122v19H240v21" marker-end="url(#arrow)"/>
+  <rect x="66" y="166" width="348" height="69" rx="10" fill="#e8f1fb" stroke="#a5bfd9" stroke-width="1.2" />
+  <text x="240" y="195" font-size="20" font-weight="650" fill="#162c46" text-anchor="middle">변경 감지와 기록</text>
+  <text x="240" y="218" font-size="17" font-weight="450" fill="#36546b" text-anchor="middle">경기 전체를 비교해 정정 내역 확인</text>
+  <path class="edge" d="M240 236v24" marker-end="url(#arrow)"/>
+  <rect x="66" y="264" width="348" height="54" rx="10" fill="#e8f1fb" stroke="#a5bfd9" stroke-width="1.2" />
+  <text x="240" y="297" font-size="20" font-weight="650" fill="#162c46" text-anchor="middle">정정 유형에 따라 콘텐츠 재생성</text>
+  <path class="edge" d="M240 319v16H126.5v17" marker-end="url(#arrow)"/>
+  <path class="edge" d="M240 335h113.5v17" marker-end="url(#arrow)"/>
+  <rect x="24" y="356" width="205" height="65" rx="10" fill="#e6f4f0" stroke="#a0c7bc" stroke-width="1.2" />
+  <text x="126.5" y="384" font-size="21" font-weight="700" fill="#164d48" text-anchor="middle">PAIGE</text>
+  <text x="126.5" y="407" font-size="17" font-weight="450" fill="#345e57" text-anchor="middle">중계 · 영상 제공</text>
+  <rect x="251" y="356" width="205" height="65" rx="10" fill="#e6f4f0" stroke="#a0c7bc" stroke-width="1.2" />
+  <text x="353.5" y="384" font-size="20" font-weight="700" fill="#164d48" text-anchor="middle">운영 어드민</text>
+  <text x="353.5" y="407" font-size="17" font-weight="450" fill="#345e57" text-anchor="middle">처리 상태 확인</text>
+  <path d="M24 447h432" stroke="#c6d3e0" stroke-width="1.2"/>
+  <text x="25" y="478" font-size="18" font-weight="700" fill="#845823" text-anchor="start">테스트 환경</text>
+  <rect x="24" y="495" width="194" height="73" rx="10" fill="#fcf2df" stroke="#dac79d" stroke-width="1.2" />
+  <text x="121" y="526" font-size="20" font-weight="650" fill="#162c46" text-anchor="middle">모의 서버</text>
+  <text x="121" y="551" font-size="16.5" font-weight="450" fill="#70542f" text-anchor="middle">실제 경기 순서로 재생</text>
+  <path class="edge" d="M219 532h30" marker-end="url(#arrow)"/>
+  <rect x="254" y="495" width="202" height="73" rx="10" fill="#fcf2df" stroke="#dac79d" stroke-width="1.2" />
+  <text x="355" y="526" font-size="20" font-weight="650" fill="#162c46" text-anchor="middle">오류 재현</text>
+  <text x="355" y="551" font-size="16.5" font-weight="450" fill="#70542f" text-anchor="middle">이닝 종료 처리 누락</text>
+</svg>

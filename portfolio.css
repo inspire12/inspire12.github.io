@@ -185,6 +185,17 @@ input { accent-color: var(--accent); }
 .case-figure img { display: block; width: 100%; height: auto; }
 .case-figure figcaption { margin-top: .5rem; color: var(--muted); font-size: .85rem; }
 .case-figure figcaption a { text-decoration: underline; text-underline-offset: .22em; }
+
+.architecture-figure { max-width: 36rem; }
+.architecture-figure figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .25rem 1rem;
+}
+.architecture-figure figcaption > span { flex: 1 1 18rem; }
+.architecture-figure .diagram-source { color: var(--accent); white-space: nowrap; }
 .case-list { padding-inline-start: 1.25em; }
 .case-list a, .teaching-links a { text-decoration: underline; text-underline-offset: .22em; }
 .teaching-links { margin: 0; padding-inline-start: 1.25em; }

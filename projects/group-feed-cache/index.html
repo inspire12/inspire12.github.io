@@ -6,7 +6,7 @@
   <title>추천 피드의 그룹별 캐싱 · 서영학</title>
   <meta name="description" content="PAIGE에서 culogger로 데이터를 모아 AI 팀의 추천 결과로 홈 피드를 구성하고, 그룹 단위 캐시와 배치 갱신으로 응답 병목을 개선했습니다.">
   <link rel="canonical" href="https://inspire12.github.io/projects/group-feed-cache/">
-  <link rel="stylesheet" href="../../portfolio.css?v=ec9ea2077c">
+  <link rel="stylesheet" href="../../portfolio.css?v=ee2acfaa5e">
 </head>
 <body><header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
 <main class="inner case-layout">
@@ -26,9 +26,12 @@
     <h2 id="work-and-result">개인별 실시간 추천에서 응원 팀별 배치로</h2>
     <p>홈 화면에서 개인마다 다른 추천을 제공하던 범위를 응원 팀 단위로 좁혔습니다. 같은 팀 팬에게 같은 피드를 제공하면, 한 번 계산한 추천 결과를 여러 조회 요청에서 쓸 수 있었습니다.</p>
     <p>여러 서비스에서 보낸 데이터를 <code>culogger</code>에서 모아 형식을 맞추고 AI 팀의 Curation Platform에 전달했습니다. 추천 결과는 배치로 갱신하고 홈 피드는 팀별 캐시에서 읽도록 바꿨습니다. 외부 추천 API 호출에는 서킷브레이커를 적용해 실패가 반복될 때 추가 호출을 제한했습니다.</p>
-    <figure class="case-figure" id="group-feed-cache-architecture">
-      <img src="/media/group-feed-cache-architecture.png" width="1560" height="1352" loading="lazy" alt="여러 PAIGE 컴포넌트의 데이터가 culogger에 모입니다. 포맷을 통일해 AI 팀의 Curation Platform에 전달하고, 돌아온 추천 결과로 홈 피드를 구성합니다. 피드는 그룹 단위로 캐시해 같은 그룹에서 재사용합니다.">
-      <figcaption>culogger에서 데이터를 모아 추천을 받고, 그룹별로 피드를 재사용하는 흐름</figcaption>
+    <figure class="case-figure architecture-figure" id="group-feed-cache-architecture">
+      <img src="/media/group-feed-cache-architecture.svg?v=8f3bf0b818" width="480" height="555" loading="lazy" alt="PAIGE의 여러 서비스가 보낸 데이터를 culogger에서 모아 포맷을 통일합니다. AI 팀의 Curation Platform이 생성한 추천 결과로 배치가 팀별 피드 캐시를 갱신합니다. 홈 피드는 응원 팀에 해당하는 캐시를 조회합니다.">
+      <figcaption>
+        <span>culogger에서 데이터를 모아 추천을 받고, 그룹별로 피드를 재사용하는 흐름</span>
+        <a class="diagram-source" href="/media/group-feed-cache-architecture.svg?v=8f3bf0b818">원본 그림 보기</a>
+      </figcaption>
     </figure>
   </section>
 </main>

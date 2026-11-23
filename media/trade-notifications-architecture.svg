@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 505" role="img" aria-labelledby="title desc" xml:lang="ko">
+  <title id="title">실시간 주식 체결 알림의 전달 경로</title>
+  <desc id="desc">한국투자증권 WebSocket에서 체결을 수신합니다. 접속 중인 사용자에게는 알림 서버가 brokerChannel을 통해 메시지 브로커에 발행하고, 브로커가 clientOutboundChannel을 거쳐 구독 중인 브라우저 세션들에 STOMP MESSAGE를 보냅니다. 미접속 사용자의 알림은 알림함에 저장합니다.</desc>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans CJK KR", sans-serif; fill: #162c46; }
+    .label { font-size: 22px; font-weight: 700; }
+    .sub { font-size: 18px; fill: #42566b; }
+    .small { font-size: 17px; fill: #42566b; }
+    .blue { fill: #245994; }
+    .teal { fill: #17645d; }
+    .warm { fill: #845823; }
+    .wire { fill: none; stroke: #647b91; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M1 1l5.7 3L1 7" fill="none" stroke="#647b91" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="478" height="503" rx="16" fill="#f8fafc" stroke="#d7e0ea"/>
+  <rect x="16" y="22" width="191" height="95" rx="12" fill="#ffffff" stroke="#cad6e2" stroke-width="1.3"/>
+  <rect x="251" y="22" width="213" height="95" rx="12" fill="#e8f1fb" stroke="#adc7e4" stroke-width="1.3"/>
+  <path class="wire" d="M208 69h39" marker-end="url(#arrow)"/>
+  <text x="111.5" y="55" class="label" text-anchor="middle">한국투자증권</text>
+  <text x="111.5" y="81" class="sub" text-anchor="middle">WebSocket</text>
+  <text x="111.5" y="103" class="small" text-anchor="middle">실시간 체결 송신</text>
+  <text x="357.5" y="55" class="label blue" text-anchor="middle">체결 알림 서버</text>
+  <text x="357.5" y="81" class="sub" text-anchor="middle">Ping/Pong 연결 유지</text>
+  <text x="357.5" y="103" class="small" text-anchor="middle">연결 종료 시 재접속</text>
+  <path class="wire" d="M357 117v26"/>
+  <path class="wire" d="M357 143H128q-6 0-6 6v66" marker-end="url(#arrow)"/>
+  <path class="wire" d="M357 143v72" marker-end="url(#arrow)"/>
+  <text x="135" y="171" class="small blue" text-anchor="start">접속 중</text>
+  <text x="135" y="196" class="sub" text-anchor="start">brokerChannel</text>
+  <text x="370" y="178" class="small warm" text-anchor="start">미접속</text>
+  <rect x="16" y="219" width="246" height="67" rx="12" fill="#e8f1fb" stroke="#adc7e4" stroke-width="1.3"/>
+  <text x="139" y="248" class="label blue" text-anchor="middle">메시지 브로커</text>
+  <text x="139" y="272" class="sub" text-anchor="middle">구독 세션으로 전달</text>
+  <rect x="282" y="219" width="182" height="67" rx="12" fill="#fcf2df" stroke="#deca9f" stroke-width="1.3"/>
+  <text x="373" y="248" class="label warm" text-anchor="middle">알림함</text>
+  <text x="373" y="272" class="sub" text-anchor="middle">체결 알림 저장</text>
+  <path class="wire" d="M122 286v62q0 5 5 5h107q6 0 6 6v10"/>
+  <text x="141" y="316" class="sub" text-anchor="start">clientOutboundChannel</text>
+  <text x="141" y="340" class="small" text-anchor="start">STOMP MESSAGE 송신</text>
+  <path class="wire" d="M240 369H93q-5 0-5 5v22" marker-end="url(#arrow)"/>
+  <path class="wire" d="M240 369v27" marker-end="url(#arrow)"/>
+  <path class="wire" d="M240 369h147q5 0 5 5v22" marker-end="url(#arrow)"/>
+  <rect x="33" y="400" width="110" height="51" rx="12" fill="#e6f4f0" stroke="#a9cfc4" stroke-width="1.3"/>
+  <rect x="185" y="400" width="110" height="51" rx="12" fill="#e6f4f0" stroke="#a9cfc4" stroke-width="1.3"/>
+  <rect x="337" y="400" width="110" height="51" rx="12" fill="#e6f4f0" stroke="#a9cfc4" stroke-width="1.3"/>
+  <g aria-hidden="true" transform="translate(69 408) scale(1.5833)" stroke="#17645d" color="#17645d" fill="none" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M2 8.5h20m-16-3h.2m2.4 0h.2"/></g>
+  <g aria-hidden="true" transform="translate(221 408) scale(1.5833)" stroke="#17645d" color="#17645d" fill="none" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M2 8.5h20m-16-3h.2m2.4 0h.2"/></g>
+  <g aria-hidden="true" transform="translate(373 408) scale(1.5833)" stroke="#17645d" color="#17645d" fill="none" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M2 8.5h20m-16-3h.2m2.4 0h.2"/></g>
+  <text x="240" y="482" class="label teal" text-anchor="middle">알림을 구독한 브라우저 세션</text>
+</svg>
