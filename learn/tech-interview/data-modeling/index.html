@@ -7,13 +7,14 @@
   <meta name="description" content="강의 가격은 바뀌어도 지난 신청 내역의 금액은 그대로여야 합니다. 한 강의를 여러 날짜에 개설합니다. 수강생은 회차별로 한 번 신청할 수 있습니다. 강사는 다음 달 가격을 바꿀 수 있고, 고객센터는 작년에 한 신청의 당시 금액을 조회해야 합니다.">
   <link rel="canonical" href="https://inspire12.github.io/learn/tech-interview/data-modeling/">
   <link rel="stylesheet" href="/portfolio.css?v=ec9ea2077c">
-  <link rel="stylesheet" href="/learn/tech-interview/interview.css">
+  <link rel="stylesheet" href="/learn/tech-interview/interview.css?v=notes1">
+  <script src="/learn/tech-interview/notes.js" defer></script>
 </head>
 <body>
 <header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
 <main class="inner interview">
   <nav class="crumbs" aria-label="상위 메뉴"><a href="/learn/">강의 목록</a> <a href="/learn/tech-interview/">기술 면접 목차</a></nav>
-  <article>
+  <article data-topic="data-modeling">
     <p class="position">면접 3 / 9 · <span lang="en">Data Modeling</span></p>
     <h1>데이터 모델링</h1>
     <section class="brief" aria-labelledby="question">
@@ -23,14 +24,47 @@
 조회 B  회차별 확정 신청자
 불변 조건  한 수강생의 유효 신청은 회차당 최대 1건</code></pre></figure>
     </section>
+    <details class="notes-editor" id="note-main" data-question="main" hidden>
+      <summary>본질문 · 내 답변과 평가 기록</summary>
+      <p class="record-help">입력하면 이 브라우저에 자동 저장됩니다. <a href="/learn/tech-interview/#my-records">내 연습 기록과 백업</a></p>
+      <label for="answer-main">내 답변</label>
+      <textarea id="answer-main" data-field="answer" rows="4"></textarea>
+      <label for="feedback-main">평가·피드백</label>
+      <textarea id="feedback-main" data-field="feedback" rows="3" placeholder="직접 돌아본 점이나 받은 피드백을 적어 보세요."></textarea>
+      <p class="record-status" role="status"></p>
+    </details>
     <details><summary>답변 예시 펼쳐 보기</summary>
       <p>강의, 회차, 신청을 나누겠습니다. 회차는 강의 ID와 정원, 신청 시 적용할 가격을 가집니다. 신청은 회차 ID와 수강생 ID를 참조하고, 확정 금액·통화·신청 시각을 보관합니다. 과거 금액은 현재 가격을 조인해서 추측할 필요가 없습니다.</p>
       <p>초기에는 관계형 DB를 쓰겠습니다. 신청 생성과 좌석 확보를 한 트랜잭션으로 묶을 수 있고, 두 목록도 키가 분명합니다. 한 사람의 회차별 신청 행을 하나로 유지하고 상태를 전환한다면 (회차 ID, 수강생 ID)에 유일 제약을 걸 수 있습니다.</p>
     </details>
     <section aria-labelledby="follow-ups">
       <h2 id="follow-ups">꼬리질문</h2>
-      <details><summary>취소 후 재신청을 허용하면서 이력도 남겨야 한다면요?</summary><p>현재 신청은 유일한 행 하나로 유지하고, 신청·취소·재신청을 별도 이력에 순서대로 남길 수 있습니다. 재신청 때 새 가격이 적용되면 그 이벤트에 확정 금액도 남기고 현재 행과 이력을 함께 갱신합니다.</p></details>
-      <details><summary>운영자가 목록 조회가 느리다며 문서 DB로 바꾸자고 합니다. 무엇부터 확인할까요?</summary><p>느린 쿼리, 정렬과 필터 조건, 읽는 행 수를 확인합니다. 적절한 인덱스나 읽기 전용 조회 모델로 해결되는지 먼저 측정하겠습니다. 별도 저장소를 택한다면 갱신 지연을 허용할 목록과 최신성이 필수인 신청 경로를 구분합니다.</p></details>
+      <div class="follow-question">
+        <h3>취소 후 재신청을 허용하면서 이력도 남겨야 한다면요?</h3>
+        <details class="notes-editor" id="note-follow-1" data-question="follow-1" hidden>
+      <summary>꼬리질문 1 · 내 답변과 평가 기록</summary>
+      <p class="record-help">입력하면 이 브라우저에 자동 저장됩니다. <a href="/learn/tech-interview/#my-records">내 연습 기록과 백업</a></p>
+      <label for="answer-follow-1">내 답변</label>
+      <textarea id="answer-follow-1" data-field="answer" rows="4"></textarea>
+      <label for="feedback-follow-1">평가·피드백</label>
+      <textarea id="feedback-follow-1" data-field="feedback" rows="3" placeholder="직접 돌아본 점이나 받은 피드백을 적어 보세요."></textarea>
+      <p class="record-status" role="status"></p>
+    </details>
+        <details><summary>꼬리질문 1 답변 예시</summary><p>현재 신청은 유일한 행 하나로 유지하고, 신청·취소·재신청을 별도 이력에 순서대로 남길 수 있습니다. 재신청 때 새 가격이 적용되면 그 이벤트에 확정 금액도 남기고 현재 행과 이력을 함께 갱신합니다.</p></details>
+      </div>
+      <div class="follow-question">
+        <h3>운영자가 목록 조회가 느리다며 문서 DB로 바꾸자고 합니다. 무엇부터 확인할까요?</h3>
+        <details class="notes-editor" id="note-follow-2" data-question="follow-2" hidden>
+      <summary>꼬리질문 2 · 내 답변과 평가 기록</summary>
+      <p class="record-help">입력하면 이 브라우저에 자동 저장됩니다. <a href="/learn/tech-interview/#my-records">내 연습 기록과 백업</a></p>
+      <label for="answer-follow-2">내 답변</label>
+      <textarea id="answer-follow-2" data-field="answer" rows="4"></textarea>
+      <label for="feedback-follow-2">평가·피드백</label>
+      <textarea id="feedback-follow-2" data-field="feedback" rows="3" placeholder="직접 돌아본 점이나 받은 피드백을 적어 보세요."></textarea>
+      <p class="record-status" role="status"></p>
+    </details>
+        <details><summary>꼬리질문 2 답변 예시</summary><p>느린 쿼리, 정렬과 필터 조건, 읽는 행 수를 확인합니다. 적절한 인덱스나 읽기 전용 조회 모델로 해결되는지 먼저 측정하겠습니다. 별도 저장소를 택한다면 갱신 지연을 허용할 목록과 최신성이 필수인 신청 경로를 구분합니다.</p></details>
+      </div>
     </section>
     <section aria-labelledby="concepts">
       <h2 id="concepts">핵심 개념</h2>

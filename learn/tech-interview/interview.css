@@ -47,3 +47,17 @@
   .concept-list > div { grid-template-columns: minmax(0, 1fr); }
   .chapter-list a { grid-template-columns: 1.65rem minmax(0, 1fr); gap: .2rem .5rem; }
 }
+
+.interview .notes-editor { margin-block: .5rem 0; padding: .6rem .9rem; background: var(--card-tint); border: 1px solid var(--line); border-radius: .35rem; }
+.interview .notes-editor summary { font-size: 1rem; }
+.notes-editor label { display: block; margin: .8rem 0 .2rem; font-weight: 650; }
+.notes-editor textarea { display: block; width: 100%; min-height: 5.25rem; resize: vertical; padding: .65rem; border: 1px solid #96a9bf; border-radius: .3rem; color: var(--ink); background: var(--card); font: inherit; }
+.interview .record-help, .interview .record-status { font-size: .9rem; color: var(--muted); }
+.record-status:empty { display: none; }
+.interview .follow-question { margin: 1.2rem 0; }
+.follow-question h3 { font-size: 1.08rem; line-height: 1.5; }
+.record-actions { display: flex; flex-wrap: wrap; gap: .8rem 1.4rem; align-items: center; }
+.record-actions button, .record-actions input { font: inherit; max-width: 100%; }
+.record-actions button { padding: .45rem .75rem; border: 1px solid var(--line); border-radius: .3rem; background: var(--card); color: var(--accent); cursor: pointer; }
+.record-actions button:disabled { color: var(--muted); cursor: default; }
+.record-actions label { display: grid; gap: .25rem; }

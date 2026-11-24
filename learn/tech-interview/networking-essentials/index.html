@@ -7,27 +7,61 @@
   <meta name="description" content="점수판을 보는 3만 명에게 변경 사항을 어떻게 보낼까요? 라이브 강의 중 퀴즈 점수판을 띄웁니다. 브라우저 3만 개가 2초마다 같은 점수판을 조회합니다. 점수는 분당 한두 번 바뀌고, 바뀐 뒤 3초 안에 보이면 됩니다. 답안 제출은 별도 HTTP API가 처리합니다.">
   <link rel="canonical" href="https://inspire12.github.io/learn/tech-interview/networking-essentials/">
   <link rel="stylesheet" href="/portfolio.css?v=ec9ea2077c">
-  <link rel="stylesheet" href="/learn/tech-interview/interview.css">
+  <link rel="stylesheet" href="/learn/tech-interview/interview.css?v=notes1">
+  <script src="/learn/tech-interview/notes.js" defer></script>
 </head>
 <body>
 <header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
 <main class="inner interview">
   <nav class="crumbs" aria-label="상위 메뉴"><a href="/learn/">강의 목록</a> <a href="/learn/tech-interview/">기술 면접 목차</a></nav>
-  <article>
+  <article data-topic="networking-essentials">
     <p class="position">면접 1 / 9 · <span lang="en">Networking Essentials</span></p>
     <h1>네트워크 기초</h1>
     <section class="brief" aria-labelledby="question">
       <h2 id="question">점수판을 보는 3만 명에게 변경 사항을 어떻게 보낼까요?</h2>
       <p>라이브 강의 중 퀴즈 점수판을 띄웁니다. 브라우저 3만 개가 2초마다 같은 점수판을 조회합니다. 점수는 분당 한두 번 바뀌고, 바뀐 뒤 3초 안에 보이면 됩니다. 답안 제출은 별도 HTTP API가 처리합니다.</p>
     </section>
+    <details class="notes-editor" id="note-main" data-question="main" hidden>
+      <summary>본질문 · 내 답변과 평가 기록</summary>
+      <p class="record-help">입력하면 이 브라우저에 자동 저장됩니다. <a href="/learn/tech-interview/#my-records">내 연습 기록과 백업</a></p>
+      <label for="answer-main">내 답변</label>
+      <textarea id="answer-main" data-field="answer" rows="4"></textarea>
+      <label for="feedback-main">평가·피드백</label>
+      <textarea id="feedback-main" data-field="feedback" rows="3" placeholder="직접 돌아본 점이나 받은 피드백을 적어 보세요."></textarea>
+      <p class="record-status" role="status"></p>
+    </details>
     <details><summary>답변 예시 펼쳐 보기</summary>
       <p>현재 폴링은 점수가 그대로여도 초당 약 1만 5천 번 들어옵니다. 점수판은 서버에서 브라우저로 한 방향이고 제출 API는 이미 있으니, 처음엔 HTTP로 현재 점수를 받고 이후 변경분은 SSE로 보내겠습니다. 느슨한 지연 목표였다면 캐시 가능한 폴링 응답도 비교할 만합니다.</p>
       <p>SSE는 3만 연결을 유지해야 합니다. 연결당 메모리, 파일 디스크립터, 이벤트 전달 지연을 부하 테스트하고, 배포 중 재접속이 몰려도 3초 목표를 지키는지 확인하겠습니다.</p>
     </details>
     <section aria-labelledby="follow-ups">
       <h2 id="follow-ups">꼬리질문</h2>
-      <details><summary>연결이 끊긴 동안 두 번 점수가 바뀌면 어떻게 복구하나요?</summary><p>이벤트에 순번을 붙입니다. 클라이언트가 재연결하며 보낸 마지막 이벤트 ID가 보관 범위 안에 있으면 이후 이벤트를 재생합니다. 기록이 만료됐거나 순번에 공백이 있으면 최신 점수판을 다시 받아 기준점을 맞춥니다.</p></details>
-      <details><summary>집에서 테스트할 땐 즉시 보이는데 운영 환경에서는 여러 건이 한꺼번에 도착합니다. 어디부터 볼까요?</summary><p>서버의 이벤트 생성·쓰기 시각과 브라우저 수신 시각을 비교합니다. 서버가 즉시 썼다면 프록시의 스트리밍 응답 버퍼링을 확인하고, 유휴 연결만 끊긴다면 하트비트 간격과 로드 밸런서의 타임아웃을 대조합니다.</p></details>
+      <div class="follow-question">
+        <h3>연결이 끊긴 동안 두 번 점수가 바뀌면 어떻게 복구하나요?</h3>
+        <details class="notes-editor" id="note-follow-1" data-question="follow-1" hidden>
+      <summary>꼬리질문 1 · 내 답변과 평가 기록</summary>
+      <p class="record-help">입력하면 이 브라우저에 자동 저장됩니다. <a href="/learn/tech-interview/#my-records">내 연습 기록과 백업</a></p>
+      <label for="answer-follow-1">내 답변</label>
+      <textarea id="answer-follow-1" data-field="answer" rows="4"></textarea>
+      <label for="feedback-follow-1">평가·피드백</label>
+      <textarea id="feedback-follow-1" data-field="feedback" rows="3" placeholder="직접 돌아본 점이나 받은 피드백을 적어 보세요."></textarea>
+      <p class="record-status" role="status"></p>
+    </details>
+        <details><summary>꼬리질문 1 답변 예시</summary><p>이벤트에 순번을 붙입니다. 클라이언트가 재연결하며 보낸 마지막 이벤트 ID가 보관 범위 안에 있으면 이후 이벤트를 재생합니다. 기록이 만료됐거나 순번에 공백이 있으면 최신 점수판을 다시 받아 기준점을 맞춥니다.</p></details>
+      </div>
+      <div class="follow-question">
+        <h3>집에서 테스트할 땐 즉시 보이는데 운영 환경에서는 여러 건이 한꺼번에 도착합니다. 어디부터 볼까요?</h3>
+        <details class="notes-editor" id="note-follow-2" data-question="follow-2" hidden>
+      <summary>꼬리질문 2 · 내 답변과 평가 기록</summary>
+      <p class="record-help">입력하면 이 브라우저에 자동 저장됩니다. <a href="/learn/tech-interview/#my-records">내 연습 기록과 백업</a></p>
+      <label for="answer-follow-2">내 답변</label>
+      <textarea id="answer-follow-2" data-field="answer" rows="4"></textarea>
+      <label for="feedback-follow-2">평가·피드백</label>
+      <textarea id="feedback-follow-2" data-field="feedback" rows="3" placeholder="직접 돌아본 점이나 받은 피드백을 적어 보세요."></textarea>
+      <p class="record-status" role="status"></p>
+    </details>
+        <details><summary>꼬리질문 2 답변 예시</summary><p>서버의 이벤트 생성·쓰기 시각과 브라우저 수신 시각을 비교합니다. 서버가 즉시 썼다면 프록시의 스트리밍 응답 버퍼링을 확인하고, 유휴 연결만 끊긴다면 하트비트 간격과 로드 밸런서의 타임아웃을 대조합니다.</p></details>
+      </div>
     </section>
     <section aria-labelledby="concepts">
       <h2 id="concepts">핵심 개념</h2>

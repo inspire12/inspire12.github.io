@@ -7,13 +7,14 @@
   <meta name="description" content="신청은 성공했는데 응답이 사라졌습니다. 다시 누르면 어떻게 되나요? 수강생이 마지막 좌석에 신청했습니다. 서버는 처리했지만 모바일 앱은 응답을 받기 전에 타임아웃이 났습니다. 앱은 같은 신청을 재전송할 수 있고, 서로 다른 기기에서 동시에 누르는 경우도 있습니다.">
   <link rel="canonical" href="https://inspire12.github.io/learn/tech-interview/api-design/">
   <link rel="stylesheet" href="/portfolio.css?v=ec9ea2077c">
-  <link rel="stylesheet" href="/learn/tech-interview/interview.css">
+  <link rel="stylesheet" href="/learn/tech-interview/interview.css?v=notes1">
+  <script src="/learn/tech-interview/notes.js" defer></script>
 </head>
 <body>
 <header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
 <main class="inner interview">
   <nav class="crumbs" aria-label="상위 메뉴"><a href="/learn/">강의 목록</a> <a href="/learn/tech-interview/">기술 면접 목차</a></nav>
-  <article>
+  <article data-topic="api-design">
     <p class="position">면접 2 / 9 · <span lang="en">API Design</span></p>
     <h1>API 설계</h1>
     <section class="brief" aria-labelledby="question">
@@ -24,14 +25,47 @@ Idempotency-Key: 72f4a9
 
 인증된 수강생: u17</code></pre></figure>
     </section>
+    <details class="notes-editor" id="note-main" data-question="main" hidden>
+      <summary>본질문 · 내 답변과 평가 기록</summary>
+      <p class="record-help">입력하면 이 브라우저에 자동 저장됩니다. <a href="/learn/tech-interview/#my-records">내 연습 기록과 백업</a></p>
+      <label for="answer-main">내 답변</label>
+      <textarea id="answer-main" data-field="answer" rows="4"></textarea>
+      <label for="feedback-main">평가·피드백</label>
+      <textarea id="feedback-main" data-field="feedback" rows="3" placeholder="직접 돌아본 점이나 받은 피드백을 적어 보세요."></textarea>
+      <p class="record-status" role="status"></p>
+    </details>
     <details><summary>답변 예시 펼쳐 보기</summary>
       <p>로그인한 수강생은 신청 의도마다 키 하나를 만들고, 타임아웃 뒤에는 같은 키를 보냅니다. 서버는 수강생과 키에 유일 제약을 걸고 요청 내용도 비교합니다. 첫 성공에는 신청 ID를 반환하고 같은 요청이 다시 오면 그 ID와 기존 처리 결과를 반환합니다.</p>
       <p>키 기록, 잔여 좌석의 조건부 차감, 신청 생성, 응답 식별자 저장을 같은 DB 트랜잭션에 넣겠습니다. 커밋 뒤 응답만 유실돼도 결과를 복구할 수 있습니다. 두 기기가 별도 키를 쓰는 경우는 회차와 수강생의 유일 제약으로 차단하고, 차감까지 함께 롤백합니다.</p>
     </details>
     <section aria-labelledby="follow-ups">
       <h2 id="follow-ups">꼬리질문</h2>
-      <details><summary>같은 키로 다른 회차를 신청하면요?</summary><p>키에 연결된 최초 요청과 회차 등 의미 있는 필드를 비교합니다. 다르면 충돌 응답을 반환해 클라이언트가 새 의도에는 새 키를 쓰도록 합니다. 같은 키라는 이유만으로 다른 회차의 성공 응답을 재사용하면 안 됩니다.</p></details>
-      <details><summary>신청은 DB에 있고 확인 메일은 외부 서비스가 보냅니다. 둘은 어떻게 묶나요?</summary><p>신청과 같은 트랜잭션에 발송할 이벤트를 기록하고 워커가 재시도합니다. 발송 제공자가 멱등 키를 지원하면 이벤트 ID를 전달합니다. 제공자가 이미 메일을 보낸 뒤 응답만 유실될 수 있으므로 수신 메일까지 정확히 한 번이라고 약속하지는 않겠습니다.</p></details>
+      <div class="follow-question">
+        <h3>같은 키로 다른 회차를 신청하면요?</h3>
+        <details class="notes-editor" id="note-follow-1" data-question="follow-1" hidden>
+      <summary>꼬리질문 1 · 내 답변과 평가 기록</summary>
+      <p class="record-help">입력하면 이 브라우저에 자동 저장됩니다. <a href="/learn/tech-interview/#my-records">내 연습 기록과 백업</a></p>
+      <label for="answer-follow-1">내 답변</label>
+      <textarea id="answer-follow-1" data-field="answer" rows="4"></textarea>
+      <label for="feedback-follow-1">평가·피드백</label>
+      <textarea id="feedback-follow-1" data-field="feedback" rows="3" placeholder="직접 돌아본 점이나 받은 피드백을 적어 보세요."></textarea>
+      <p class="record-status" role="status"></p>
+    </details>
+        <details><summary>꼬리질문 1 답변 예시</summary><p>키에 연결된 최초 요청과 회차 등 의미 있는 필드를 비교합니다. 다르면 충돌 응답을 반환해 클라이언트가 새 의도에는 새 키를 쓰도록 합니다. 같은 키라는 이유만으로 다른 회차의 성공 응답을 재사용하면 안 됩니다.</p></details>
+      </div>
+      <div class="follow-question">
+        <h3>신청은 DB에 있고 확인 메일은 외부 서비스가 보냅니다. 둘은 어떻게 묶나요?</h3>
+        <details class="notes-editor" id="note-follow-2" data-question="follow-2" hidden>
+      <summary>꼬리질문 2 · 내 답변과 평가 기록</summary>
+      <p class="record-help">입력하면 이 브라우저에 자동 저장됩니다. <a href="/learn/tech-interview/#my-records">내 연습 기록과 백업</a></p>
+      <label for="answer-follow-2">내 답변</label>
+      <textarea id="answer-follow-2" data-field="answer" rows="4"></textarea>
+      <label for="feedback-follow-2">평가·피드백</label>
+      <textarea id="feedback-follow-2" data-field="feedback" rows="3" placeholder="직접 돌아본 점이나 받은 피드백을 적어 보세요."></textarea>
+      <p class="record-status" role="status"></p>
+    </details>
+        <details><summary>꼬리질문 2 답변 예시</summary><p>신청과 같은 트랜잭션에 발송할 이벤트를 기록하고 워커가 재시도합니다. 발송 제공자가 멱등 키를 지원하면 이벤트 ID를 전달합니다. 제공자가 이미 메일을 보낸 뒤 응답만 유실될 수 있으므로 수신 메일까지 정확히 한 번이라고 약속하지는 않겠습니다.</p></details>
+      </div>
     </section>
     <section aria-labelledby="concepts">
       <h2 id="concepts">핵심 개념</h2>

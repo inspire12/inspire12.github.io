@@ -7,13 +7,14 @@
   <meta name="description" content="조회가 열 배 몰리는 10분을 서버 몇 대로 버틸 수 있을까요? 강의 목록 API의 피크 용량을 산정합니다. 아래 수치는 연습용 가정입니다. 평소 요청률을 하루 평균으로 근사하고, 피크의 응답 크기와 처리 시간도 주어진 값으로 계산하세요.">
   <link rel="canonical" href="https://inspire12.github.io/learn/tech-interview/numbers-to-know/">
   <link rel="stylesheet" href="/portfolio.css?v=ec9ea2077c">
-  <link rel="stylesheet" href="/learn/tech-interview/interview.css">
+  <link rel="stylesheet" href="/learn/tech-interview/interview.css?v=notes1">
+  <script src="/learn/tech-interview/notes.js" defer></script>
 </head>
 <body>
 <header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
 <main class="inner interview">
   <nav class="crumbs" aria-label="상위 메뉴"><a href="/learn/">강의 목록</a> <a href="/learn/tech-interview/">기술 면접 목차</a></nav>
-  <article>
+  <article data-topic="numbers-to-know">
     <p class="position">면접 9 / 9 · <span lang="en">Numbers to Know</span></p>
     <h1>용량 산정</h1>
     <section class="brief" aria-labelledby="question">
@@ -24,14 +25,47 @@
 인스턴스 1대가 p95 목표 안에서 처리하는 실측 용량 250요청/초
 계획 가동률 70% · 1 kB = 1,000 B</code></pre></figure>
     </section>
+    <details class="notes-editor" id="note-main" data-question="main" hidden>
+      <summary>본질문 · 내 답변과 평가 기록</summary>
+      <p class="record-help">입력하면 이 브라우저에 자동 저장됩니다. <a href="/learn/tech-interview/#my-records">내 연습 기록과 백업</a></p>
+      <label for="answer-main">내 답변</label>
+      <textarea id="answer-main" data-field="answer" rows="4"></textarea>
+      <label for="feedback-main">평가·피드백</label>
+      <textarea id="feedback-main" data-field="feedback" rows="3" placeholder="직접 돌아본 점이나 받은 피드백을 적어 보세요."></textarea>
+      <p class="record-status" role="status"></p>
+    </details>
     <details><summary>답변 예시 펼쳐 보기</summary>
       <p>864만 ÷ 86,400초 = 평균 100 RPS이고 피크는 1,000 RPS입니다. 응답 본문만 세면 초당 20 MB, 즉 160 Mb/s이고 10분간 약 12 GB입니다. 평균 0.2초가 유지되는 안정 상태라면 처리 중인 요청은 평균 200개입니다.</p>
       <p>대당 계획 용량은 250 × 0.7 = 175 RPS입니다. 1,000 ÷ 175를 올리면 최소 6대이고, 한 대가 빠져도 같은 가동률을 지키려면 7대입니다. 실제 결정 전에는 피크 10분을 재현해 처리량, p95, DB 대기, 전송량을 함께 측정하겠습니다.</p>
     </details>
     <section aria-labelledby="follow-ups">
       <h2 id="follow-ups">꼬리질문</h2>
-      <details><summary>앱 한 대가 고장 나지 않아도 DB 커넥션 풀이 먼저 찰 수 있나요?</summary><p>가능합니다. 예를 들어 피크의 모든 요청이 커넥션을 한 번씩 평균 50ms 점유한다면 전체 평균 점유는 약 50개입니다. 200개 동시 요청 전부가 커넥션을 잡는다는 뜻은 아닙니다. 인스턴스별 편차와 획득 대기 p95, DB의 실제 허용 동시성을 확인합니다.</p></details>
-      <details><summary>피크 입력 1,000 RPS 중 800 RPS만 처리할 수 있습니다. 10분을 큐로 버틸까요?</summary><p>거절·유실·재시도가 없으면 200 × 600 = 12만 건이 쌓입니다. 그뒤 유입이 100 RPS로 돌아오고 처리량 800 RPS를 유지하면 비우는 데 약 171.4초가 더 걸립니다. 동기 조회의 응답 기한을 넘는다면 큐보다 캐시, 선제 증설, 조기 부하 제한을 검토하겠습니다.</p></details>
+      <div class="follow-question">
+        <h3>앱 한 대가 고장 나지 않아도 DB 커넥션 풀이 먼저 찰 수 있나요?</h3>
+        <details class="notes-editor" id="note-follow-1" data-question="follow-1" hidden>
+      <summary>꼬리질문 1 · 내 답변과 평가 기록</summary>
+      <p class="record-help">입력하면 이 브라우저에 자동 저장됩니다. <a href="/learn/tech-interview/#my-records">내 연습 기록과 백업</a></p>
+      <label for="answer-follow-1">내 답변</label>
+      <textarea id="answer-follow-1" data-field="answer" rows="4"></textarea>
+      <label for="feedback-follow-1">평가·피드백</label>
+      <textarea id="feedback-follow-1" data-field="feedback" rows="3" placeholder="직접 돌아본 점이나 받은 피드백을 적어 보세요."></textarea>
+      <p class="record-status" role="status"></p>
+    </details>
+        <details><summary>꼬리질문 1 답변 예시</summary><p>가능합니다. 예를 들어 피크의 모든 요청이 커넥션을 한 번씩 평균 50ms 점유한다면 전체 평균 점유는 약 50개입니다. 200개 동시 요청 전부가 커넥션을 잡는다는 뜻은 아닙니다. 인스턴스별 편차와 획득 대기 p95, DB의 실제 허용 동시성을 확인합니다.</p></details>
+      </div>
+      <div class="follow-question">
+        <h3>피크 입력 1,000 RPS 중 800 RPS만 처리할 수 있습니다. 10분을 큐로 버틸까요?</h3>
+        <details class="notes-editor" id="note-follow-2" data-question="follow-2" hidden>
+      <summary>꼬리질문 2 · 내 답변과 평가 기록</summary>
+      <p class="record-help">입력하면 이 브라우저에 자동 저장됩니다. <a href="/learn/tech-interview/#my-records">내 연습 기록과 백업</a></p>
+      <label for="answer-follow-2">내 답변</label>
+      <textarea id="answer-follow-2" data-field="answer" rows="4"></textarea>
+      <label for="feedback-follow-2">평가·피드백</label>
+      <textarea id="feedback-follow-2" data-field="feedback" rows="3" placeholder="직접 돌아본 점이나 받은 피드백을 적어 보세요."></textarea>
+      <p class="record-status" role="status"></p>
+    </details>
+        <details><summary>꼬리질문 2 답변 예시</summary><p>거절·유실·재시도가 없으면 200 × 600 = 12만 건이 쌓입니다. 그뒤 유입이 100 RPS로 돌아오고 처리량 800 RPS를 유지하면 비우는 데 약 171.4초가 더 걸립니다. 동기 조회의 응답 기한을 넘는다면 큐보다 캐시, 선제 증설, 조기 부하 제한을 검토하겠습니다.</p></details>
+      </div>
     </section>
     <section aria-labelledby="concepts">
       <h2 id="concepts">핵심 개념</h2>

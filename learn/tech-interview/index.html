@@ -7,7 +7,8 @@
   <meta name="description" content="9개의 시스템 디자인 주제를 가상의 라이브 강의 서비스로 연습합니다. 설계 질문, 답변 예시와 꼬리질문을 주제별로 확인하세요.">
   <link rel="canonical" href="https://inspire12.github.io/learn/tech-interview/">
   <link rel="stylesheet" href="/portfolio.css?v=ec9ea2077c">
-  <link rel="stylesheet" href="/learn/tech-interview/interview.css">
+  <link rel="stylesheet" href="/learn/tech-interview/interview.css?v=notes1">
+  <script src="/learn/tech-interview/notes.js" defer></script>
 </head>
 <body>
 <header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
@@ -19,16 +20,27 @@
   <section aria-labelledby="chapters">
     <h2 id="chapters">면접 목차</h2>
     <ol class="chapter-list" role="list">
-      <li><a href="/learn/tech-interview/networking-essentials/"><strong>네트워크 기초</strong><span class="prompt">점수판을 보는 3만 명에게 변경 사항을 어떻게 보낼까요?</span></a></li>
-      <li><a href="/learn/tech-interview/api-design/"><strong>API 설계</strong><span class="prompt">신청은 성공했는데 응답이 사라졌습니다. 다시 누르면 어떻게 되나요?</span></a></li>
-      <li><a href="/learn/tech-interview/data-modeling/"><strong>데이터 모델링</strong><span class="prompt">강의 가격은 바뀌어도 지난 신청 내역의 금액은 그대로여야 합니다.</span></a></li>
-      <li><a href="/learn/tech-interview/db-indexing/"><strong>데이터베이스 인덱싱</strong><span class="prompt">신청 20건만 반환하는데 8만 행을 읽습니다. 어떤 인덱스를 제안할까요?</span></a></li>
-      <li><a href="/learn/tech-interview/caching/"><strong>캐싱</strong><span class="prompt">잔여 좌석 1석을 5천 명이 동시에 보고 있습니다. 무엇을 캐싱할까요?</span></a></li>
-      <li><a href="/learn/tech-interview/sharding/"><strong>샤딩</strong><span class="prompt">회차 ID로 나눈 샤드 하나에 전체 쓰기의 60%가 몰렸습니다.</span></a></li>
-      <li><a href="/learn/tech-interview/consistent-hashing/"><strong>일관 해싱</strong><span class="prompt">캐시 노드를 한 대 늘릴 때 어떤 키의 담당자가 바뀔까요?</span></a></li>
-      <li><a href="/learn/tech-interview/cap-theorem/"><strong>CAP 정리</strong><span class="prompt">지역 간 통신이 끊겼습니다. 두 지역 모두 마지막 좌석을 확정해도 될까요?</span></a></li>
-      <li><a href="/learn/tech-interview/numbers-to-know/"><strong>용량 산정</strong><span class="prompt">조회가 열 배 몰리는 10분을 서버 몇 대로 버틸 수 있을까요?</span></a></li>
+      <li><a data-topic="networking-essentials" href="/learn/tech-interview/networking-essentials/"><strong>네트워크 기초</strong><span class="prompt">점수판을 보는 3만 명에게 변경 사항을 어떻게 보낼까요?</span></a></li>
+      <li><a data-topic="api-design" href="/learn/tech-interview/api-design/"><strong>API 설계</strong><span class="prompt">신청은 성공했는데 응답이 사라졌습니다. 다시 누르면 어떻게 되나요?</span></a></li>
+      <li><a data-topic="data-modeling" href="/learn/tech-interview/data-modeling/"><strong>데이터 모델링</strong><span class="prompt">강의 가격은 바뀌어도 지난 신청 내역의 금액은 그대로여야 합니다.</span></a></li>
+      <li><a data-topic="db-indexing" href="/learn/tech-interview/db-indexing/"><strong>데이터베이스 인덱싱</strong><span class="prompt">신청 20건만 반환하는데 8만 행을 읽습니다. 어떤 인덱스를 제안할까요?</span></a></li>
+      <li><a data-topic="caching" href="/learn/tech-interview/caching/"><strong>캐싱</strong><span class="prompt">잔여 좌석 1석을 5천 명이 동시에 보고 있습니다. 무엇을 캐싱할까요?</span></a></li>
+      <li><a data-topic="sharding" href="/learn/tech-interview/sharding/"><strong>샤딩</strong><span class="prompt">회차 ID로 나눈 샤드 하나에 전체 쓰기의 60%가 몰렸습니다.</span></a></li>
+      <li><a data-topic="consistent-hashing" href="/learn/tech-interview/consistent-hashing/"><strong>일관 해싱</strong><span class="prompt">캐시 노드를 한 대 늘릴 때 어떤 키의 담당자가 바뀔까요?</span></a></li>
+      <li><a data-topic="cap-theorem" href="/learn/tech-interview/cap-theorem/"><strong>CAP 정리</strong><span class="prompt">지역 간 통신이 끊겼습니다. 두 지역 모두 마지막 좌석을 확정해도 될까요?</span></a></li>
+      <li><a data-topic="numbers-to-know" href="/learn/tech-interview/numbers-to-know/"><strong>용량 산정</strong><span class="prompt">조회가 열 배 몰리는 10분을 서버 몇 대로 버틸 수 있을까요?</span></a></li>
     </ol>
+  </section>
+  <section id="my-records" aria-labelledby="records-heading" hidden>
+    <h2 id="records-heading">내 연습 기록</h2>
+    <p data-count></p>
+    <ul class="source-list"></ul>
+    <p class="record-help">질문별로 내 답변과 평가를 한 칸씩 저장합니다. 다른 기기로 옮기거나 브라우저 데이터를 지우기 전에 JSON 파일로 백업하세요. 복원은 비어 있는 칸만 채웁니다.</p>
+    <div class="record-actions">
+      <button type="button" disabled>JSON 백업 다운로드</button>
+      <label>백업에서 복원 <input type="file" accept=".json,application/json"></label>
+    </div>
+    <p class="record-status" role="status"></p>
   </section>
   <section aria-labelledby="references">
     <h2 id="references">참고 자료</h2>
