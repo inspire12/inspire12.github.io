@@ -6,7 +6,7 @@
   <title>RAG를 활용한 질문 품질 개선 · 서영학</title>
   <meta name="description" content="썸원의 질문에서 의미가 비슷한 항목을 걸러내고, 질문을 의미와 의도별로 묶어 실제 사용자 응답률과 대조했습니다.">
   <link rel="canonical" href="https://inspire12.github.io/projects/question-rag/">
-  <link rel="stylesheet" href="../../portfolio.css?v=8af56d6746">
+  <link rel="stylesheet" href="../../portfolio.css?v=f467d03c33">
 </head>
 <body><header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
 <main class="inner case-layout">
@@ -27,12 +27,12 @@
     <p>질문이 재미없다는 의견은 중복 검수만으로 설명하기 어려웠습니다. 질문에 담긴 의미와 대화 의도를 태그로 붙이고, 관련 질문을 그래프로 연결해 그룹을 만들었습니다. 그룹별로 실제 응답률을 비교해 어떤 주제에서 답변이 적었는지 살폈습니다.</p>
     <figure class="case-figure architecture-figure" id="question-rag-architecture">
       <div class="diagram-scroll" role="region" tabindex="0" aria-label="썸원 · 질문 검수와 품질 평가 구조도">
-        <img src="/media/question-rag-architecture.svg?v=aecbae0ce6" width="1150" height="456" loading="lazy" alt="새 질문과 기존 질문의 임베딩을 비교해 유사 후보를 구하고 편집자가 콘텐츠 어드민에서 등록 전에 검수합니다. 등록 후에는 질문의 의미와 의도를 태깅하고 그래프로 그룹을 묶어 그룹별 실제 사용자 응답률을 비교합니다.">
+        <img src="/media/question-rag-architecture.svg?v=6e04b78be7" width="1230" height="513" loading="lazy" alt="새 질문을 임베딩으로 변환한 뒤 기존 질문 임베딩과 유사도를 비교합니다. 콘텐츠 어드민에 표시된 후보를 편집자가 확인하고 등록 여부를 결정합니다. 등록 후에는 질문의 의미와 의도를 태깅해 연관 질문을 그래프로 묶고, 질문 그룹과 실제 사용자 응답률을 대조합니다.">
       </div>
       <small class="diagram-scroll-hint">좌우로 스크롤해 전체 흐름을 볼 수 있습니다.</small>
       <figcaption>
-        <span>기존 질문을 정리하고 실제 사용자 응답률과 대조한 흐름</span>
-        <a class="diagram-source" href="/media/question-rag-architecture.svg?v=aecbae0ce6">원본 그림 보기</a>
+        <span>등록 전에는 편집자가 유사 질문을 검토하고, 등록 후에는 질문 그룹별 실제 응답률을 비교합니다.</span>
+        <a class="diagram-source" href="/media/question-rag-architecture.svg?v=6e04b78be7">원본 그림 보기</a>
       </figcaption>
     </figure>
   </section>
