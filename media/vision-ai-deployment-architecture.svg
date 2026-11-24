@@ -1,42 +1,131 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 575" role="img" aria-labelledby="title description" xml:lang="ko">
-  <title id="title">Vision 모델의 배포와 서비스 호출</title>
-  <desc id="description">Vision AI 팀 모델의 버전을 관리하고 모델 추론을 제공하는 FastAPI 서버를 컨테이너로 만듭니다. CI/CD로 GPU 기반 Kubernetes에 빌드·배포합니다. 선수 분석 영상 서비스가 실행 중인 API를 호출하고 추론 결과를 받습니다.</desc>
-  <defs>
-    <marker id="arrow" viewBox="0 0 8 8" markerWidth="7" markerHeight="7" refX="7" refY="4" markerUnits="userSpaceOnUse" orient="auto">
-      <path d="M1 1 7 4 1 7" fill="none" stroke="#526e88" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-    </marker>
-    <style>
-      text {font-family:system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif}
-      .node {font-size:21px;font-weight:680}
-      .sub {font-size:17px;font-weight:450;fill:#405974}
-      .stage {font-size:17px;font-weight:680;fill:#245994}
-      .verb {font-size:16px;font-weight:550;fill:#405974}
-      .wire {fill:none;stroke:#526e88;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-    </style>
-  </defs>
-  <rect x="1" y="1" width="478" height="573" rx="16" fill="#f8fafc" stroke="#d7e0ea" stroke-width="1.5"/>
-  <text x="24" y="39" class="stage" text-anchor="start">모델 서빙과 자동 배포</text>
-  <path d="M218 33H456" stroke="#d7e0ea" stroke-width="1.3"/>
-  <rect x="45" y="57" width="390" height="65" rx="10" fill="#ffffff" stroke="#c9d6e2" stroke-width="1.4"/>
-  <text x="240" y="85.5" class="node" text-anchor="middle" fill="#162c46">Vision AI 모델</text>
-  <text x="240" y="110.5" class="sub" text-anchor="middle">모델 버전 관리</text>
-  <path d="M240 123V144" class="wire" marker-end="url(#arrow)"/>
-  <rect x="45" y="147" width="390" height="69" rx="10" fill="#e8f1fb" stroke="#a6c3de" stroke-width="1.4"/>
-  <text x="240" y="177.5" class="node" text-anchor="middle" fill="#234f80">FastAPI 서버</text>
-  <text x="240" y="202.5" class="sub" text-anchor="middle">모델을 호출하는 API 구현 · 컨테이너화</text>
-  <path d="M240 217V241" class="wire" marker-end="url(#arrow)"/>
-  <rect x="45" y="244" width="390" height="52" rx="10" fill="#ffffff" stroke="#c9d6e2" stroke-width="1.4"/>
-  <text x="240" y="277" class="node" text-anchor="middle" fill="#162c46">CI/CD 파이프라인</text>
-  <path d="M240 297V337" class="wire" marker-end="url(#arrow)"/>
-  <text x="254" y="323" class="verb" text-anchor="start">빌드와 배포</text>
-  <rect x="45" y="340" width="390" height="73" rx="10" fill="#e6f4f0" stroke="#a3cbc0" stroke-width="1.4"/>
-  <text x="240" y="372.5" class="node" text-anchor="middle" fill="#155d56">GPU 기반 Kubernetes</text>
-  <text x="240" y="397.5" class="sub" text-anchor="middle">모델 추론 API 실행</text>
-  <path d="M153 478V416" class="wire" marker-end="url(#arrow)"/>
-  <text x="141" y="452" class="verb" text-anchor="end">API 호출</text>
-  <path d="M327 415V476" class="wire" marker-end="url(#arrow)"/>
-  <text x="338" y="452" class="verb" text-anchor="start">추론 결과</text>
-  <rect x="45" y="481" width="390" height="70" rx="10" fill="#ffffff" stroke="#c9d6e2" stroke-width="1.4"/>
-  <text x="240" y="512" class="node" text-anchor="middle" fill="#162c46">선수 분석 영상 서비스</text>
-  <text x="240" y="537" class="sub" text-anchor="middle">실시간 분석에 모델 결과 사용</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1130 438" role="img" aria-labelledby="title desc" xml:lang="ko">
+<title id="title">Vision AI · 모델 배포와 추론</title>
+<desc id="desc">Vision 모델의 버전을 관리하고 추론을 제공하는 FastAPI 서버를 컨테이너화합니다. CI/CD로 GPU 기반 Kubernetes에 빌드·배포합니다. 운영 중에는 선수 분석 영상 서비스가 배포된 API를 호출해 모델 추론 결과를 받습니다.</desc>
+<metadata>Copyright 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+https://scripts.sil.org/OFL
+
+
+-----------------------------------------------------------
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+-----------------------------------------------------------
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded, 
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting -- in part or in whole -- any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+"Author" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION &amp; CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+Copyright Holder. This restriction only applies to the primary font name as
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+Copyright Holder(s) and the Author(s) or with their explicit written
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.
+</metadata><style>@font-face{font-family:WhiteboardNoto;src:url(data:font/woff2;base64,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) format("woff2");font-weight:100 900;font-style:normal}text{font-family:WhiteboardNoto,"Noto Sans KR",sans-serif}</style>
+<rect width="1130" height="438" fill="white"/>
+<text x="31" y="49" font-family="Noto Sans KR, sans-serif" font-size="32" font-weight="610" fill="#23211f" text-anchor="start">Vision AI · 모델 배포와 추론</text>
+<path d="M33 61 Q132 59.5 265 60.5" fill="none" stroke="#23211f" stroke-width="1.55" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M35,119.8 Q152.07999999999998,117.5 279.5,119.5 Q280.9,155.0 279.6,199 Q152.07999999999998,197.7 34,199.6 Q34.8,160.6 35,119.8Z" fill="none" stroke="#23211f" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="157.0" y="158.0" font-family="Noto Sans KR, sans-serif" font-size="23" font-weight="570" fill="#23211f" text-anchor="middle">Vision AI 모델</text>
+<text x="157.0" y="183.0" font-family="Noto Sans KR, sans-serif" font-size="17" font-weight="400" fill="#484542" text-anchor="middle">모델 버전 관리</text>
+<path d="M290 159 Q361 159.8 432 159" fill="none" stroke="#23211f" stroke-width="1.95" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M422.7 163.3 L432 159 L422 154.7" fill="none" stroke="#23211f" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="361" y="144" font-family="Noto Sans KR, sans-serif" font-size="18" font-weight="400" fill="#23211f" text-anchor="middle">모델 연결</text>
+<path d="M444,119.8 Q546.2,117.5 657.5,119.5 Q658.9,155.0 657.6,199 Q546.2,197.7 443,199.6 Q443.8,160.6 444,119.8Z" fill="none" stroke="#23211f" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="550.5" y="158.0" font-family="Noto Sans KR, sans-serif" font-size="23" font-weight="570" fill="#23211f" text-anchor="middle">FastAPI 서버</text>
+<text x="550.5" y="183.0" font-family="Noto Sans KR, sans-serif" font-size="17" font-weight="400" fill="#484542" text-anchor="middle">모델 추론 API 제공</text>
+<path d="M669 159 Q744 159.8 819 159" fill="none" stroke="#23211f" stroke-width="1.95" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M809.7 163.3 L819 159 L809 154.7" fill="none" stroke="#23211f" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="744" y="144" font-family="Noto Sans KR, sans-serif" font-size="18" font-weight="400" fill="#23211f" text-anchor="middle">서버 컨테이너화</text>
+<path d="M831,119.8 Q954.8,117.5 1089.5,119.5 Q1090.9,155.0 1089.6,199 Q954.8,197.7 830,199.6 Q830.8,160.6 831,119.8Z" fill="none" stroke="#23211f" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="960.0" y="167.0" font-family="Noto Sans KR, sans-serif" font-size="23" font-weight="570" fill="#23211f" text-anchor="middle">CI/CD 파이프라인</text>
+<path d="M960 209 Q959.2 257.5 960 306" fill="none" stroke="#23211f" stroke-width="1.95" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M955.7 296.7 L960 306 L964.3 296" fill="none" stroke="#23211f" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="977" y="264" font-family="Noto Sans KR, sans-serif" font-size="18" font-weight="400" fill="#23211f" text-anchor="start">빌드·배포</text>
+<text x="34" y="283" font-family="Noto Sans KR, sans-serif" font-size="21" font-weight="570" fill="#297a46" text-anchor="start">서비스 호출</text>
+<path d="M35 292Q81.03999999999999 293 130 291" fill="none" stroke="#297a46" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M35,323.8 Q152.07999999999998,321.5 279.5,323.5 Q280.9,357.65 279.6,400 Q152.07999999999998,398.7 34,400.6 Q34.8,363.04 35,323.8Z" fill="none" stroke="#297a46" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="157.0" y="369.5" font-family="Noto Sans KR, sans-serif" font-size="23" font-weight="570" fill="#297a46" text-anchor="middle">선수 분석 영상 서비스</text>
+<path d="M291 345 Q549.5 345.8 808 345" fill="none" stroke="#297a46" stroke-width="1.95" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M798.7 349.3 L808 345 L798 340.7" fill="none" stroke="#297a46" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="550" y="332" font-family="Noto Sans KR, sans-serif" font-size="18" font-weight="400" fill="#297a46" text-anchor="middle">추론 요청</text>
+<path d="M808 383 Q549.5 382.2 291 383" fill="none" stroke="#297a46" stroke-width="1.95" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M300.3 378.7 L291 383 L301 387.3" fill="none" stroke="#297a46" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="550" y="407" font-family="Noto Sans KR, sans-serif" font-size="18" font-weight="400" fill="#297a46" text-anchor="middle">추론 결과 반환</text>
+<path d="M821,315.8 Q954.4,313.5 1099.5,315.5 Q1100.9,355.5 1099.6,405 Q954.4,403.7 820,405.6 Q820.8,361.8 821,315.8Z" fill="none" stroke="#23211f" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="960.0" y="359.0" font-family="Noto Sans KR, sans-serif" font-size="23" font-weight="570" fill="#23211f" text-anchor="middle">GPU 기반 Kubernetes</text>
+<text x="960.0" y="384.0" font-family="Noto Sans KR, sans-serif" font-size="17" font-weight="400" fill="#484542" text-anchor="middle">모델 API 실행</text>
 </svg>

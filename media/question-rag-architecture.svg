@@ -1,44 +1,133 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 530" role="img" aria-labelledby="title description" xml:lang="ko">
-  <title id="title">썸원 질문 등록 전 검수와 등록 후 평가</title>
-  <desc id="description">등록 전에는 새 질문과 기존 질문을 임베딩으로 비교해 편집자가 유사 후보를 검수합니다. 등록 후에는 질문에 의미와 의도를 태깅해 그래프로 묶고 그룹별 실사용자 응답률을 비교합니다.</desc>
-  <defs>
-    <marker id="arrow" viewBox="0 0 8 8" markerWidth="7" markerHeight="7" refX="7" refY="4" markerUnits="userSpaceOnUse" orient="auto">
-      <path d="M1 1 7 4 1 7" fill="none" stroke="#526e88" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-    </marker>
-    <style>
-      text {font-family:system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif}
-      .node {font-size:21px;font-weight:680}
-      .sub {font-size:17px;font-weight:450;fill:#405974}
-      .stage {font-size:17px;font-weight:680;fill:#245994}
-      .verb {font-size:16px;font-weight:550;fill:#405974}
-      .wire {fill:none;stroke:#526e88;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-    </style>
-  </defs>
-  <rect x="1" y="1" width="478" height="528" rx="16" fill="#f8fafc" stroke="#d7e0ea" stroke-width="1.5"/>
-  <text x="24" y="39" class="stage" text-anchor="start">등록 전 · 중복 질문 검수</text>
-  <path d="M226 33H456" stroke="#d7e0ea" stroke-width="1.3"/>
-  <rect x="24" y="58" width="184" height="57" rx="10" fill="#ffffff" stroke="#c9d6e2" stroke-width="1.4"/>
-  <text x="116" y="93.5" class="node" text-anchor="middle" fill="#162c46">새 질문</text>
-  <rect x="272" y="58" width="184" height="57" rx="10" fill="#ffffff" stroke="#c9d6e2" stroke-width="1.4"/>
-  <text x="364" y="93.5" class="node" text-anchor="middle" fill="#162c46">기존 질문</text>
-  <path d="M116 116V130H364V116" class="wire"/>
-  <path d="M240 130V151" class="wire" marker-end="url(#arrow)"/>
-  <rect x="52" y="154" width="376" height="70" rx="10" fill="#e8f1fb" stroke="#a6c3de" stroke-width="1.4"/>
-  <text x="240" y="185" class="node" text-anchor="middle" fill="#234f80">임베딩 유사도 검색</text>
-  <text x="240" y="210" class="sub" text-anchor="middle">표현이 달라도 뜻이 가까운 질문을 찾음</text>
-  <path d="M240 225V245" class="wire" marker-end="url(#arrow)"/>
-  <rect x="52" y="248" width="376" height="52" rx="10" fill="#e6f4f0" stroke="#a3cbc0" stroke-width="1.4"/>
-  <text x="240" y="281" class="node" text-anchor="middle" fill="#155d56">편집자가 등록 전 후보 비교</text>
-  <text x="24" y="350" class="stage" text-anchor="start">등록 후 · 질문 품질 평가</text>
-  <path d="M226 344H456" stroke="#d7e0ea" stroke-width="1.3"/>
-  <rect x="24" y="370" width="205" height="77" rx="10" fill="#ffffff" stroke="#c9d6e2" stroke-width="1.4"/>
-  <text x="126.5" y="404.5" class="node" text-anchor="middle" fill="#162c46">질문 그룹</text>
-  <text x="126.5" y="429.5" class="sub" text-anchor="middle">의미·의도 태그로 연결</text>
-  <rect x="251" y="370" width="205" height="77" rx="10" fill="#ffffff" stroke="#c9d6e2" stroke-width="1.4"/>
-  <text x="353.5" y="404.5" class="node" text-anchor="middle" fill="#162c46">실제 응답률</text>
-  <text x="353.5" y="429.5" class="sub" text-anchor="middle">사용자의 질문 응답 기록</text>
-  <path d="M126 448V460H354V448" class="wire"/>
-  <path d="M240 460V474" class="wire" marker-end="url(#arrow)"/>
-  <rect x="52" y="477" width="376" height="37" rx="10" fill="#e6f4f0" stroke="#a3cbc0" stroke-width="1.4"/>
-  <text x="240" y="502.5" class="node" text-anchor="middle" fill="#155d56" style="font-size:20px">질문 그룹별 응답률 비교</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150 456" role="img" aria-labelledby="title desc" xml:lang="ko">
+<title id="title">썸원 · 질문 검수와 품질 평가</title>
+<desc id="desc">새 질문과 기존 질문의 임베딩을 비교해 유사 후보를 구하고 편집자가 콘텐츠 어드민에서 등록 전에 검수합니다. 등록 후에는 질문의 의미와 의도를 태깅하고 그래프로 그룹을 묶어 그룹별 실제 사용자 응답률을 비교합니다.</desc>
+<metadata>Copyright 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+https://scripts.sil.org/OFL
+
+
+-----------------------------------------------------------
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+-----------------------------------------------------------
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded, 
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting -- in part or in whole -- any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+"Author" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION &amp; CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+Copyright Holder. This restriction only applies to the primary font name as
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+Copyright Holder(s) and the Author(s) or with their explicit written
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.
+</metadata><style>@font-face{font-family:WhiteboardNoto;src:url(data:font/woff2;base64,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) format("woff2");font-weight:100 900;font-style:normal}text{font-family:WhiteboardNoto,"Noto Sans KR",sans-serif}</style>
+<rect width="1150" height="456" fill="white"/>
+<text x="31" y="49" font-family="Noto Sans KR, sans-serif" font-size="32" font-weight="610" fill="#23211f" text-anchor="start">썸원 · 질문 검수와 품질 평가</text>
+<path d="M33 61 Q132 59.5 265 60.5" fill="none" stroke="#23211f" stroke-width="1.55" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="34" y="109" font-family="Noto Sans KR, sans-serif" font-size="21" font-weight="570" fill="#23211f" text-anchor="start">등록 전 검수</text>
+<path d="M35 118Q83.97999999999999 119 136 117" fill="none" stroke="#23211f" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M34,150.8 Q147.72,148.5 271.5,150.5 Q272.9,185.1 271.6,228 Q147.72,226.7 33,228.6 Q33.8,190.56 34,150.8Z" fill="none" stroke="#23211f" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="152.5" y="197.0" font-family="Noto Sans KR, sans-serif" font-size="23" font-weight="570" fill="#23211f" text-anchor="middle">새 질문과 기존 질문</text>
+<path d="M281 189 Q353.5 189.8 426 189" fill="none" stroke="#23211f" stroke-width="1.95" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M416.7 193.3 L426 189 L416 184.7" fill="none" stroke="#23211f" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="353" y="174" font-family="Noto Sans KR, sans-serif" font-size="18" font-weight="400" fill="#23211f" text-anchor="middle">임베딩으로 변환</text>
+<path d="M437,150.8 Q546.4,148.5 665.5,150.5 Q666.9,185.1 665.6,228 Q546.4,226.7 436,228.6 Q436.8,190.56 437,150.8Z" fill="none" stroke="#23211f" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="551.0" y="188.0" font-family="Noto Sans KR, sans-serif" font-size="23" font-weight="570" fill="#23211f" text-anchor="middle">유사도 검색</text>
+<text x="551.0" y="213.0" font-family="Noto Sans KR, sans-serif" font-size="17" font-weight="400" fill="#484542" text-anchor="middle">질문의 의미를 비교</text>
+<path d="M677 189 Q755 189.8 833 189" fill="none" stroke="#23211f" stroke-width="1.95" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M823.7 193.3 L833 189 L823 184.7" fill="none" stroke="#23211f" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="756" y="174" font-family="Noto Sans KR, sans-serif" font-size="18" font-weight="400" fill="#23211f" text-anchor="middle">유사 후보 제시</text>
+<path d="M845,150.8 Q974.56,148.5 1115.5,150.5 Q1116.9,185.1 1115.6,228 Q974.56,226.7 844,228.6 Q844.8,190.56 845,150.8Z" fill="none" stroke="#23211f" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="980.0" y="188.0" font-family="Noto Sans KR, sans-serif" font-size="23" font-weight="570" fill="#23211f" text-anchor="middle">콘텐츠 어드민</text>
+<text x="980.0" y="213.0" font-family="Noto Sans KR, sans-serif" font-size="17" font-weight="400" fill="#484542" text-anchor="middle">편집자가 비교 후 등록 결정</text>
+<text x="34" y="304" font-family="Noto Sans KR, sans-serif" font-size="21" font-weight="570" fill="#297a46" text-anchor="start">등록 후 평가</text>
+<path d="M35 313Q83.97999999999999 314 136 312" fill="none" stroke="#297a46" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M34,345.8 Q147.72,343.5 271.5,345.5 Q272.9,380.1 271.6,423 Q147.72,421.7 33,423.6 Q33.8,385.56 34,345.8Z" fill="none" stroke="#297a46" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="152.5" y="392.0" font-family="Noto Sans KR, sans-serif" font-size="23" font-weight="570" fill="#297a46" text-anchor="middle">등록한 질문</text>
+<path d="M281 384 Q353.5 384.8 426 384" fill="none" stroke="#297a46" stroke-width="1.95" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M416.7 388.3 L426 384 L416 379.7" fill="none" stroke="#297a46" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="353" y="369" font-family="Noto Sans KR, sans-serif" font-size="18" font-weight="400" fill="#297a46" text-anchor="middle">의미·의도 태깅</text>
+<path d="M437,345.8 Q546.4,343.5 665.5,345.5 Q666.9,380.1 665.6,423 Q546.4,421.7 436,423.6 Q436.8,385.56 437,345.8Z" fill="none" stroke="#297a46" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="551.0" y="383.0" font-family="Noto Sans KR, sans-serif" font-size="23" font-weight="570" fill="#297a46" text-anchor="middle">연관 질문 그래프</text>
+<text x="551.0" y="408.0" font-family="Noto Sans KR, sans-serif" font-size="17" font-weight="400" fill="#297a46" text-anchor="middle">관련 질문끼리 연결</text>
+<path d="M677 384 Q755 384.8 833 384" fill="none" stroke="#297a46" stroke-width="1.95" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M823.7 388.3 L833 384 L823 379.7" fill="none" stroke="#297a46" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="756" y="369" font-family="Noto Sans KR, sans-serif" font-size="18" font-weight="400" fill="#297a46" text-anchor="middle">그룹으로 묶기</text>
+<path d="M845,345.8 Q974.56,343.5 1115.5,345.5 Q1116.9,380.1 1115.6,423 Q974.56,421.7 844,423.6 Q844.8,385.56 845,345.8Z" fill="none" stroke="#297a46" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="980.0" y="383.0" font-family="Noto Sans KR, sans-serif" font-size="23" font-weight="570" fill="#297a46" text-anchor="middle">사용자 응답률 비교</text>
+<text x="980.0" y="408.0" font-family="Noto Sans KR, sans-serif" font-size="17" font-weight="400" fill="#297a46" text-anchor="middle">질문 그룹별 응답 차이 확인</text>
 </svg>

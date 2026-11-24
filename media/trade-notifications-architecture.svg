@@ -1,54 +1,130 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 505" role="img" aria-labelledby="title desc" xml:lang="ko">
-  <title id="title">실시간 주식 체결 알림의 전달 경로</title>
-  <desc id="desc">한국투자증권 WebSocket에서 체결을 수신합니다. 접속 중인 사용자에게는 알림 서버가 brokerChannel을 통해 메시지 브로커에 발행하고, 브로커가 clientOutboundChannel을 거쳐 구독 중인 브라우저 세션들에 STOMP MESSAGE를 보냅니다. 미접속 사용자의 알림은 알림함에 저장합니다.</desc>
-  <style>
-    text { font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans CJK KR", sans-serif; fill: #162c46; }
-    .label { font-size: 22px; font-weight: 700; }
-    .sub { font-size: 18px; fill: #42566b; }
-    .small { font-size: 17px; fill: #42566b; }
-    .blue { fill: #245994; }
-    .teal { fill: #17645d; }
-    .warm { fill: #845823; }
-    .wire { fill: none; stroke: #647b91; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-  </style>
-  <defs>
-    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M1 1l5.7 3L1 7" fill="none" stroke="#647b91" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </marker>
-  </defs>
-  <rect x="1" y="1" width="478" height="503" rx="16" fill="#f8fafc" stroke="#d7e0ea"/>
-  <rect x="16" y="22" width="191" height="95" rx="12" fill="#ffffff" stroke="#cad6e2" stroke-width="1.3"/>
-  <rect x="251" y="22" width="213" height="95" rx="12" fill="#e8f1fb" stroke="#adc7e4" stroke-width="1.3"/>
-  <path class="wire" d="M208 69h39" marker-end="url(#arrow)"/>
-  <text x="111.5" y="55" class="label" text-anchor="middle">한국투자증권</text>
-  <text x="111.5" y="81" class="sub" text-anchor="middle">WebSocket</text>
-  <text x="111.5" y="103" class="small" text-anchor="middle">실시간 체결 송신</text>
-  <text x="357.5" y="55" class="label blue" text-anchor="middle">체결 알림 서버</text>
-  <text x="357.5" y="81" class="sub" text-anchor="middle">Ping/Pong 연결 유지</text>
-  <text x="357.5" y="103" class="small" text-anchor="middle">연결 종료 시 재접속</text>
-  <path class="wire" d="M357 117v26"/>
-  <path class="wire" d="M357 143H128q-6 0-6 6v66" marker-end="url(#arrow)"/>
-  <path class="wire" d="M357 143v72" marker-end="url(#arrow)"/>
-  <text x="135" y="171" class="small blue" text-anchor="start">접속 중</text>
-  <text x="135" y="196" class="sub" text-anchor="start">brokerChannel</text>
-  <text x="370" y="178" class="small warm" text-anchor="start">미접속</text>
-  <rect x="16" y="219" width="246" height="67" rx="12" fill="#e8f1fb" stroke="#adc7e4" stroke-width="1.3"/>
-  <text x="139" y="248" class="label blue" text-anchor="middle">메시지 브로커</text>
-  <text x="139" y="272" class="sub" text-anchor="middle">구독 세션으로 전달</text>
-  <rect x="282" y="219" width="182" height="67" rx="12" fill="#fcf2df" stroke="#deca9f" stroke-width="1.3"/>
-  <text x="373" y="248" class="label warm" text-anchor="middle">알림함</text>
-  <text x="373" y="272" class="sub" text-anchor="middle">체결 알림 저장</text>
-  <path class="wire" d="M122 286v62q0 5 5 5h107q6 0 6 6v10"/>
-  <text x="141" y="316" class="sub" text-anchor="start">clientOutboundChannel</text>
-  <text x="141" y="340" class="small" text-anchor="start">STOMP MESSAGE 송신</text>
-  <path class="wire" d="M240 369H93q-5 0-5 5v22" marker-end="url(#arrow)"/>
-  <path class="wire" d="M240 369v27" marker-end="url(#arrow)"/>
-  <path class="wire" d="M240 369h147q5 0 5 5v22" marker-end="url(#arrow)"/>
-  <rect x="33" y="400" width="110" height="51" rx="12" fill="#e6f4f0" stroke="#a9cfc4" stroke-width="1.3"/>
-  <rect x="185" y="400" width="110" height="51" rx="12" fill="#e6f4f0" stroke="#a9cfc4" stroke-width="1.3"/>
-  <rect x="337" y="400" width="110" height="51" rx="12" fill="#e6f4f0" stroke="#a9cfc4" stroke-width="1.3"/>
-  <g aria-hidden="true" transform="translate(69 408) scale(1.5833)" stroke="#17645d" color="#17645d" fill="none" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M2 8.5h20m-16-3h.2m2.4 0h.2"/></g>
-  <g aria-hidden="true" transform="translate(221 408) scale(1.5833)" stroke="#17645d" color="#17645d" fill="none" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M2 8.5h20m-16-3h.2m2.4 0h.2"/></g>
-  <g aria-hidden="true" transform="translate(373 408) scale(1.5833)" stroke="#17645d" color="#17645d" fill="none" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M2 8.5h20m-16-3h.2m2.4 0h.2"/></g>
-  <text x="240" y="482" class="label teal" text-anchor="middle">알림을 구독한 브라우저 세션</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 408" role="img" aria-labelledby="title desc" xml:lang="ko">
+<title id="title">자기자본 투자 · 주식 체결 알림</title><desc id="desc">한국투자증권 WebSocket의 체결을 알림 서버가 받습니다. 접속 중인 사용자의 알림은 brokerChannel을 통해 메시지 브로커로 들어가고 clientOutboundChannel을 거쳐 구독 중인 브라우저 세션들에 STOMP MESSAGE로 전달됩니다. 미접속 알림은 알림함에 저장하며 다음 접속에서 확인할 수 있습니다.</desc>
+<metadata>Copyright 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+https://scripts.sil.org/OFL
+
+
+-----------------------------------------------------------
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+-----------------------------------------------------------
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded, 
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting -- in part or in whole -- any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+"Author" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION &amp; CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+Copyright Holder. This restriction only applies to the primary font name as
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+Copyright Holder(s) and the Author(s) or with their explicit written
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.
+</metadata><style>@font-face{font-family:WhiteboardNoto;src:url(data:font/woff2;base64,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) format("woff2");font-weight:100 900;font-style:normal}text{font-family:WhiteboardNoto,"Noto Sans KR",sans-serif}</style>
+<rect width="1220" height="408" fill="#fff"/>
+<text x="32" y="49" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="32" font-weight="610" fill="#23211f" text-anchor="start">자기자본 투자 · 주식 체결 알림</text>
+<path d="M34 61 Q180.0 59.6 326 60.2" fill="none" stroke="#23211f" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M30 135 Q111.08 132.2 199.7 134.2 Q201.3 174.0 199.6 214 Q123.05000000000001 212.7 29 214.8 Q29.7 175.6 30 135Z" fill="none" stroke="#23211f" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M33 215.5 Q124.76 214.1 198 214.5" fill="none" stroke="#23211f" stroke-width="0.64" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="114" y="167" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="24" font-weight="570" fill="#23211f" text-anchor="middle">한국투자증권</text>
+<text x="114" y="193" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="18" font-weight="400" fill="#484542" text-anchor="middle">WebSocket</text>
+<path d="M208 174Q255 173.5 301 174" fill="none" stroke="#23211f" stroke-width="2.05" stroke-linecap="round" stroke-linejoin="round"/><path d="M291.91 178.16L301 174 291.46 169.61" fill="none" stroke="#23211f" stroke-width="2.05" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="254" y="157" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="17" font-weight="400" fill="#23211f" text-anchor="middle">실시간 체결</text>
+<path d="M312 134 Q412.76 131.2 522.7 133.2 Q524.3 173.5 522.6 214 Q427.6 212.7 311 214.8 Q311.7 175.12 312 134Z" fill="none" stroke="#23211f" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M315 215.5 Q429.72 214.1 521 214.5" fill="none" stroke="#23211f" stroke-width="0.64" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="417" y="166" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="24" font-weight="570" fill="#23211f" text-anchor="middle">체결 알림 서버</text>
+<text x="417" y="193" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="17" font-weight="400" fill="#484542" text-anchor="middle">Ping/Pong 유지 · 재접속</text>
+<path d="M531 174Q596 174.8 662 174" fill="none" stroke="#23211f" stroke-width="2.05" stroke-linecap="round" stroke-linejoin="round"/><path d="M653.00 178.37L662 174 652.36 169.84" fill="none" stroke="#23211f" stroke-width="2.05" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="596" y="156" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="18" font-weight="400" fill="#23211f" text-anchor="middle">접속 중</text>
+<text x="596" y="204" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="17" font-weight="400" fill="#484542" text-anchor="middle">brokerChannel</text>
+<path d="M673 135 Q754.08 132.2 842.7 134.2 Q844.3 173.5 842.6 213 Q766.05 211.7 672 213.8 Q672.7 175.07999999999998 673 135Z" fill="none" stroke="#23211f" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M676 214.5 Q767.76 213.1 841 213.5" fill="none" stroke="#23211f" stroke-width="0.64" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="757" y="167" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="22" font-weight="570" fill="#23211f" text-anchor="middle">메시지 브로커</text>
+<text x="757" y="193" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="17" font-weight="400" fill="#484542" text-anchor="middle">구독 세션별 전달</text>
+<path d="M851 174Q941 173.2 1032 174" fill="none" stroke="#23211f" stroke-width="2.05" stroke-linecap="round" stroke-linejoin="round"/><path d="M1022.92 178.18L1032 174 1022.45 169.63" fill="none" stroke="#23211f" stroke-width="2.05" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="941" y="155" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="17" font-weight="400" fill="#23211f" text-anchor="middle">clientOutboundChannel</text>
+<text x="941" y="205" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="17" font-weight="400" fill="#484542" text-anchor="middle">STOMP MESSAGE</text>
+<path d="M1059 125Q1125 124.2 1188 125L1188.6 202" fill="none" stroke="#23211f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1052 132Q1117 131.2 1181 132L1181.6 208" fill="none" stroke="#23211f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1045 140 Q1106.88 137.2 1174.7 139.2 Q1176.3 178.0 1174.6 217 Q1116.05 215.7 1044 217.8 Q1044.7 179.56 1045 140Z" fill="none" stroke="#23211f" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M1048 218.5 Q1117.3600000000001 217.1 1173 217.5" fill="none" stroke="#23211f" stroke-width="0.64" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1109" y="171" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="22" font-weight="570" fill="#23211f" text-anchor="middle">브라우저</text>
+<text x="1109" y="197" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="17" font-weight="400" fill="#484542" text-anchor="middle">구독 세션들</text>
+<path d="M417 222Q416 260 417 289" fill="none" stroke="#297a46" stroke-width="2.05" stroke-linecap="round" stroke-linejoin="round"/><path d="M412.43 280.10L417 289 420.95 279.27" fill="none" stroke="#297a46" stroke-width="2.05" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="434" y="258" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="17" font-weight="400" fill="#297a46" text-anchor="start">미접속 · 체결 알림 저장</text>
+<path d="M343 308 C343.3 301 381.48 298.6 417.0 299 C458.44 298.3 491 300.7 491 308 C491 315 448.08 317.5 417.0 317 C378.52 317.4 343 315.4 343 308Z" fill="none" stroke="#186bb8" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M343 308.4L343.7 366 C344.8 374.1 385.92 375 417.0 375 C452.52 375.4 490.5 374.1 490.8 366 L490.5 308" fill="none" stroke="#186bb8" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="417" y="349" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="24" font-weight="570" fill="#186bb8" text-anchor="middle">알림함</text>
+<path d="M499 341Q585 340 665 341" fill="none" stroke="#297a46" stroke-width="2.05" stroke-linecap="round" stroke-linejoin="round"/><path d="M655.90 345.15L665 341 655.47 336.60" fill="none" stroke="#297a46" stroke-width="2.05" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="580" y="324" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="17" font-weight="400" fill="#297a46" text-anchor="middle">보관한 알림</text>
+<path d="M676 341.5 C675.3 322.65 719.34 308.7 775.5 309 C829.66 307.8 873.5 323.3 873 341.5 C873.2 360.35 829.66 374.8 774.5 374 C719.34 374.5 676.5 361.0 676 341.5Z" fill="none" stroke="#297a46" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="774" y="350" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="22" font-weight="570" fill="#297a46" text-anchor="middle">다음 접속 시 확인</text>
 </svg>

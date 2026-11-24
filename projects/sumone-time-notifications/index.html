@@ -6,7 +6,7 @@
   <title>썸원타임 질문 알림 문구 다양화 · 서영학</title>
   <meta name="description" content="썸원타임 질문 알림에 사용자별 문구를 적용했습니다. Hackle로 문구 파일을 선택하고 Amazon S3에서 읽은 파일은 캐싱했습니다.">
   <link rel="canonical" href="https://inspire12.github.io/projects/sumone-time-notifications/">
-  <link rel="stylesheet" href="../../portfolio.css?v=ee2acfaa5e">
+  <link rel="stylesheet" href="../../portfolio.css?v=8af56d6746">
 </head>
 <body><header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
 <main class="inner case-layout">
@@ -26,10 +26,13 @@
     <p>알림 문구 파일을 Amazon S3에 미리 저장하고, 사용자마다 어느 파일을 사용할지 Hackle로 정했습니다.</p>
     <p>발송할 때는 배정된 파일을 캐시에서 먼저 찾았습니다. 캐시에 없을 때만 S3에서 읽어 저장했습니다. 같은 파일을 배정받은 사용자에게는 캐시에 있는 문구를 곧바로 쓸 수 있었습니다.</p>
     <figure class="case-figure architecture-figure" id="sumone-time-architecture">
-      <img src="/media/sumone-time-architecture.svg?v=c473324519" width="480" height="564" loading="lazy" alt="Hackle로 사용자에게 문구 파일을 배정한 후 캐시를 조회합니다. 캐시 적중 시 파일을 재사용합니다. 캐시 미스 시 Amazon S3에서 파일을 읽어 캐시에 저장합니다. 두 경로 모두 선택한 파일의 문구로 질문 알림을 보냅니다.">
+      <div class="diagram-scroll" role="region" tabindex="0" aria-label="썸원타임 · 질문 알림 문구 선택 구조도">
+        <img src="/media/sumone-time-architecture.svg?v=88c950d1bc" width="1130" height="404" loading="lazy" alt="Hackle 배정 결과로 문구 파일의 캐시를 조회합니다. 적중하면 캐시의 문구를 발송하고, 미스면 Amazon S3에서 파일을 읽어 캐시에 저장한 뒤 불러온 문구를 발송합니다.">
+      </div>
+      <small class="diagram-scroll-hint">좌우로 스크롤해 전체 흐름을 볼 수 있습니다.</small>
       <figcaption>
         <span>사용자별 문구 파일 선택과 캐시 조회 흐름</span>
-        <a class="diagram-source" href="/media/sumone-time-architecture.svg?v=c473324519">원본 그림 보기</a>
+        <a class="diagram-source" href="/media/sumone-time-architecture.svg?v=88c950d1bc">원본 그림 보기</a>
       </figcaption>
     </figure>
   </section>

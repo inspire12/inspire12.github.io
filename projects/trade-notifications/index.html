@@ -6,7 +6,7 @@
   <title>자기자본 투자: 주식 매매 체결 알림 · 서영학</title>
   <meta name="description" content="한국투자증권 WebSocket으로 실시간 체결 정보를 받아 STOMP로 브라우저에 알리고, 미접속 시에는 알림함에 저장했습니다.">
   <link rel="canonical" href="https://inspire12.github.io/projects/trade-notifications/">
-  <link rel="stylesheet" href="../../portfolio.css?v=ee2acfaa5e">
+  <link rel="stylesheet" href="../../portfolio.css?v=8af56d6746">
 </head>
 <body><header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
 <main class="inner case-layout">
@@ -26,10 +26,13 @@
     <p>증권사와 알림 서버 사이에는 체결을 계속 수신할 연결이 필요했습니다. 한국투자증권 WebSocket의 Ping/Pong을 처리해 세션을 유지하고, 연결이 끊기면 서버가 재접속하도록 구현했습니다.</p>
     <p>서버가 체결을 받은 다음에는 사용자의 접속 상태에 따라 전달 경로를 나눴습니다. 접속 중인 브라우저에는 STOMP 구독으로 바로 알렸고, 미접속 상태라면 알림함에 저장해 다음에 화면을 열었을 때 확인할 수 있게 했습니다.</p>
     <figure class="case-figure architecture-figure" id="trade-notifications-architecture">
-      <img src="/media/trade-notifications-architecture.svg?v=4325f97f90" width="480" height="505" loading="lazy" alt="한국투자증권 WebSocket에서 체결을 수신합니다. 접속 중인 사용자에게는 알림 서버가 brokerChannel을 통해 메시지 브로커에 발행하고, 브로커가 clientOutboundChannel을 거쳐 구독 중인 브라우저 세션들에 STOMP MESSAGE를 보냅니다. 미접속 사용자의 알림은 알림함에 저장합니다.">
+      <div class="diagram-scroll" role="region" tabindex="0" aria-label="자기자본 투자 · 주식 체결 알림 구조도">
+        <img src="/media/trade-notifications-architecture.svg?v=205f81e8e2" width="1220" height="408" loading="lazy" alt="한국투자증권 WebSocket의 체결을 알림 서버가 받습니다. 접속 중인 사용자의 알림은 brokerChannel을 통해 메시지 브로커로 들어가고 clientOutboundChannel을 거쳐 구독 중인 브라우저 세션들에 STOMP MESSAGE로 전달됩니다. 미접속 알림은 알림함에 저장하며 다음 접속에서 확인할 수 있습니다.">
+      </div>
+      <small class="diagram-scroll-hint">좌우로 스크롤해 전체 흐름을 볼 수 있습니다.</small>
       <figcaption>
         <span>한국투자증권의 체결 정보를 받아 메시지 브로커를 통해 구독 중인 브라우저에 전달하는 흐름입니다. 채널 이름은 <a href="https://docs.spring.io/spring-framework/reference/web/websocket/stomp/message-flow.html">Spring STOMP 문서</a>의 표기를 따랐습니다.</span>
-        <a class="diagram-source" href="/media/trade-notifications-architecture.svg?v=4325f97f90">원본 그림 보기</a>
+        <a class="diagram-source" href="/media/trade-notifications-architecture.svg?v=205f81e8e2">원본 그림 보기</a>
       </figcaption>
     </figure>
   </section>

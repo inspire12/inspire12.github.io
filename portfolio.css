@@ -186,7 +186,25 @@ input { accent-color: var(--accent); }
 .case-figure figcaption { margin-top: .5rem; color: var(--muted); font-size: .85rem; }
 .case-figure figcaption a { text-decoration: underline; text-underline-offset: .22em; }
 
-.architecture-figure { max-width: 36rem; }
+.case-layout .detail:has(> .architecture-figure) { max-width: none; }
+.case-layout .detail:has(> .architecture-figure) > :not(.architecture-figure) { max-width: 44rem; }
+.architecture-figure { container-type: inline-size; }
+.diagram-scroll {
+  overflow-x: auto;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: .45rem;
+}
+.diagram-scroll img { min-width: 55rem; }
+.diagram-scroll-hint { display: none; }
+@container (max-width: 55rem) {
+  .diagram-scroll-hint { display: block; margin-top: .4rem; color: var(--muted); font-size: .85rem; }
+}
+@media print {
+  .diagram-scroll { overflow: visible; border: 0; }
+  .diagram-scroll img { min-width: 0; }
+  .diagram-scroll-hint { display: none; }
+}
 .architecture-figure figcaption {
   display: flex;
   flex-wrap: wrap;

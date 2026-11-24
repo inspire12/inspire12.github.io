@@ -6,7 +6,7 @@
   <title>팀 응원 커뮤니티 피드 · 서영학</title>
   <meta name="description" content="KBO 팬 커뮤니티에서 업로드와 이미지 리사이징을 분리하고 이미지·영상을 비동기로 변환한 구조를 소개합니다.">
   <link rel="canonical" href="https://inspire12.github.io/projects/team-community/">
-  <link rel="stylesheet" href="../../portfolio.css?v=ee2acfaa5e">
+  <link rel="stylesheet" href="../../portfolio.css?v=8af56d6746">
 </head>
 <body><header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
 <main class="inner case-layout">
@@ -20,10 +20,13 @@
     <p>팬이 올린 사진은 게시글 피드와 이미지 모아보기에서 함께 쓰였습니다. 이미지 처리를 공통 API로 묶고, 업로드와 크기 조정을 분리했습니다. 업로드 요청이 이미지 변환을 마칠 때까지 기다릴 필요가 없도록 했습니다.</p>
     <p>업로드한 파일은 종류에 따라 후속 작업이 달랐습니다. 이미지는 피드에 쓸 크기로 자동 조정했고, 영상은 비동기로 변환했습니다.</p>
     <figure class="case-figure architecture-figure" id="media-architecture">
-      <img src="/media/team-community-media.svg?v=9185dd0089" width="480" height="460" loading="lazy" alt="팬이 올린 파일을 비동기로 처리합니다. 이미지 크기를 조정한 결과는 팀 게시글 피드와 이미지 모아보기에서 사용합니다. 영상은 별도로 변환합니다.">
+      <div class="diagram-scroll" role="region" tabindex="0" aria-label="팀 응원 커뮤니티 · 미디어 처리 구조도">
+        <img src="/media/team-community-media.svg?v=194702d581" width="1144" height="395" loading="lazy" alt="팬이 파일을 올린 후, 이미지와 영상은 비동기 처리 단계에서 각각 크기 조정과 영상 변환을 거칩니다. 크기를 조정한 이미지는 팀 게시글 피드와 이미지 모아보기에서 사용합니다.">
+      </div>
+      <small class="diagram-scroll-hint">좌우로 스크롤해 전체 흐름을 볼 수 있습니다.</small>
       <figcaption>
         <span>팀 응원 커뮤니티의 미디어 처리 구조</span>
-        <a class="diagram-source" href="/media/team-community-media.svg?v=9185dd0089">원본 그림 보기</a>
+        <a class="diagram-source" href="/media/team-community-media.svg?v=194702d581">원본 그림 보기</a>
       </figcaption>
     </figure>
   </section>

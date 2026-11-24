@@ -1,27 +1,125 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 460" role="img" aria-labelledby="diagram-title diagram-desc" xml:lang="ko">
-  <title id="diagram-title">커뮤니티 미디어 업로드와 비동기 처리</title>
-  <desc id="diagram-desc">팬이 올린 파일을 비동기로 처리합니다. 이미지 크기를 조정한 결과는 팀 게시글 피드와 이미지 모아보기에서 사용합니다. 영상은 별도로 변환합니다.</desc>
-  <defs>
-    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 0.8 7.2 4 1 7.2" fill="none" stroke="#54718b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
-    <style>text{font-family:system-ui,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}.edge{fill:none;stroke:#54718b;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}</style>
-  </defs>
-  <rect x="1" y="1" width="478" height="458" rx="16" fill="#f8fafc" stroke="#d7e0ea" stroke-width="1.2" />
-  <rect x="66" y="24" width="348" height="71" rx="10" fill="#ffffff" stroke="#c6d3e0" stroke-width="1.2" />
-  <g transform="translate(88 48)" stroke="#45617d" stroke-width="1.7" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="M6 17.5H5a4.5 4.5 0 0 1-.4-9 7 7 0 0 1 13.2-1A5.1 5.1 0 0 1 19 17.5h-1.5"/><path d="M12 21V11m-4 4 4-4 4 4"/></g>
-  <text x="131" y="66" font-size="20" font-weight="650" fill="#162c46" text-anchor="start">팬의 이미지·영상 업로드</text>
-  <rect x="24" y="134" width="432" height="178" rx="13" fill="#eef4fb" stroke="#a7c0d9" stroke-width="1.2" stroke-dasharray="5 4"/>
-  <text x="43" y="165" font-size="18" font-weight="700" fill="#245994" text-anchor="start">비동기 처리</text>
-  <path class="edge" d="M240 96v88H131v27" marker-end="url(#arrow)"/>
-  <path class="edge" d="M240 184h109v27" marker-end="url(#arrow)"/>
-  <rect x="41" y="216" width="180" height="74" rx="10" fill="#e8f1fb" stroke="#a5bfd9" stroke-width="1.2" />
-  <text x="131" y="247" font-size="20" font-weight="700" fill="#162c46" text-anchor="middle">이미지</text>
-  <text x="131" y="273" font-size="17" font-weight="450" fill="#36546b" text-anchor="middle">크기 자동 조정</text>
-  <rect x="259" y="216" width="180" height="74" rx="10" fill="#e8f1fb" stroke="#a5bfd9" stroke-width="1.2" />
-  <text x="349" y="261" font-size="20" font-weight="700" fill="#162c46" text-anchor="middle">영상 변환</text>
-  <path class="edge" d="M131 291v76" marker-end="url(#arrow)"/>
-  <path class="edge" d="M131 333h218v34" marker-end="url(#arrow)"/>
-  <rect x="24" y="372" width="214" height="62" rx="10" fill="#e6f4f0" stroke="#a0c7bc" stroke-width="1.2" />
-  <text x="131" y="410" font-size="20" font-weight="700" fill="#164d48" text-anchor="middle">팀 게시글 피드</text>
-  <rect x="242" y="372" width="214" height="62" rx="10" fill="#e6f4f0" stroke="#a0c7bc" stroke-width="1.2" />
-  <text x="349" y="410" font-size="20" font-weight="700" fill="#164d48" text-anchor="middle">이미지 모아보기</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1144 395" role="img" aria-labelledby="title desc" xml:lang="ko">
+  <title id="title">팀 응원 커뮤니티 · 미디어 처리</title>
+  <desc id="desc">팬이 파일을 올린 후, 이미지와 영상은 비동기 처리 단계에서 각각 크기 조정과 영상 변환을 거칩니다. 크기를 조정한 이미지는 팀 게시글 피드와 이미지 모아보기에서 사용합니다.</desc>
+<metadata>Copyright 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+https://scripts.sil.org/OFL
+
+
+-----------------------------------------------------------
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+-----------------------------------------------------------
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded, 
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting -- in part or in whole -- any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+"Author" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION &amp; CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+Copyright Holder. This restriction only applies to the primary font name as
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+Copyright Holder(s) and the Author(s) or with their explicit written
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.
+</metadata><style>@font-face{font-family:WhiteboardNoto;src:url(data:font/woff2;base64,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) format("woff2");font-weight:100 900;font-style:normal}text{font-family:WhiteboardNoto,"Noto Sans KR",sans-serif}</style>
+  <rect width="1144" height="395" fill="white"/>
+  <text x="32" y="49" fill="#23211f" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="32" font-weight="610" text-anchor="start">팀 응원 커뮤니티 · 미디어 처리</text>
+  <path d="M34 61 Q145 59 290 60" fill="none" stroke="#23211f" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M33.6 158.1 Q120.36 155.4 214 157.25 Q216.6 197.88 214.8 229 Q125.82000000000001 228.1 32.2 230.35 Q33.5 189.85 33.6 158.1Z" fill="none" stroke="#23211f" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="124" y="188" fill="#23211f" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="22" font-weight="570" text-anchor="middle">미디어 업로드</text>
+  <text x="124" y="215" fill="#484542" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="17" font-weight="400" text-anchor="middle">팬 커뮤니티</text>
+  <path d="M222 194 Q266 193.3 301 194 Q301.6 170 301 157 Q352 156.3 425 157" fill="none" stroke="#23211f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M415 152.4 L425 157 L414.7 161.7" fill="none" stroke="#23211f" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="352" y="140" fill="#23211f" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="17" font-weight="400" text-anchor="middle">이미지</text>
+  <path d="M301 194 Q301.5 239 301 283 Q358 282.4 425 283" fill="none" stroke="#297a46" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M415 278.4 L425 283 L414.7 287.7" fill="none" stroke="#297a46" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="351" y="266" fill="#297a46" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="17" font-weight="400" text-anchor="middle">영상</text>
+  <path d="M401 88 Q504 86.5 662 88 Q665 215 663 344 Q527 345.3 402 344 Q400.8 225 401 88Z" fill="none" stroke="#484542" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 6"/>
+  <text x="418" y="112" fill="#484542" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="17" font-weight="400" text-anchor="start">비동기 처리</text>
+  <path d="M439.6 127.1 Q531.16 124.4 630 126.25 Q632.6 160.72 630.8 187 Q536.92 186.1 438.2 188.35 Q439.5 153.9 439.6 127.1Z" fill="none" stroke="#23211f" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="535" y="165" fill="#23211f" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="22" font-weight="570" text-anchor="middle">이미지 크기 조정</text>
+  <path d="M439.6 252.1 Q531.16 249.4 630 251.25 Q632.6 286.28 630.8 313 Q536.92 312.1 438.2 314.35 Q439.5 279.35 439.6 252.1Z" fill="none" stroke="#297a46" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="535" y="290" fill="#297a46" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="22" font-weight="570" text-anchor="middle">영상 변환</text>
+  <path d="M638 157 Q714 156.3 792 157 Q792.8 124 792 120 Q826 119 859 120" fill="none" stroke="#23211f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M849 115.4 L859 120 L848.7 124.7" fill="none" stroke="#23211f" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M792 157 Q792.8 200 792 224 Q826 223 859 224" fill="none" stroke="#23211f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M849 219.4 L859 224 L848.7 228.7" fill="none" stroke="#23211f" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="676" y="185" fill="#484542" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="17" font-weight="400" text-anchor="start">조정된 이미지</text>
+  <path d="M872 121.88 C873.5 99.11 929.5 85.3 991.6 86.5 C1060.6 85 1100.5 98.42 1102 119.12 C1103 138.44 1058.3 155.8 987.0 155 C913.4 155.75 871.6 139.82 872 121.88Z" fill="none" stroke="#23211f" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="987" y="129" fill="#23211f" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="22" font-weight="570" text-anchor="middle">팀 게시글 피드</text>
+  <path d="M872 225.88 C873.5 203.11 929.5 189.3 991.6 190.5 C1060.6 189 1100.5 202.42 1102 223.12 C1103 242.44 1058.3 259.8 987.0 259 C913.4 259.75 871.6 243.82 872 225.88Z" fill="none" stroke="#23211f" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="987" y="233" fill="#23211f" font-family="Noto Sans KR, Apple SD Gothic Neo, sans-serif" font-size="22" font-weight="570" text-anchor="middle">이미지 모아보기</text>
 </svg>

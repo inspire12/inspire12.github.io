@@ -6,7 +6,7 @@
   <title>PAIGE · 프로야구 서비스 개발 · 서영학</title>
   <meta name="description" content="KBO 프로야구 앱 PAIGE에서 경기 중계와 영상, 추천 피드, 팀 응원 커뮤니티와 푸시 알림의 백엔드를 개발했습니다.">
   <link rel="canonical" href="https://inspire12.github.io/projects/paige/">
-  <link rel="stylesheet" href="../../portfolio.css?v=ee2acfaa5e">
+  <link rel="stylesheet" href="../../portfolio.css?v=8af56d6746">
 </head>
 <body>
 <header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
@@ -28,10 +28,13 @@
     <p>마지막 이닝만 보면 이전 이닝의 정정을 놓칩니다. 한 경기의 데이터가 많아도 약 200~300건이어서, 수집할 때 당일 경기 API 응답 전체를 DB에 저장한 기록과 비교했습니다. 달라진 내용을 기록하고 정정 유형에 따라 관련 콘텐츠를 다시 생성하도록 했습니다.</p>
     <p>실제 경기 데이터를 순서대로 재생하는 모의 서버에서 이닝 종료 이벤트 처리가 누락되는 상황을 재현했습니다. 선수 교체와 기록 적재가 잘못되는 오류를 수정하고, 운영 어드민에서도 처리 상태를 확인할 수 있게 했습니다.</p>
     <figure class="case-figure architecture-figure" id="paige-broadcast-architecture">
-      <img src="/media/paige-broadcast-architecture.svg?v=6e9d2f92fe" width="480" height="593" loading="lazy" alt="당일 경기 API 응답 전체와 DB 기록을 비교해 변경을 기록하고 정정 유형별 콘텐츠를 재생성합니다. PAIGE로 중계와 영상을 제공하며 운영 어드민에서 상태를 봅니다. 별도 테스트 환경에서는 모의 서버로 실제 경기를 재생해 이닝 종료 처리 누락을 재현합니다.">
+      <div class="diagram-scroll" role="region" tabindex="0" aria-label="PAIGE · 경기 기록 정정 구조도">
+        <img src="/media/paige-broadcast-architecture.svg?v=04c7ea9052" width="1220" height="520" loading="lazy" alt="PAIGE의 경기 데이터 API가 보낸 당일 경기 전체와 DB의 기존 기록을 비교합니다. 정정 내역에 따라 중계 문구와 영상을 재생성해 앱에 제공하고 운영자는 어드민에서 처리 상태를 확인합니다. 별도 테스트 환경에서는 모의 서버가 실제 경기 기록을 순서대로 재생해 이닝 종료 처리 누락을 재현합니다.">
+      </div>
+      <small class="diagram-scroll-hint">좌우로 스크롤해 전체 흐름을 볼 수 있습니다.</small>
       <figcaption>
         <span>경기 데이터 수정에 대응하는 운영 흐름과 Mock 서버를 활용한 테스트 환경</span>
-        <a class="diagram-source" href="/media/paige-broadcast-architecture.svg?v=6e9d2f92fe">원본 그림 보기</a>
+        <a class="diagram-source" href="/media/paige-broadcast-architecture.svg?v=04c7ea9052">원본 그림 보기</a>
       </figcaption>
     </figure>
   </section>
