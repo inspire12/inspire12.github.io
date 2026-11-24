@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>용량 산정 · 시스템 디자인 기술 면접 · 서영학</title>
+  <meta name="description" content="조회가 열 배 몰리는 10분을 서버 몇 대로 버틸 수 있을까요? 강의 목록 API의 피크 용량을 산정합니다. 아래 수치는 연습용 가정입니다. 평소 요청률을 하루 평균으로 근사하고, 피크의 응답 크기와 처리 시간도 주어진 값으로 계산하세요.">
+  <link rel="canonical" href="https://inspire12.github.io/learn/tech-interview/numbers-to-know/">
+  <link rel="stylesheet" href="/portfolio.css?v=ec9ea2077c">
+  <link rel="stylesheet" href="/learn/tech-interview/interview.css">
+</head>
+<body>
+<header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
+<main class="inner interview">
+  <nav class="crumbs" aria-label="상위 메뉴"><a href="/learn/">강의 목록</a> <a href="/learn/tech-interview/">기술 면접 목차</a></nav>
+  <article>
+    <p class="position">면접 9 / 9 · <span lang="en">Numbers to Know</span></p>
+    <h1>용량 산정</h1>
+    <section class="brief" aria-labelledby="question">
+      <h2 id="question">조회가 열 배 몰리는 10분을 서버 몇 대로 버틸 수 있을까요?</h2>
+      <p>강의 목록 API의 피크 용량을 산정합니다. 아래 수치는 연습용 가정입니다. 평소 요청률을 하루 평균으로 근사하고, 피크의 응답 크기와 처리 시간도 주어진 값으로 계산하세요.</p>
+      <figure><figcaption>계산에 사용할 조건</figcaption><pre><code>하루 조회 864만 건 · 피크는 평균의 10배로 10분 지속
+응답 본문 20 kB · 서버 안에서 머무는 평균 시간 0.2초
+인스턴스 1대가 p95 목표 안에서 처리하는 실측 용량 250요청/초
+계획 가동률 70% · 1 kB = 1,000 B</code></pre></figure>
+    </section>
+    <details><summary>답변 예시 펼쳐 보기</summary>
+      <p>864만 ÷ 86,400초 = 평균 100 RPS이고 피크는 1,000 RPS입니다. 응답 본문만 세면 초당 20 MB, 즉 160 Mb/s이고 10분간 약 12 GB입니다. 평균 0.2초가 유지되는 안정 상태라면 처리 중인 요청은 평균 200개입니다.</p>
+      <p>대당 계획 용량은 250 × 0.7 = 175 RPS입니다. 1,000 ÷ 175를 올리면 최소 6대이고, 한 대가 빠져도 같은 가동률을 지키려면 7대입니다. 실제 결정 전에는 피크 10분을 재현해 처리량, p95, DB 대기, 전송량을 함께 측정하겠습니다.</p>
+    </details>
+    <section aria-labelledby="follow-ups">
+      <h2 id="follow-ups">꼬리질문</h2>
+      <details><summary>앱 한 대가 고장 나지 않아도 DB 커넥션 풀이 먼저 찰 수 있나요?</summary><p>가능합니다. 예를 들어 피크의 모든 요청이 커넥션을 한 번씩 평균 50ms 점유한다면 전체 평균 점유는 약 50개입니다. 200개 동시 요청 전부가 커넥션을 잡는다는 뜻은 아닙니다. 인스턴스별 편차와 획득 대기 p95, DB의 실제 허용 동시성을 확인합니다.</p></details>
+      <details><summary>피크 입력 1,000 RPS 중 800 RPS만 처리할 수 있습니다. 10분을 큐로 버틸까요?</summary><p>거절·유실·재시도가 없으면 200 × 600 = 12만 건이 쌓입니다. 그뒤 유입이 100 RPS로 돌아오고 처리량 800 RPS를 유지하면 비우는 데 약 171.4초가 더 걸립니다. 동기 조회의 응답 기한을 넘는다면 큐보다 캐시, 선제 증설, 조기 부하 제한을 검토하겠습니다.</p></details>
+    </section>
+    <section aria-labelledby="concepts">
+      <h2 id="concepts">핵심 개념</h2>
+      <dl class="concept-list">
+        <div><dt>요청률</dt><dd>총 요청을 시간으로 나누어 평균 RPS를 구한 뒤 피크 배수를 적용합니다. 피크가 얼마나 지속되는지는 필요한 전송량과 대기열 적체에 영향을 줍니다.</dd></div>
+        <div><dt>동시 처리 수</dt><dd>안정 상태에서 평균 동시 처리 수는 초당 처리량과 평균 체류 시간의 곱입니다. 같은 구간에서 측정한 평균값을 사용합니다.</dd></div>
+        <div><dt>용량 여유</dt><dd>목표 지연을 만족하는 실측 처리량에서 운영 여유를 남깁니다. 앱, 네트워크, DB, 외부 API는 각기 다른 한계를 가지므로 병목별로 확인해야 합니다.</dd></div>
+      </dl>
+      <p class="checkpoint"><strong>답변 점검</strong> · 요청/초, 동시 요청 수, 바이트와 비트, 장애 여유분을 단위와 가정까지 밝혀 계산했는가?</p>
+    </section>
+    <section aria-labelledby="sources">
+      <h2 id="sources">더 읽기</h2>
+      <ul class="source-list">
+        <li><a href="https://www.hellointerview.com/learn/system-design/core-concepts/numbers-to-know">Hello Interview · Numbers to Know</a></li>
+        <li><a href="https://sre.google/sre-book/handling-overload/">Google SRE · Handling Overload</a></li>
+      </ul>
+    </section>
+  </article>
+  <nav class="chapter-nav" aria-label="면접 순서"><a href="/learn/tech-interview/cap-theorem/">이전 면접 · CAP 정리</a> <a href="/learn/tech-interview/">전체 면접 목차로 돌아가기</a></nav>
+</main>
+</body>
+</html>

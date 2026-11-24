@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>데이터베이스 인덱싱 · 시스템 디자인 기술 면접 · 서영학</title>
+  <meta name="description" content="신청 20건만 반환하는데 8만 행을 읽습니다. 어떤 인덱스를 제안할까요? PostgreSQL을 쓰는 운영자 화면입니다. 한 회차의 최근 확정 신청 20건을 보여줍니다. 현재 회차 ID에만 인덱스가 있고, 실행 계획에서는 해당 회차 8만 행을 읽어 상태를 필터링한 뒤 정렬합니다.">
+  <link rel="canonical" href="https://inspire12.github.io/learn/tech-interview/db-indexing/">
+  <link rel="stylesheet" href="/portfolio.css?v=ec9ea2077c">
+  <link rel="stylesheet" href="/learn/tech-interview/interview.css">
+</head>
+<body>
+<header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
+<main class="inner interview">
+  <nav class="crumbs" aria-label="상위 메뉴"><a href="/learn/">강의 목록</a> <a href="/learn/tech-interview/">기술 면접 목차</a></nav>
+  <article>
+    <p class="position">면접 4 / 9 · <span lang="en">Database Indexing</span></p>
+    <h1>데이터베이스 인덱싱</h1>
+    <section class="brief" aria-labelledby="question">
+      <h2 id="question">신청 20건만 반환하는데 8만 행을 읽습니다. 어떤 인덱스를 제안할까요?</h2>
+      <p>PostgreSQL을 쓰는 운영자 화면입니다. 한 회차의 최근 확정 신청 20건을 보여줍니다. 현재 회차 ID에만 인덱스가 있고, 실행 계획에서는 해당 회차 8만 행을 읽어 상태를 필터링한 뒤 정렬합니다.</p>
+      <figure><figcaption>운영 화면 쿼리</figcaption><pre><code>SELECT id, created_at FROM enrollment
+WHERE session_id = $1 AND status = 'CONFIRMED'
+ORDER BY created_at DESC, id DESC
+LIMIT 20;</code></pre></figure>
+    </section>
+    <details><summary>답변 예시 펼쳐 보기</summary>
+      <p>확정 목록 전용이라면 (session_id, created_at DESC, id DESC)에 WHERE status = 'CONFIRMED'를 붙인 부분 인덱스를 후보로 두겠습니다. 회차 범위에서 최신순으로 바로 읽고 20건에서 멈출 수 있습니다. 여러 상태의 목록을 같은 쿼리로 제공한다면 (session_id, status, created_at DESC, id DESC)도 비교하겠습니다.</p>
+      <p>운영과 비슷한 데이터로 EXPLAIN (ANALYZE, BUFFERS)를 비교합니다. 정렬이 사라졌는지만 보지 않고 실제 접근 행 수와 버퍼, 큰 회차의 p95도 확인합니다. 신청·취소 시 인덱스 유지 비용까지 측정한 뒤 채택하겠습니다.</p>
+    </details>
+    <section aria-labelledby="follow-ups">
+      <h2 id="follow-ups">꼬리질문</h2>
+      <details><summary>두 신청의 생성 시각이 같으면 다음 페이지에서 어떤 문제가 생기나요?</summary><p>시각만 커서로 쓰면 같은 시각의 신청이 누락될 수 있습니다. 정렬과 커서 모두 (created_at, id)를 쓰고, 내림차순에서 마지막으로 본 쌍보다 작은 행을 다음 페이지에서 읽습니다.</p></details>
+      <details><summary>조회 p95는 절반이 됐지만 WAL이 1.8배가 됐습니다. 바로 되돌리나요?</summary><p>같은 쓰기 건수와 상태 변경 비율에서 비교하고, 복제 지연과 쓰기 p99가 운영 목표를 넘는지 보겠습니다. 기존 인덱스와의 중복 여부, 확정·취소로 부분 인덱스 항목이 얼마나 드나드는지도 확인한 뒤 읽기 이득과 비교합니다.</p></details>
+    </section>
+    <section aria-labelledby="concepts">
+      <h2 id="concepts">핵심 개념</h2>
+      <dl class="concept-list">
+        <div><dt>복합 B-tree</dt><dd>앞선 열의 동등 조건으로 탐색 범위를 좁히고, 이어지는 열의 순서로 필요한 레코드를 읽습니다. 인덱스의 순서와 쿼리의 정렬 조건을 맞춰 봅니다.</dd></div>
+        <div><dt>부분 인덱스</dt><dd>특정 조건을 만족하는 행만 담습니다. 쿼리 조건이 인덱스 조건을 만족한다고 플래너가 판단할 수 있어야 사용할 수 있습니다.</dd></div>
+        <div><dt>실행 계획과 쓰기 비용</dt><dd>예상 행 수·실제 행 수, 읽은 버퍼, 정렬과 반복 횟수를 확인합니다. 인덱스 추가는 저장 공간과 쓰기 작업, WAL 비용에도 영향을 줍니다.</dd></div>
+      </dl>
+      <p class="checkpoint"><strong>답변 점검</strong> · 열 순서와 조건을 실제 쿼리로 설명하고, 개선 여부를 검증할 읽기·쓰기 지표를 모두 제시했는가?</p>
+    </section>
+    <section aria-labelledby="sources">
+      <h2 id="sources">더 읽기</h2>
+      <ul class="source-list">
+        <li><a href="https://www.hellointerview.com/learn/system-design/core-concepts/db-indexing">Hello Interview · Database Indexing</a></li>
+        <li><a href="https://www.postgresql.org/docs/current/indexes-multicolumn.html">PostgreSQL · Multicolumn Indexes</a></li>
+      </ul>
+    </section>
+  </article>
+  <nav class="chapter-nav" aria-label="면접 순서"><a href="/learn/tech-interview/data-modeling/">이전 면접 · 데이터 모델링</a> <a href="/learn/tech-interview/caching/">다음 면접 · 캐싱</a></nav>
+</main>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>캐싱 · 시스템 디자인 기술 면접 · 서영학</title>
+  <meta name="description" content="잔여 좌석 1석을 5천 명이 동시에 보고 있습니다. 무엇을 캐싱할까요? 상세 화면은 초당 5,000번 열립니다. 소개와 커리큘럼은 드물게 바뀌고 잔여 좌석은 자주 바뀝니다. 상세 화면의 숫자는 5초 정도 늦어도 되지만 확정 신청이 정원을 넘으면 안 됩니다.">
+  <link rel="canonical" href="https://inspire12.github.io/learn/tech-interview/caching/">
+  <link rel="stylesheet" href="/portfolio.css?v=ec9ea2077c">
+  <link rel="stylesheet" href="/learn/tech-interview/interview.css">
+</head>
+<body>
+<header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
+<main class="inner interview">
+  <nav class="crumbs" aria-label="상위 메뉴"><a href="/learn/">강의 목록</a> <a href="/learn/tech-interview/">기술 면접 목차</a></nav>
+  <article>
+    <p class="position">면접 5 / 9 · <span lang="en">Caching</span></p>
+    <h1>캐싱</h1>
+    <section class="brief" aria-labelledby="question">
+      <h2 id="question">잔여 좌석 1석을 5천 명이 동시에 보고 있습니다. 무엇을 캐싱할까요?</h2>
+      <p>상세 화면은 초당 5,000번 열립니다. 소개와 커리큘럼은 드물게 바뀌고 잔여 좌석은 자주 바뀝니다. 상세 화면의 숫자는 5초 정도 늦어도 되지만 확정 신청이 정원을 넘으면 안 됩니다.</p>
+    </section>
+    <details><summary>답변 예시 펼쳐 보기</summary>
+      <p>강의 소개는 공개 캐시로 분리하고, 잔여 좌석 표시는 짧게 캐싱하겠습니다. 이미 수집 단계에서 생기는 지연까지 더해 화면의 신선도 5초를 맞추겠습니다. 개인 신청 상태는 공유 캐시 응답에서 제외합니다. 최종 신청은 원본 DB에서 잔여 좌석이 있을 때만 차감합니다.</p>
+      <p>5천 요청이 같은 만료 시점에 DB로 갈 수 있으니 키별로 원본 조회를 합칩니다. 적중률과 함께 핫 키 만료 직후 원본 QPS, 표시 값의 실제 지연, 신청 실패율을 보겠습니다.</p>
+    </details>
+    <section aria-labelledby="follow-ups">
+      <h2 id="follow-ups">꼬리질문</h2>
+      <details><summary>DB 갱신 직후 캐시 키를 지웠는데 예전 값이 다시 살아났습니다. 어떤 순서로 가능한가요?</summary><p>읽기 요청이 예전 DB 값을 얻은 뒤 멈춥니다. 그사이 쓰기 요청이 DB를 커밋하고 키를 지웁니다. 늦게 끝난 읽기가 예전 값을 캐시에 넣으면 재현됩니다. 짧은 TTL로 감수할지, 단조 증가하는 버전을 별도로 보존해 더 오래된 채우기를 거절할지 신선도 요구에 따라 정하겠습니다.</p></details>
+      <details><summary>캐시 장애 때 조회를 전부 DB로 보내도 될까요?</summary><p>원본이 견디는 QPS를 먼저 봅니다. 페이지 소개는 허용된 범위에서 이전 응답을 쓰고, 잔여 좌석은 일시적으로 표시를 생략할 수 있습니다. 제한된 원본 처리량은 신청 확정 경로에 우선 배정하겠습니다.</p></details>
+    </section>
+    <section aria-labelledby="concepts">
+      <h2 id="concepts">핵심 개념</h2>
+      <dl class="concept-list">
+        <div><dt>캐시 경계</dt><dd>누가 보더라도 같은 강의 소개와 사용자별 신청 상태는 공유 가능한 범위가 다릅니다. 키와 캐시 위치는 이 경계를 따라 정합니다.</dd></div>
+        <div><dt>Cache-aside</dt><dd>읽을 때 캐시를 확인하고, 없으면 원본에서 가져와 채웁니다. 만료·무효화·다시 채우기가 겹치는 동안 이전 값이 보일 수 있습니다.</dd></div>
+        <div><dt>동시 미스</dt><dd>인기 키 하나가 만료되면 많은 요청이 동시에 같은 원본을 읽을 수 있습니다. 같은 키의 조회를 합치는 방법과 서로 다른 키의 만료 시각을 분산하는 방법은 효과가 다릅니다.</dd></div>
+      </dl>
+      <p class="checkpoint"><strong>답변 점검</strong> · 화면에 보여주는 숫자의 신선도와 좌석 확정의 정확성을 별도 규칙으로 설명했는가?</p>
+    </section>
+    <section aria-labelledby="sources">
+      <h2 id="sources">더 읽기</h2>
+      <ul class="source-list">
+        <li><a href="https://www.hellointerview.com/learn/system-design/core-concepts/caching">Hello Interview · Caching</a></li>
+        <li><a href="https://aws.amazon.com/builders-library/caching-challenges-and-strategies/">Amazon Builders’ Library · Caching challenges and strategies</a></li>
+      </ul>
+    </section>
+  </article>
+  <nav class="chapter-nav" aria-label="면접 순서"><a href="/learn/tech-interview/db-indexing/">이전 면접 · 데이터베이스 인덱싱</a> <a href="/learn/tech-interview/sharding/">다음 면접 · 샤딩</a></nav>
+</main>
+</body>
+</html>

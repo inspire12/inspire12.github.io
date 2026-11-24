@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CAP 정리 · 시스템 디자인 기술 면접 · 서영학</title>
+  <meta name="description" content="지역 간 통신이 끊겼습니다. 두 지역 모두 마지막 좌석을 확정해도 될까요? 서울과 부산의 복제본에는 마지막 좌석이 하나 남아 있습니다. 두 지역 사이 통신만 끊겼고 각 지역은 사용자 요청을 받습니다. 좌석을 지역별로 미리 나누지 않았습니다. 동시에 한 명씩 신청하면 서비스는 무엇을 약속할 수 있을까요?">
+  <link rel="canonical" href="https://inspire12.github.io/learn/tech-interview/cap-theorem/">
+  <link rel="stylesheet" href="/portfolio.css?v=ec9ea2077c">
+  <link rel="stylesheet" href="/learn/tech-interview/interview.css">
+</head>
+<body>
+<header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
+<main class="inner interview">
+  <nav class="crumbs" aria-label="상위 메뉴"><a href="/learn/">강의 목록</a> <a href="/learn/tech-interview/">기술 면접 목차</a></nav>
+  <article>
+    <p class="position">면접 8 / 9 · <span lang="en">CAP Theorem</span></p>
+    <h1>CAP 정리</h1>
+    <section class="brief" aria-labelledby="question">
+      <h2 id="question">지역 간 통신이 끊겼습니다. 두 지역 모두 마지막 좌석을 확정해도 될까요?</h2>
+      <p>서울과 부산의 복제본에는 마지막 좌석이 하나 남아 있습니다. 두 지역 사이 통신만 끊겼고 각 지역은 사용자 요청을 받습니다. 좌석을 지역별로 미리 나누지 않았습니다. 동시에 한 명씩 신청하면 서비스는 무엇을 약속할 수 있을까요?</p>
+    </section>
+    <details><summary>답변 예시 펼쳐 보기</summary>
+      <p>각 지역은 상대 지역이 마지막 좌석을 썼는지 알 수 없습니다. 초과 확정을 허용하지 않는다면 두 곳이 독립적으로 성공을 반환할 수 없습니다. 한쪽만 확정 권한을 갖게 하고, 권한을 안전하게 확인할 수 없는 지역에서는 확정 요청을 보류하거나 재시도 가능한 실패를 반환하겠습니다.</p>
+      <p>화면의 역할은 따로 보겠습니다. 잔여 좌석 조회는 갱신 시각과 함께 이전 값을 보여줄 수 있습니다. 신청 의사를 대기로 접수하는 것도 가능하지만 사용자에게 ‘좌석 확정’이라고 알리지는 않겠습니다.</p>
+    </details>
+    <section aria-labelledby="follow-ups">
+      <h2 id="follow-ups">꼬리질문</h2>
+      <details><summary>연결이 회복된 뒤 두 성공 기록 중 하나를 취소하면 해결되나요?</summary><p>최종 수량은 맞출 수 있어도 이미 두 사람에게 보낸 확정 약속을 지킬 수 없습니다. 사후 취소가 허용되는 상품이라면 임시 접수와 최종 확정을 서로 다른 상태로 정의하고 그 조건을 먼저 합의해야 합니다.</p></details>
+      <details><summary>양쪽 모두에서 일부 신청을 확정할 방법은 없나요?</summary><p>분할 전에 좌석 할당량을 나눠 각 지역이 자기 몫만 확정하도록 설계할 수 있습니다. 총량 제약은 지키지만 한쪽 몫이 소진돼도 다른 쪽의 남은 좌석을 즉시 쓸 수는 없습니다. 어느 지역에서나 전체 잔여 좌석을 쓸 수 있다는 계약이 달라집니다.</p></details>
+    </section>
+    <section aria-labelledby="concepts">
+      <h2 id="concepts">핵심 개념</h2>
+      <dl class="concept-list">
+        <div><dt>선형화 가능성</dt><dd>각 연산이 호출과 응답 사이 한 시점에 수행된 것처럼 보이고, 앞선 연산이 끝난 뒤 시작한 연산은 그 순서를 따라야 합니다. CAP에서 말하는 일관성의 의미입니다.</dd></div>
+        <div><dt>가용성</dt><dd>CAP의 가용성은 장애가 나지 않은 노드에 도착한 요청이 결국 해당 연산의 응답을 받는 성질입니다. 정상 동작해야 할 연산을 무조건 거절하는 것은 이 보장을 충족하지 못합니다.</dd></div>
+        <div><dt>네트워크 분할</dt><dd>노드 자체가 살아 있어도 서로 메시지를 교환할 수 없는 상태입니다. 이때 양쪽에서 계속 처리하는 것과 단일 최신 상태를 보장하는 것이 충돌할 수 있습니다.</dd></div>
+      </dl>
+      <p class="checkpoint"><strong>답변 점검</strong> · 분할이 일어난 시점, 지켜야 할 보장, 확정과 대기 접수의 사용자 경험을 연결했는가?</p>
+    </section>
+    <section aria-labelledby="sources">
+      <h2 id="sources">더 읽기</h2>
+      <ul class="source-list">
+        <li><a href="https://www.hellointerview.com/learn/system-design/core-concepts/cap-theorem">Hello Interview · CAP Theorem</a></li>
+        <li><a href="https://groups.csail.mit.edu/tds/papers/Gilbert/Brewer6.pdf">Gilbert · Lynch — Brewer’s Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services</a></li>
+      </ul>
+    </section>
+  </article>
+  <nav class="chapter-nav" aria-label="면접 순서"><a href="/learn/tech-interview/consistent-hashing/">이전 면접 · 일관 해싱</a> <a href="/learn/tech-interview/numbers-to-know/">다음 면접 · 용량 산정</a></nav>
+</main>
+</body>
+</html>

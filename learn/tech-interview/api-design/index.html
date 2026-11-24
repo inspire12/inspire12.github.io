@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 설계 · 시스템 디자인 기술 면접 · 서영학</title>
+  <meta name="description" content="신청은 성공했는데 응답이 사라졌습니다. 다시 누르면 어떻게 되나요? 수강생이 마지막 좌석에 신청했습니다. 서버는 처리했지만 모바일 앱은 응답을 받기 전에 타임아웃이 났습니다. 앱은 같은 신청을 재전송할 수 있고, 서로 다른 기기에서 동시에 누르는 경우도 있습니다.">
+  <link rel="canonical" href="https://inspire12.github.io/learn/tech-interview/api-design/">
+  <link rel="stylesheet" href="/portfolio.css?v=ec9ea2077c">
+  <link rel="stylesheet" href="/learn/tech-interview/interview.css">
+</head>
+<body>
+<header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
+<main class="inner interview">
+  <nav class="crumbs" aria-label="상위 메뉴"><a href="/learn/">강의 목록</a> <a href="/learn/tech-interview/">기술 면접 목차</a></nav>
+  <article>
+    <p class="position">면접 2 / 9 · <span lang="en">API Design</span></p>
+    <h1>API 설계</h1>
+    <section class="brief" aria-labelledby="question">
+      <h2 id="question">신청은 성공했는데 응답이 사라졌습니다. 다시 누르면 어떻게 되나요?</h2>
+      <p>수강생이 마지막 좌석에 신청했습니다. 서버는 처리했지만 모바일 앱은 응답을 받기 전에 타임아웃이 났습니다. 앱은 같은 신청을 재전송할 수 있고, 서로 다른 기기에서 동시에 누르는 경우도 있습니다.</p>
+      <figure><figcaption>요청 예시</figcaption><pre><code>POST /sessions/s42/enrollments
+Idempotency-Key: 72f4a9
+
+인증된 수강생: u17</code></pre></figure>
+    </section>
+    <details><summary>답변 예시 펼쳐 보기</summary>
+      <p>로그인한 수강생은 신청 의도마다 키 하나를 만들고, 타임아웃 뒤에는 같은 키를 보냅니다. 서버는 수강생과 키에 유일 제약을 걸고 요청 내용도 비교합니다. 첫 성공에는 신청 ID를 반환하고 같은 요청이 다시 오면 그 ID와 기존 처리 결과를 반환합니다.</p>
+      <p>키 기록, 잔여 좌석의 조건부 차감, 신청 생성, 응답 식별자 저장을 같은 DB 트랜잭션에 넣겠습니다. 커밋 뒤 응답만 유실돼도 결과를 복구할 수 있습니다. 두 기기가 별도 키를 쓰는 경우는 회차와 수강생의 유일 제약으로 차단하고, 차감까지 함께 롤백합니다.</p>
+    </details>
+    <section aria-labelledby="follow-ups">
+      <h2 id="follow-ups">꼬리질문</h2>
+      <details><summary>같은 키로 다른 회차를 신청하면요?</summary><p>키에 연결된 최초 요청과 회차 등 의미 있는 필드를 비교합니다. 다르면 충돌 응답을 반환해 클라이언트가 새 의도에는 새 키를 쓰도록 합니다. 같은 키라는 이유만으로 다른 회차의 성공 응답을 재사용하면 안 됩니다.</p></details>
+      <details><summary>신청은 DB에 있고 확인 메일은 외부 서비스가 보냅니다. 둘은 어떻게 묶나요?</summary><p>신청과 같은 트랜잭션에 발송할 이벤트를 기록하고 워커가 재시도합니다. 발송 제공자가 멱등 키를 지원하면 이벤트 ID를 전달합니다. 제공자가 이미 메일을 보낸 뒤 응답만 유실될 수 있으므로 수신 메일까지 정확히 한 번이라고 약속하지는 않겠습니다.</p></details>
+    </section>
+    <section aria-labelledby="concepts">
+      <h2 id="concepts">핵심 개념</h2>
+      <dl class="concept-list">
+        <div><dt>API 계약</dt><dd>요청 식별자, 성공 응답과 실패의 의미, 재시도 가능한 조건을 클라이언트와 합의합니다. 같은 사용자의 같은 의도를 어떻게 알아볼지 정합니다.</dd></div>
+        <div><dt>멱등성 키</dt><dd>한 번의 의도에 키 하나를 부여하고 재시도에 재사용합니다. 서버는 사용자·키와 요청 내용을 연결해 이미 처리한 결과를 돌려줍니다.</dd></div>
+        <div><dt>업무 제약</dt><dd>서로 다른 키를 가진 요청도 같은 좌석을 놓고 경쟁합니다. 중복 수강과 초과 예약은 데이터 저장 시점에 별도로 막아야 합니다.</dd></div>
+      </dl>
+      <p class="checkpoint"><strong>답변 점검</strong> · 응답 유실, 동시 신청, 같은 키의 다른 요청을 서로 다른 실패 상황으로 설명했는가?</p>
+    </section>
+    <section aria-labelledby="sources">
+      <h2 id="sources">더 읽기</h2>
+      <ul class="source-list">
+        <li><a href="https://www.hellointerview.com/learn/system-design/core-concepts/api-design">Hello Interview · API Design</a></li>
+        <li><a href="https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-apis/">Amazon Builders’ Library · Making retries safe with idempotent APIs</a></li>
+      </ul>
+    </section>
+  </article>
+  <nav class="chapter-nav" aria-label="면접 순서"><a href="/learn/tech-interview/networking-essentials/">이전 면접 · 네트워크 기초</a> <a href="/learn/tech-interview/data-modeling/">다음 면접 · 데이터 모델링</a></nav>
+</main>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>데이터 모델링 · 시스템 디자인 기술 면접 · 서영학</title>
+  <meta name="description" content="강의 가격은 바뀌어도 지난 신청 내역의 금액은 그대로여야 합니다. 한 강의를 여러 날짜에 개설합니다. 수강생은 회차별로 한 번 신청할 수 있습니다. 강사는 다음 달 가격을 바꿀 수 있고, 고객센터는 작년에 한 신청의 당시 금액을 조회해야 합니다.">
+  <link rel="canonical" href="https://inspire12.github.io/learn/tech-interview/data-modeling/">
+  <link rel="stylesheet" href="/portfolio.css?v=ec9ea2077c">
+  <link rel="stylesheet" href="/learn/tech-interview/interview.css">
+</head>
+<body>
+<header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
+<main class="inner interview">
+  <nav class="crumbs" aria-label="상위 메뉴"><a href="/learn/">강의 목록</a> <a href="/learn/tech-interview/">기술 면접 목차</a></nav>
+  <article>
+    <p class="position">면접 3 / 9 · <span lang="en">Data Modeling</span></p>
+    <h1>데이터 모델링</h1>
+    <section class="brief" aria-labelledby="question">
+      <h2 id="question">강의 가격은 바뀌어도 지난 신청 내역의 금액은 그대로여야 합니다.</h2>
+      <p>한 강의를 여러 날짜에 개설합니다. 수강생은 회차별로 한 번 신청할 수 있습니다. 강사는 다음 달 가격을 바꿀 수 있고, 고객센터는 작년에 한 신청의 당시 금액을 조회해야 합니다.</p>
+      <figure><figcaption>요구사항 메모</figcaption><pre><code>조회 A  수강생의 최근 신청 20건
+조회 B  회차별 확정 신청자
+불변 조건  한 수강생의 유효 신청은 회차당 최대 1건</code></pre></figure>
+    </section>
+    <details><summary>답변 예시 펼쳐 보기</summary>
+      <p>강의, 회차, 신청을 나누겠습니다. 회차는 강의 ID와 정원, 신청 시 적용할 가격을 가집니다. 신청은 회차 ID와 수강생 ID를 참조하고, 확정 금액·통화·신청 시각을 보관합니다. 과거 금액은 현재 가격을 조인해서 추측할 필요가 없습니다.</p>
+      <p>초기에는 관계형 DB를 쓰겠습니다. 신청 생성과 좌석 확보를 한 트랜잭션으로 묶을 수 있고, 두 목록도 키가 분명합니다. 한 사람의 회차별 신청 행을 하나로 유지하고 상태를 전환한다면 (회차 ID, 수강생 ID)에 유일 제약을 걸 수 있습니다.</p>
+    </details>
+    <section aria-labelledby="follow-ups">
+      <h2 id="follow-ups">꼬리질문</h2>
+      <details><summary>취소 후 재신청을 허용하면서 이력도 남겨야 한다면요?</summary><p>현재 신청은 유일한 행 하나로 유지하고, 신청·취소·재신청을 별도 이력에 순서대로 남길 수 있습니다. 재신청 때 새 가격이 적용되면 그 이벤트에 확정 금액도 남기고 현재 행과 이력을 함께 갱신합니다.</p></details>
+      <details><summary>운영자가 목록 조회가 느리다며 문서 DB로 바꾸자고 합니다. 무엇부터 확인할까요?</summary><p>느린 쿼리, 정렬과 필터 조건, 읽는 행 수를 확인합니다. 적절한 인덱스나 읽기 전용 조회 모델로 해결되는지 먼저 측정하겠습니다. 별도 저장소를 택한다면 갱신 지연을 허용할 목록과 최신성이 필수인 신청 경로를 구분합니다.</p></details>
+    </section>
+    <section aria-labelledby="concepts">
+      <h2 id="concepts">핵심 개념</h2>
+      <dl class="concept-list">
+        <div><dt>엔터티와 관계</dt><dd>강의의 설명, 개별 회차의 정원·가격, 수강생의 신청은 변경 시점과 수명이 다릅니다. 각 사실을 누가 소유하는지부터 정합니다.</dd></div>
+        <div><dt>현재 값과 스냅샷</dt><dd>신청 당시 확정 금액은 현재 정가와 다른 사실입니다. 당시 금액과 통화를 신청에 남기면 이후 가격 변경과 별도로 재현할 수 있습니다.</dd></div>
+        <div><dt>접근 패턴</dt><dd>내 신청 목록, 회차별 신청자 목록, 신청 시 좌석 확보의 세 경로에서 조회 키와 함께 변경돼야 할 레코드를 찾습니다.</dd></div>
+      </dl>
+      <p class="checkpoint"><strong>답변 점검</strong> · 무엇을 한 번만 저장할지, 어떤 시점의 값을 별도로 보존할지 업무 규칙으로 설명했는가?</p>
+    </section>
+    <section aria-labelledby="sources">
+      <h2 id="sources">더 읽기</h2>
+      <ul class="source-list">
+        <li><a href="https://www.hellointerview.com/learn/system-design/core-concepts/data-modeling">Hello Interview · Data Modeling</a></li>
+        <li><a href="https://www.postgresql.org/docs/current/ddl-constraints.html">PostgreSQL · Constraints</a></li>
+      </ul>
+    </section>
+  </article>
+  <nav class="chapter-nav" aria-label="면접 순서"><a href="/learn/tech-interview/api-design/">이전 면접 · API 설계</a> <a href="/learn/tech-interview/db-indexing/">다음 면접 · 데이터베이스 인덱싱</a></nav>
+</main>
+</body>
+</html>

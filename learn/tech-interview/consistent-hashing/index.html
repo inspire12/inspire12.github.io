@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>일관 해싱 · 시스템 디자인 기술 면접 · 서영학</title>
+  <meta name="description" content="캐시 노드를 한 대 늘릴 때 어떤 키의 담당자가 바뀔까요? 강의 미리보기 캐시가 세 노드에 분산돼 있습니다. 모든 클라이언트가 같은 링을 사용하고, 키는 시계 방향으로 처음 만나는 노드에 배정합니다. 복제는 없습니다. 노드 D를 추가할 때 아래 네 키를 직접 배치해 보세요.">
+  <link rel="canonical" href="https://inspire12.github.io/learn/tech-interview/consistent-hashing/">
+  <link rel="stylesheet" href="/portfolio.css?v=ec9ea2077c">
+  <link rel="stylesheet" href="/learn/tech-interview/interview.css">
+</head>
+<body>
+<header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
+<main class="inner interview">
+  <nav class="crumbs" aria-label="상위 메뉴"><a href="/learn/">강의 목록</a> <a href="/learn/tech-interview/">기술 면접 목차</a></nav>
+  <article>
+    <p class="position">면접 7 / 9 · <span lang="en">Consistent Hashing</span></p>
+    <h1>일관 해싱</h1>
+    <section class="brief" aria-labelledby="question">
+      <h2 id="question">캐시 노드를 한 대 늘릴 때 어떤 키의 담당자가 바뀔까요?</h2>
+      <p>강의 미리보기 캐시가 세 노드에 분산돼 있습니다. 모든 클라이언트가 같은 링을 사용하고, 키는 시계 방향으로 처음 만나는 노드에 배정합니다. 복제는 없습니다. 노드 D를 추가할 때 아래 네 키를 직접 배치해 보세요.</p>
+      <figure><figcaption>0~99의 해시 링</figcaption><pre><code>기존 노드   A=10   B=40   C=75
+추가 노드   D=55
+키 위치     8      35     48     83</code></pre></figure>
+    </section>
+    <details><summary>답변 예시 펼쳐 보기</summary>
+      <p>추가 전 키 8, 35, 48, 83은 각각 A, B, C, A가 담당합니다. 83은 99를 지나 처음 만나는 A로 돌아갑니다. D가 55에 들어오면 (40, 55] 구간만 C에서 D로 옮겨가므로 주어진 키 중에는 48만 담당자가 바뀝니다.</p>
+      <p>배치 규칙이 바뀌어도 기존 캐시 값이 자동으로 D에 복사되지는 않습니다. 원본이 버틸 수 있다면 새 노드에서 미스 시 채우고, 그렇지 않다면 인기 키를 먼저 채우거나 전환 속도를 제한하겠습니다.</p>
+    </details>
+    <section aria-labelledby="follow-ups">
+      <h2 id="follow-ups">꼬리질문</h2>
+      <details><summary>가상 노드를 100개씩 주면 인기 강의 키 하나도 여러 서버가 나눠 읽을까요?</summary><p>키 하나의 해시 좌표는 하나라서 이 규칙만으로는 여전히 한 소유자로 갑니다. 읽기 부하가 문제라면 복제본이나 짧은 로컬 캐시를 고려하고, 변경 시 여러 사본이 얼마나 오래 어긋날 수 있는지도 정합니다.</p></details>
+      <details><summary>클라이언트 절반만 새 링을 받았다면 어떤 현상이 나타날까요?</summary><p>같은 키를 C로 보내는 요청과 D로 보내는 요청이 섞입니다. 캐시에서는 중복 채우기와 미스 증가가 나타날 수 있습니다. 링 버전을 관측하고 전환 중 읽기 정책을 정합니다. 영구 저장소라면 복사·검증·쓰기 소유권 전환도 필요합니다.</p></details>
+    </section>
+    <section aria-labelledby="concepts">
+      <h2 id="concepts">핵심 개념</h2>
+      <dl class="concept-list">
+        <div><dt>나머지 연산</dt><dd>hash(key) % N으로 배치하면 노드 수 N이 바뀔 때 많은 키가 다른 노드에 매핑됩니다. 캐시라면 논리적 재배치가 대량 미스로 이어질 수 있습니다.</dd></div>
+        <div><dt>해시 링</dt><dd>키와 노드를 같은 좌표계에 두고 순서 규칙으로 소유자를 찾습니다. 한 노드를 추가하면 그 노드 바로 앞쪽 구간의 소유권이 이동합니다.</dd></div>
+        <div><dt>가상 노드</dt><dd>한 물리 노드에 여러 위치를 줘 각 노드가 여러 작은 구간을 맡도록 합니다. 키 분포의 편차와 단일 키의 요청 집중은 별개의 문제입니다.</dd></div>
+      </dl>
+      <p class="checkpoint"><strong>답변 점검</strong> · 이동 구간의 양 끝과 링의 되감기를 맞혔고, 키 배치와 실제 데이터 이동을 구분했는가?</p>
+    </section>
+    <section aria-labelledby="sources">
+      <h2 id="sources">더 읽기</h2>
+      <ul class="source-list">
+        <li><a href="https://www.hellointerview.com/learn/system-design/core-concepts/consistent-hashing">Hello Interview · Consistent Hashing</a></li>
+        <li><a href="https://www.amazon.science/publications/dynamo-amazons-highly-available-key-value-store">Amazon Science · Dynamo: Amazon’s highly available key-value store</a></li>
+      </ul>
+    </section>
+  </article>
+  <nav class="chapter-nav" aria-label="면접 순서"><a href="/learn/tech-interview/sharding/">이전 면접 · 샤딩</a> <a href="/learn/tech-interview/cap-theorem/">다음 면접 · CAP 정리</a></nav>
+</main>
+</body>
+</html>

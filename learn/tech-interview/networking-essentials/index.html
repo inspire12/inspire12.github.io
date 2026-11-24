@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>네트워크 기초 · 시스템 디자인 기술 면접 · 서영학</title>
+  <meta name="description" content="점수판을 보는 3만 명에게 변경 사항을 어떻게 보낼까요? 라이브 강의 중 퀴즈 점수판을 띄웁니다. 브라우저 3만 개가 2초마다 같은 점수판을 조회합니다. 점수는 분당 한두 번 바뀌고, 바뀐 뒤 3초 안에 보이면 됩니다. 답안 제출은 별도 HTTP API가 처리합니다.">
+  <link rel="canonical" href="https://inspire12.github.io/learn/tech-interview/networking-essentials/">
+  <link rel="stylesheet" href="/portfolio.css?v=ec9ea2077c">
+  <link rel="stylesheet" href="/learn/tech-interview/interview.css">
+</head>
+<body>
+<header><a class="brand" href="/">inspire12<span>.</span></a><nav aria-label="주 메뉴"><a href="/projects/">Projects</a><a href="/#career">Career</a><a href="/#contact">Contact</a><a href="/apps/">Apps</a></nav></header>
+<main class="inner interview">
+  <nav class="crumbs" aria-label="상위 메뉴"><a href="/learn/">강의 목록</a> <a href="/learn/tech-interview/">기술 면접 목차</a></nav>
+  <article>
+    <p class="position">면접 1 / 9 · <span lang="en">Networking Essentials</span></p>
+    <h1>네트워크 기초</h1>
+    <section class="brief" aria-labelledby="question">
+      <h2 id="question">점수판을 보는 3만 명에게 변경 사항을 어떻게 보낼까요?</h2>
+      <p>라이브 강의 중 퀴즈 점수판을 띄웁니다. 브라우저 3만 개가 2초마다 같은 점수판을 조회합니다. 점수는 분당 한두 번 바뀌고, 바뀐 뒤 3초 안에 보이면 됩니다. 답안 제출은 별도 HTTP API가 처리합니다.</p>
+    </section>
+    <details><summary>답변 예시 펼쳐 보기</summary>
+      <p>현재 폴링은 점수가 그대로여도 초당 약 1만 5천 번 들어옵니다. 점수판은 서버에서 브라우저로 한 방향이고 제출 API는 이미 있으니, 처음엔 HTTP로 현재 점수를 받고 이후 변경분은 SSE로 보내겠습니다. 느슨한 지연 목표였다면 캐시 가능한 폴링 응답도 비교할 만합니다.</p>
+      <p>SSE는 3만 연결을 유지해야 합니다. 연결당 메모리, 파일 디스크립터, 이벤트 전달 지연을 부하 테스트하고, 배포 중 재접속이 몰려도 3초 목표를 지키는지 확인하겠습니다.</p>
+    </details>
+    <section aria-labelledby="follow-ups">
+      <h2 id="follow-ups">꼬리질문</h2>
+      <details><summary>연결이 끊긴 동안 두 번 점수가 바뀌면 어떻게 복구하나요?</summary><p>이벤트에 순번을 붙입니다. 클라이언트가 재연결하며 보낸 마지막 이벤트 ID가 보관 범위 안에 있으면 이후 이벤트를 재생합니다. 기록이 만료됐거나 순번에 공백이 있으면 최신 점수판을 다시 받아 기준점을 맞춥니다.</p></details>
+      <details><summary>집에서 테스트할 땐 즉시 보이는데 운영 환경에서는 여러 건이 한꺼번에 도착합니다. 어디부터 볼까요?</summary><p>서버의 이벤트 생성·쓰기 시각과 브라우저 수신 시각을 비교합니다. 서버가 즉시 썼다면 프록시의 스트리밍 응답 버퍼링을 확인하고, 유휴 연결만 끊긴다면 하트비트 간격과 로드 밸런서의 타임아웃을 대조합니다.</p></details>
+    </section>
+    <section aria-labelledby="concepts">
+      <h2 id="concepts">핵심 개념</h2>
+      <dl class="concept-list">
+        <div><dt>폴링</dt><dd>클라이언트가 일정 간격으로 변경 여부를 묻습니다. 구현과 복구는 단순하지만 변경이 드문 시간에도 요청이 발생합니다.</dd></div>
+        <div><dt>SSE와 WebSocket</dt><dd>SSE는 열린 HTTP 응답으로 서버가 이벤트를 보냅니다. WebSocket은 연결 양쪽이 독립적으로 메시지를 보낼 수 있어 채팅이나 공동 편집에도 쓸 수 있습니다.</dd></div>
+        <div><dt>연결 경로</dt><dd>DNS 조회, 연결 및 TLS 수립, 프록시, 애플리케이션의 대기 시간을 나누어 봅니다. 지속 연결을 쓰면 프록시의 유휴 시간 제한과 응답 버퍼링도 확인해야 합니다.</dd></div>
+      </dl>
+      <p class="checkpoint"><strong>답변 점검</strong> · 15,000요청/초와 30,000개 지속 연결이 서로 다른 자원 비용임을 설명했는가?</p>
+    </section>
+    <section aria-labelledby="sources">
+      <h2 id="sources">더 읽기</h2>
+      <ul class="source-list">
+        <li><a href="https://www.hellointerview.com/learn/system-design/core-concepts/networking-essentials">Hello Interview · Networking Essentials</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">MDN · Using server-sent events</a></li>
+      </ul>
+    </section>
+  </article>
+  <nav class="chapter-nav" aria-label="면접 순서"><a href="/learn/tech-interview/">전체 면접 목차</a> <a href="/learn/tech-interview/api-design/">다음 면접 · API 설계</a></nav>
+</main>
+</body>
+</html>
