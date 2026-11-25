@@ -77,6 +77,7 @@ h3 { font-size: clamp(1.2rem, 2.1vw, 1.55rem); }
   min-height: 60svh;
 }
 
+.intro-actions { display: flex; flex-wrap: wrap; align-items: baseline; gap: .65rem 1.35rem; }
 .hero h1 { font-size: clamp(3.35rem, 8.5vw, 6.5rem); }
 .hero .lead { max-width: 25em; }
 .hero-portrait { display: block; width: 100%; max-width: 258px; height: auto; border-radius: .25rem; }
